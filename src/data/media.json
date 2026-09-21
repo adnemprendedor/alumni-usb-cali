@@ -1,0 +1,34 @@
+{
+  "stephanny": {
+    "foto": "egresados/stephanny-fiat-c.jpg",
+    "logo": "logos/stephanny-fiat-c.png"
+  },
+  "yessica-escobar": {
+    "foto": "egresados/yessica-escobar.jpg",
+    "logo": "logos/yessica-escobar.jpg"
+  },
+  "stephanie-prieto-sanchez": {
+    "foto": "egresados/stephanie-prieto-sanchez.jpg",
+    "logo": "logos/stephanie-prieto-sanchez.png"
+  },
+  "ihovanna-orozco-gomez": {
+    "foto": "egresados/ihovanna-orozco-gomez.jpg",
+    "logo": "logos/ihovanna-orozco-gomez.jpg"
+  },
+  "garzon-laura-valentina": {
+    "foto": "egresados/garzon-laura-valentina.jpg",
+    "logo": "logos/garzon-laura-valentina.png"
+  },
+  "juanita-echeverri-arboleda": {
+    "foto": "egresados/juanita-echeverri-arboleda.jpg",
+    "logo": "logos/juanita-echeverri-arboleda.jpg"
+  },
+  "diana-carolina-monroy-rosero": {
+    "foto": "egresados/diana-carolina-monroy-rosero.jpg",
+    "logo": "logos/diana-carolina-monroy-rosero.png"
+  },
+  "martha-myriam-rios-martinez": {
+    "foto": "egresados/martha-myriam-rios-martinez.jpg",
+    "logo": "logos/martha-myriam-rios-martinez.jpg"
+  }
+}

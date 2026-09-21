@@ -1,0 +1,5 @@
+{
+  "usuario": "admin",
+  "hashClave": "a3902ff83d851fc168f6bc4b02436622ee0f5face88763ab690c82c267ba4196",
+  "_nota": "Clave por defecto: usbalumni2026 — cámbiala antes de compartir el panel. Ver scripts/generar-clave-admin.mjs y la guía de administración."
+}

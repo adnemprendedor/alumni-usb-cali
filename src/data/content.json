@@ -1,0 +1,84 @@
+{
+  "hero": {
+    "eyebrow": "Alumni USB Cali · Red de Graduados",
+    "titulo": "USB Conecta y emprende.",
+    "subtitulo": "Descubre los emprendimientos de egresados que están construyendo nuevas ideas, y conecta con la red Alumni USB Cali.",
+    "ctaLabel": "Explorar directorio",
+    "scrollLabel": "Desplázate"
+  },
+  "secciones": {
+    "explora": {
+      "titulo": "Explora la red Alumni",
+      "subtitulo": "Cinco formas de descubrir a los egresados que están emprendiendo."
+    },
+    "enfoques": {
+      "eyebrow": "Enfoques",
+      "titulo": "Explora por enfoque de emprendimiento"
+    },
+    "destacados": {
+      "eyebrow": "ADN Emprendedor",
+      "titulo": "ADN Emprendedor Egresados USB"
+    },
+    "buscador": {
+      "eyebrow": "Directorio completo",
+      "titulo": "¿A quién estás buscando?"
+    },
+    "carreras": {
+      "eyebrow": "Programas",
+      "titulo": "Encuentra talento por programa académico"
+    },
+    "emprendimientos": {
+      "eyebrow": "Emprendimientos",
+      "titulo": "Lo que construyen los egresados"
+    }
+  },
+  "conecta": {
+    "eyebrow": "Conecta",
+    "titulo": "Inscríbete como egresado",
+    "subtitulo": "Así de simple es hacer parte oficial de la Red de Graduados Alumni USB Cali.",
+    "pasos": [
+      {
+        "numero": "01",
+        "titulo": "Verifica tu información",
+        "texto": "Confirma que tus datos como egresado estén al día en el sistema de la universidad."
+      },
+      {
+        "numero": "02",
+        "titulo": "Diligencia el formulario",
+        "texto": "Completa el formulario de inscripción a la Red de Graduados Alumni USB Cali."
+      },
+      {
+        "numero": "03",
+        "titulo": "Cuéntanos tu emprendimiento",
+        "texto": "Si tienes un emprendimiento propio, regístralo para hacer parte del directorio."
+      },
+      {
+        "numero": "04",
+        "titulo": "Haz parte de la comunidad",
+        "texto": "Recibe invitaciones a capacitaciones, eventos y oportunidades exclusivas para egresados."
+      }
+    ],
+    "requisitos": [
+      "Ser egresado de un programa académico de la Universidad de San Buenaventura Cali.",
+      "Documento de identidad y datos de contacto vigentes.",
+      "Correo electrónico activo para recibir comunicaciones de Alumni."
+    ],
+    "actualizar": {
+      "titulo": "Actualiza tus datos",
+      "desc": "Mantén tu información de contacto y laboral al día en el sistema de egresados.",
+      "href": "#"
+    },
+    "enlaces": [
+      {
+        "titulo": "Regístrate como egresado emprendedor",
+        "desc": "Inscribe tu emprendimiento para que aparezca en este directorio.",
+        "href": "#"
+      },
+      {
+        "titulo": "Capacitaciones",
+        "desc": "Consulta la oferta de formación continua y talleres para egresados.",
+        "href": "#"
+      }
+    ]
+  }
+}
