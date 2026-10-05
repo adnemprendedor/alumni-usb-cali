@@ -1,7 +1,7 @@
 {
   "stephanny": {
     "foto": "egresados/stephanny-fiat-c.jpg",
-    "logo": "logos/stephanny-fiat-c.png"
+    "logo": "logos/stephanny.jpg"
   },
   "yessica-escobar": {
     "foto": "egresados/yessica-escobar.jpg",
@@ -9,7 +9,7 @@
   },
   "stephanie-prieto-sanchez": {
     "foto": "egresados/stephanie-prieto-sanchez.jpg",
-    "logo": "logos/stephanie-prieto-sanchez.png"
+    "logo": "logos/stephanie-prieto-sanchez.jpg"
   },
   "ihovanna-orozco-gomez": {
     "foto": "egresados/ihovanna-orozco-gomez.jpg",
@@ -17,7 +17,7 @@
   },
   "garzon-laura-valentina": {
     "foto": "egresados/garzon-laura-valentina.jpg",
-    "logo": "logos/garzon-laura-valentina.png"
+    "logo": "logos/garzon-laura-valentina.jpg"
   },
   "juanita-echeverri-arboleda": {
     "foto": "egresados/juanita-echeverri-arboleda.jpg",
@@ -25,10 +25,118 @@
   },
   "diana-carolina-monroy-rosero": {
     "foto": "egresados/diana-carolina-monroy-rosero.jpg",
-    "logo": "logos/diana-carolina-monroy-rosero.png"
+    "logo": "logos/diana-carolina-monroy-rosero.jpg"
   },
   "martha-myriam-rios-martinez": {
     "foto": "egresados/martha-myriam-rios-martinez.jpg",
     "logo": "logos/martha-myriam-rios-martinez.jpg"
+  },
+  "attimo-isabella-paez-ospina": {
+    "logo": "logos/attimo-isabella-paez-ospina.jpg"
+  },
+  "coral-de-rio-diana-marcela-britto-tejeda": {
+    "logo": "logos/coral-de-rio-diana-marcela-britto-tejeda.jpg"
+  },
+  "aura-studio-laura-garzon": {
+    "logo": "logos/aura-studio-laura-garzon.jpg"
+  },
+  "aegis-asesoria-y-consultoria-sas-bryan-alexander-zapata-pinilla": {
+    "logo": "logos/aegis-asesoria-y-consultoria-sas-bryan-alexander-zapata-pinilla.jpg"
+  },
+  "ranadorada-paola-andrea-chaparro-rojas": {
+    "logo": "logos/ranadorada-paola-andrea-chaparro-rojas.jpg"
+  },
+  "patitasfelices-vanesa-espinosa": {
+    "logo": "logos/patitasfelices-vanesa-espinosa.jpg"
+  },
+  "zore-valeria-sepulveda": {
+    "logo": "logos/zore-valeria-sepulveda.jpg"
+  },
+  "mokai-raul-fernando-rodriguez-rodriguez": {
+    "logo": "logos/mokai-raul-fernando-rodriguez-rodriguez.jpg"
+  },
+  "serenity-y-frioinverter-adriana-cecilia-vasquez-tascon": {
+    "logo": "logos/serenity-y-frioinverter-adriana-cecilia-vasquez-tascon.jpg"
+  },
+  "agencia-y-consultores-de-seguros-bl-sas-michel-angelo-medranda-patino": {
+    "logo": "logos/agencia-y-consultores-de-seguros-bl-sas-michel-angelo-medranda-patino.jpg"
+  },
+  "shopper-house-jhonatan-sanchez": {
+    "logo": "logos/shopper-house-jhonatan-sanchez.jpg"
+  },
+  "icenter-alonzo-hurtado": {
+    "logo": "logos/icenter-alonzo-hurtado.jpg"
+  },
+  "dar-home-real-estate-ramiro-eduardo-rugeles-ocampo": {
+    "logo": "logos/dar-home-real-estate-ramiro-eduardo-rugeles-ocampo.jpg"
+  },
+  "natalia-ramirez-accesorios-natalia-ramirez": {
+    "logo": "logos/natalia-ramirez-accesorios-natalia-ramirez.jpg"
+  },
+  "editalo-ramon-valeria-lamos-giraldo": {
+    "logo": "logos/editalo-ramon-valeria-lamos-giraldo.jpg"
+  },
+  "promotora-especial-del-sur-fabio-pava-gonzalez": {
+    "logo": "logos/promotora-especial-del-sur-fabio-pava-gonzalez.jpg"
+  },
+  "evvefit-michelle-castro-anacona": {
+    "logo": "logos/evvefit-michelle-castro-anacona.jpg"
+  },
+  "helarte-heladeria-artesanal-natalia-vallejo-benavidez": {
+    "logo": "logos/helarte-heladeria-artesanal-natalia-vallejo-benavidez.jpg"
+  },
+  "agropecuaria-bellavista-ba-sas-jorge-ivan-herrera": {
+    "logo": "logos/agropecuaria-bellavista-ba-sas-jorge-ivan-herrera.jpg"
+  },
+  "aromas-de-luz-servicios-terapeuticos-ingrid-tellez": {
+    "logo": "logos/aromas-de-luz-servicios-terapeuticos-ingrid-tellez.jpg"
+  },
+  "misart-accesorios-yuri-mamian": {
+    "logo": "logos/misart-accesorios-yuri-mamian.jpg"
+  },
+  "pancho-y-josefina-stephannya-lerma": {
+    "logo": "logos/pancho-y-josefina-stephannya-lerma.jpg"
+  },
+  "europizados-sebastian-chermanz": {
+    "logo": "logos/europizados-sebastian-chermanz.jpg"
+  },
+  "proaires-sas-natali-renteria-hurtado": {
+    "logo": "logos/proaires-sas-natali-renteria-hurtado.jpg"
+  },
+  "arteaga-arquitectura-sas-diego-fernando-arteaga-gonzalez": {
+    "logo": "logos/arteaga-arquitectura-sas-diego-fernando-arteaga-gonzalez.jpg"
+  },
+  "keydex-consulting-christian-jimenez": {
+    "logo": "logos/keydex-consulting-christian-jimenez.jpg"
+  },
+  "zininstrucciones-diana-abadia": {
+    "logo": "logos/zininstrucciones-diana-abadia.jpg"
+  },
+  "torres-montoya-asesorias-contables-y-tributarias-natalia-torres-bedoya": {
+    "logo": "logos/torres-montoya-asesorias-contables-y-tributarias-natalia-torres-bedoya.jpg"
+  },
+  "zulu-soluciones-electricas-esteban-salamanca-segura": {
+    "logo": "logos/zulu-soluciones-electricas-esteban-salamanca-segura.jpg"
+  },
+  "palo-d-rosa-accesorios-veronica-uruena": {
+    "logo": "logos/palo-d-rosa-accesorios-veronica-uruena.jpg"
+  },
+  "amarkefir-liz-katherine-rodriguez-idarraga": {
+    "logo": "logos/amarkefir-liz-katherine-rodriguez-idarraga.jpg"
+  },
+  "plan-de-viaje-colombia-andres-felipe-osorio-cordoba": {
+    "logo": "logos/plan-de-viaje-colombia-andres-felipe-osorio-cordoba.jpg"
+  },
+  "trip-tour-adventure-sas-juan-diego-palomino-ospina": {
+    "logo": "logos/trip-tour-adventure-sas-juan-diego-palomino-ospina.jpg"
+  },
+  "expresate-con-amor-daniela-guevara": {
+    "logo": "logos/expresate-con-amor-daniela-guevara.jpg"
+  },
+  "certuche-asociados-sas-aida-lucia-certuche-candelo": {
+    "logo": "logos/certuche-asociados-sas-aida-lucia-certuche-candelo.jpg"
+  },
+  "titoy-art-inn-monica-maria-renza-vivas": {
+    "logo": "logos/titoy-art-inn-monica-maria-renza-vivas.jpg"
   }
 }

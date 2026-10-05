@@ -177,6 +177,18 @@ export default function ProfilePage() {
                 {persona.correo}
               </a>
             )}
+            {persona.sitioWeb && (
+              <a
+                href={persona.sitioWeb}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor-hover
+                className="group inline-flex items-center gap-3 rounded-full border border-gold/40 bg-ink-2/50 px-6 py-3 text-sm text-paper transition-colors hover:border-gold hover:bg-gold hover:text-ink"
+              >
+                <span className="text-gold transition-colors group-hover:text-ink">⚭</span>
+                {persona.sitioWeb.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+              </a>
+            )}
             {persona.instagram && (
               <a
                 href={`https://instagram.com/${persona.instagram.replace("@", "")}`}
@@ -215,8 +227,8 @@ export default function ProfilePage() {
             className="mt-10 max-w-xl text-sm text-paper-dim"
           >
             Esta información proviene del registro de egresados de la Universidad de San Buenaventura Cali
-            {foto || persona.instagram || logo
-              ? ", y del material oficial \"ADN Emprendedor de Egresados USB\" de Alumni USB Cali (foto, logo del emprendimiento, Instagram y teléfono de contacto del negocio)"
+            {foto || persona.instagram || persona.sitioWeb || logo
+              ? ", y del material oficial \"ADN Emprendedor de Egresados USB\" de Alumni USB Cali (foto, logo del emprendimiento, Instagram, sitio web y teléfono de contacto del negocio)"
               : ""}
             . El correo se publica con autorización de Alumni USB Cali para facilitar el contacto directo entre
             egresados; no se publican otros datos personales (documento, celular personal, cargo o información

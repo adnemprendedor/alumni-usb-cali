@@ -19,13 +19,23 @@ export default function SearchSection() {
 
   const filtrados = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return egresados.filter((e) => {
+    const resultado = egresados.filter((e) => {
       if (enfoqueFiltro && e.enfoque !== enfoqueFiltro) return false;
       if (!q) return true;
       return `${e.nombre} ${e.nombreEmprendimiento} ${e.programa ?? ""} ${e.enfoque ?? ""}`
         .toLowerCase()
         .includes(q);
     });
+    // Los egresados con logo/foto verificados se muestran primero (orden estable entre sí).
+    return resultado
+      .map((e, index) => ({ e, index }))
+      .sort((a, b) => {
+        const aTieneImagen = Boolean(logos[a.e.slug] || fotos[a.e.slug]);
+        const bTieneImagen = Boolean(logos[b.e.slug] || fotos[b.e.slug]);
+        if (aTieneImagen === bTieneImagen) return a.index - b.index;
+        return aTieneImagen ? -1 : 1;
+      })
+      .map(({ e }) => e);
   }, [query, enfoqueFiltro]);
 
   const visibles = filtrados.slice(0, visible);

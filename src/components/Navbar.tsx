@@ -11,6 +11,7 @@ const LINKS = [
   { label: "Enfoques", href: "#categorias" },
   { label: "Programas", href: "#carreras" },
   { label: "Conecta", href: "#conecta" },
+  { label: "Juego", href: "#/juego" },
 ];
 
 export default function Navbar() {

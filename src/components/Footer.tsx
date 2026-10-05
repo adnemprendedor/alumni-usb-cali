@@ -16,6 +16,7 @@ const COLUMNS = [
       { label: "Enfoques", href: "#categorias" },
       { label: "Programas", href: "#carreras" },
       { label: "Conecta", href: "#conecta" },
+      { label: "Juego de egresados", href: "#/juego" },
     ],
   },
 ];

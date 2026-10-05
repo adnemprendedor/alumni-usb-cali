@@ -7,6 +7,7 @@ import CustomCursor from "./components/CustomCursor";
 import PageTransition from "./components/PageTransition";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+import JuegoPage from "./pages/JuegoPage";
 import AdminApp from "./admin/AdminApp";
 
 /**
@@ -66,6 +67,14 @@ function AnimatedRoutes() {
           element={
             <PageTransition>
               <ProfilePage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/juego"
+          element={
+            <PageTransition>
+              <JuegoPage />
             </PageTransition>
           }
         />

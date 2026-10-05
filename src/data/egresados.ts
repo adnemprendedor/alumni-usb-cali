@@ -10,6 +10,7 @@ export interface Egresado {
   nombre: string;
   correo: string | null;
   instagram?: string | null;
+  sitioWeb?: string | null;
   telefonoNegocio?: string | null;
   descripcion?: string | null;
   programa: string | null;
