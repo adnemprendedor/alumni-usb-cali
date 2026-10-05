@@ -60,7 +60,7 @@ export default function Hero() {
           {eyebrow}
         </motion.p>
 
-        <h1 className="font-display max-w-4xl text-balance text-[13vw] font-light leading-[1.02] text-paper sm:text-[8vw] lg:text-[5.5rem]">
+        <h1 className="font-display max-w-4xl text-balance text-[9vw] font-light leading-[1.05] text-paper sm:text-[6.5vw] lg:text-[4.4rem]">
           {words.map((word, i) => (
             <span key={i} className="inline-block overflow-hidden pb-2 pr-[0.22em] align-bottom">
               <motion.span

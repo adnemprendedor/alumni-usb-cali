@@ -3,19 +3,20 @@ import alumniLogo from "../assets/brand/alumni-logo.png";
 
 const COLUMNS = [
   {
-    title: "Explorar",
+    title: "ADN Emprendedor",
     links: [
-      { label: "Directorio", href: "#inicio" },
-      { label: "Egresados", href: "#destacados" },
+      { label: "Directorio", href: "#buscador" },
+      { label: "Categorías", href: "#categorias" },
       { label: "Emprendimientos", href: "#emprendimientos" },
+      { label: "Destacado de la semana", href: "#destacado-semana" },
     ],
   },
   {
     title: "Descubrir",
     links: [
-      { label: "Enfoques", href: "#categorias" },
+      { label: "Egresados que Inspiran", href: "#destacados" },
       { label: "Programas", href: "#carreras" },
-      { label: "Conecta", href: "#conecta" },
+      { label: "Participa", href: "#conecta" },
       { label: "Juego de egresados", href: "#/juego" },
     ],
   },

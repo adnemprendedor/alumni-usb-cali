@@ -1,95 +1,88 @@
-import { useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import { enfoques } from "../data/derived";
+import { motion } from "framer-motion";
+import { sectores } from "../data/derived";
 import { hueSeed } from "../lib/color";
 import content from "../data/content.json";
 
 const { eyebrow, titulo: SECTION_TITLE } = content.secciones.enfoques;
 
+/** Guarda la categoría elegida para que SearchSection la lea al montar y
+ * aplique el filtro automáticamente — así una tarjeta de categoría navega
+ * directo a los resultados filtrados del directorio. */
+function irAlDirectorioFiltrado(nombre: string) {
+  try {
+    sessionStorage.setItem("categoriaFiltro", nombre);
+  } catch {
+    // almacenamiento no disponible: la navegación por ancla sigue funcionando
+  }
+}
+
 export default function CategoriesSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState<string | null>(null);
-
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const smx = useSpring(mx, { stiffness: 250, damping: 30 });
-  const smy = useSpring(my, { stiffness: 250, damping: 30 });
-
-  const handleMove = (e: React.MouseEvent) => {
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    mx.set(e.clientX - rect.left);
-    my.set(e.clientY - rect.top);
-  };
-
-  const hue = hovered ? (18 + hueSeed(hovered)) % 45 : 28;
-
   return (
     <section id="categorias" className="relative overflow-hidden bg-ink px-4 py-28 sm:px-8 lg:py-40">
-      <motion.div
-        className="mx-auto max-w-6xl"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.6 }}
-        transition={{ duration: 0.8 }}
-      >
-        <p className="mb-3 text-xs uppercase tracking-[0.3em] text-gold">{eyebrow}</p>
-        <h2 className="font-display mb-14 text-balance text-4xl font-light text-paper sm:text-5xl lg:text-6xl">
-          {SECTION_TITLE}
-        </h2>
-      </motion.div>
-
-      <div
-        ref={containerRef}
-        onMouseMove={handleMove}
-        onMouseLeave={() => setHovered(null)}
-        className="relative mx-auto max-w-6xl"
-      >
-        {/* floating gradient blob that follows the cursor */}
+      <div className="mx-auto max-w-6xl">
         <motion.div
-          className="pointer-events-none absolute -z-0 h-64 w-64 rounded-full blur-3xl transition-opacity duration-300 sm:h-80 sm:w-80"
-          style={{
-            left: smx,
-            top: smy,
-            translateX: "-50%",
-            translateY: "-50%",
-            opacity: hovered ? 0.55 : 0,
-            backgroundImage: `radial-gradient(circle, hsla(${hue},80%,55%,0.9), transparent 70%)`,
-          }}
-        />
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8 }}
+          className="mb-14 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end"
+        >
+          <div>
+            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-gold">{eyebrow}</p>
+            <h2 className="font-display text-balance text-4xl font-light text-paper sm:text-5xl lg:text-6xl">
+              {SECTION_TITLE}
+            </h2>
+          </div>
+          <p className="max-w-xs text-sm text-paper-dim">
+            Cada emprendimiento clasificado según su categoría o sector de actividad.
+          </p>
+        </motion.div>
 
-        <ul className="relative z-10 divide-y divide-paper/10 border-y border-paper/10">
-          {enfoques.map((cat) => {
-            const isHovered = hovered === cat.nombre;
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          {sectores.map((cat, i) => {
+            const hue = 18 + (hueSeed(cat.nombre) % 40);
             return (
-              <li key={cat.nombre}>
+              <motion.div
+                key={cat.nombre}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              >
                 <a
-                  href="#destacados"
+                  href="#buscador"
                   data-cursor-hover
-                  onMouseEnter={() => setHovered(cat.nombre)}
-                  className="flex items-center justify-between gap-4 py-6 sm:py-8"
+                  onClick={() => irAlDirectorioFiltrado(cat.nombre)}
+                  className="group relative flex h-36 flex-col justify-between overflow-hidden rounded-2xl border border-paper/10 p-5 transition-colors hover:border-gold/50 sm:h-40"
                 >
-                  <motion.span
-                    className="font-display text-3xl leading-none text-paper sm:text-4xl lg:text-5xl"
-                    animate={{
-                      x: isHovered ? 16 : 0,
-                      color: isHovered ? "#ef7d00" : "#f7f5f2",
+                  <div
+                    className="absolute inset-0 -z-10 opacity-80 transition-opacity duration-500 group-hover:opacity-100"
+                    style={{
+                      backgroundImage: `radial-gradient(120% 120% at 20% 0%, hsla(${hue}, 55%, 24%, 1), hsla(${hue}, 40%, 10%, 1) 70%)`,
                     }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    {cat.nombre}
-                  </motion.span>
-                  <motion.span
-                    className="whitespace-nowrap text-right text-xs uppercase tracking-[0.2em] text-paper-dim sm:text-sm"
-                    animate={{ opacity: isHovered ? 1 : 0.5, x: isHovered ? 0 : 10 }}
-                  >
-                    +{cat.count} emprendimientos
-                  </motion.span>
+                  />
+                  <div className="grain absolute inset-0 -z-10" />
+
+                  <span className="text-xs uppercase tracking-[0.2em] text-paper-dim/80 transition-colors group-hover:text-gold">
+                    +{cat.count}
+                  </span>
+
+                  <div>
+                    <h3 className="font-display text-balance text-lg font-light leading-tight text-paper sm:text-xl">
+                      {cat.nombre}
+                    </h3>
+                    <motion.span
+                      className="mt-2 inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.15em] text-paper-dim/70 transition-colors group-hover:text-gold"
+                    >
+                      Ver emprendimientos
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </motion.span>
+                  </div>
                 </a>
-              </li>
+              </motion.div>
             );
           })}
-        </ul>
+        </div>
       </div>
     </section>
   );

@@ -1,11 +1,12 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { egresados } from "../data/egresados";
-import { enfoques } from "../data/derived";
+import { enfoques, sectores, sectorPorSlug } from "../data/derived";
 import { fotos } from "../data/fotos";
 import { logos } from "../data/logos";
 import { hueSeed } from "../lib/color";
+import { whatsappLink } from "../lib/whatsapp";
 import content from "../data/content.json";
 
 const { eyebrow, titulo: SECTION_TITLE } = content.secciones.buscador;
@@ -14,12 +15,28 @@ const PAGE_SIZE = 24;
 
 export default function SearchSection() {
   const [query, setQuery] = useState("");
+  const [sectorFiltro, setSectorFiltro] = useState<string | null>(null);
   const [enfoqueFiltro, setEnfoqueFiltro] = useState<string | null>(null);
   const [visible, setVisible] = useState(PAGE_SIZE);
+
+  // Si se llegó aquí desde una tarjeta de categoría (CategoriesSection), toma
+  // ese filtro una sola vez al montar.
+  useEffect(() => {
+    try {
+      const guardado = sessionStorage.getItem("categoriaFiltro");
+      if (guardado) {
+        setSectorFiltro(guardado);
+        sessionStorage.removeItem("categoriaFiltro");
+      }
+    } catch {
+      // almacenamiento no disponible: simplemente no se preselecciona nada
+    }
+  }, []);
 
   const filtrados = useMemo(() => {
     const q = query.trim().toLowerCase();
     const resultado = egresados.filter((e) => {
+      if (sectorFiltro && sectorPorSlug[e.slug] !== sectorFiltro) return false;
       if (enfoqueFiltro && e.enfoque !== enfoqueFiltro) return false;
       if (!q) return true;
       return `${e.nombre} ${e.nombreEmprendimiento} ${e.programa ?? ""} ${e.enfoque ?? ""}`
@@ -36,7 +53,7 @@ export default function SearchSection() {
         return aTieneImagen ? -1 : 1;
       })
       .map(({ e }) => e);
-  }, [query, enfoqueFiltro]);
+  }, [query, sectorFiltro, enfoqueFiltro]);
 
   const visibles = filtrados.slice(0, visible);
 
@@ -45,7 +62,12 @@ export default function SearchSection() {
     setVisible(PAGE_SIZE);
   }
 
-  function updateFiltro(v: string | null) {
+  function updateSector(v: string | null) {
+    setSectorFiltro((prev) => (prev === v ? null : v));
+    setVisible(PAGE_SIZE);
+  }
+
+  function updateEnfoque(v: string | null) {
     setEnfoqueFiltro((prev) => (prev === v ? null : v));
     setVisible(PAGE_SIZE);
   }
@@ -65,8 +87,8 @@ export default function SearchSection() {
             {SECTION_TITLE}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm text-paper-dim">
-            Explora los {egresados.length} egresados emprendedores registrados, por nombre, emprendimiento, programa
-            o enfoque.
+            Explora los {egresados.length} egresados emprendedores registrados, por nombre, emprendimiento, programa,
+            categoría o enfoque.
           </p>
         </motion.div>
 
@@ -86,32 +108,68 @@ export default function SearchSection() {
           />
         </motion.div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-          <button
-            onClick={() => updateFiltro(null)}
-            data-cursor-hover
-            className={`rounded-full border px-4 py-1.5 text-xs uppercase tracking-[0.15em] transition-colors ${
-              enfoqueFiltro === null
-                ? "border-gold bg-gold text-ink"
-                : "border-paper/15 text-paper-dim hover:border-gold/50 hover:text-paper"
-            }`}
-          >
-            Todos ({egresados.length})
-          </button>
-          {enfoques.map((f) => (
+        {/* filtro por categoría / sector */}
+        <div className="mt-8">
+          <p className="mb-2 text-center text-[11px] uppercase tracking-[0.2em] text-paper-dim/70">Categoría</p>
+          <div className="flex flex-wrap items-center justify-center gap-2">
             <button
-              key={f.nombre}
-              onClick={() => updateFiltro(f.nombre)}
+              onClick={() => updateSector(null)}
               data-cursor-hover
               className={`rounded-full border px-4 py-1.5 text-xs uppercase tracking-[0.15em] transition-colors ${
-                enfoqueFiltro === f.nombre
+                sectorFiltro === null
                   ? "border-gold bg-gold text-ink"
                   : "border-paper/15 text-paper-dim hover:border-gold/50 hover:text-paper"
               }`}
             >
-              {f.nombre} ({f.count})
+              Todas
             </button>
-          ))}
+            {sectores.map((s) => (
+              <button
+                key={s.nombre}
+                onClick={() => updateSector(s.nombre)}
+                data-cursor-hover
+                className={`rounded-full border px-4 py-1.5 text-xs uppercase tracking-[0.15em] transition-colors ${
+                  sectorFiltro === s.nombre
+                    ? "border-gold bg-gold text-ink"
+                    : "border-paper/15 text-paper-dim hover:border-gold/50 hover:text-paper"
+                }`}
+              >
+                {s.nombre} ({s.count})
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* filtro secundario por enfoque */}
+        <div className="mt-5">
+          <p className="mb-2 text-center text-[11px] uppercase tracking-[0.2em] text-paper-dim/70">Enfoque</p>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <button
+              onClick={() => updateEnfoque(null)}
+              data-cursor-hover
+              className={`rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.15em] transition-colors ${
+                enfoqueFiltro === null
+                  ? "border-gold/70 text-gold"
+                  : "border-paper/10 text-paper-dim/70 hover:border-gold/40 hover:text-paper-dim"
+              }`}
+            >
+              Todos
+            </button>
+            {enfoques.map((f) => (
+              <button
+                key={f.nombre}
+                onClick={() => updateEnfoque(f.nombre)}
+                data-cursor-hover
+                className={`rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.15em] transition-colors ${
+                  enfoqueFiltro === f.nombre
+                    ? "border-gold/70 text-gold"
+                    : "border-paper/10 text-paper-dim/70 hover:border-gold/40 hover:text-paper-dim"
+                }`}
+              >
+                {f.nombre} ({f.count})
+              </button>
+            ))}
+          </div>
         </div>
 
         <p className="mt-8 text-center text-xs uppercase tracking-[0.2em] text-paper-dim">
@@ -123,6 +181,8 @@ export default function SearchSection() {
             {visibles.map((e, i) => {
               const hue = hueSeed(e.id);
               const base = 18 + (((hue % 34) + 34) % 34);
+              const sector = sectorPorSlug[e.slug];
+              const wa = whatsappLink(e.telefonoNegocio);
               return (
                 <motion.div
                   key={e.id}
@@ -134,7 +194,7 @@ export default function SearchSection() {
                   <Link
                     to={`/egresado/${e.slug}`}
                     data-cursor-hover
-                    className="group flex items-center gap-4 rounded-2xl border border-paper/10 bg-ink-2/40 p-4 transition-colors hover:border-gold/40"
+                    className="group relative flex items-center gap-4 rounded-2xl border border-paper/10 bg-ink-2/40 p-4 transition-colors hover:border-gold/40"
                   >
                     {logos[e.slug] ? (
                       <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-paper p-2">
@@ -152,9 +212,24 @@ export default function SearchSection() {
                         {e.nombreEmprendimiento.charAt(0)}
                       </span>
                     )}
-                    <span className="min-w-0">
-                      <span className="block truncate text-sm font-medium text-paper transition-colors group-hover:text-gold">
-                        {e.nombreEmprendimiento}
+                    <span className="min-w-0 flex-1">
+                      <span className="flex items-center justify-between gap-2">
+                        <span className="block truncate text-sm font-medium text-paper transition-colors group-hover:text-gold">
+                          {e.nombreEmprendimiento}
+                        </span>
+                        {wa && (
+                          <a
+                            href={wa}
+                            target="_blank"
+                            rel="noreferrer"
+                            data-cursor-hover
+                            onClick={(ev) => ev.stopPropagation()}
+                            aria-label="Escribir por WhatsApp"
+                            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-paper/15 text-xs text-paper-dim transition-colors hover:border-gold/60 hover:text-gold"
+                          >
+                            ✆
+                          </a>
+                        )}
                       </span>
                       {e.telefonoNegocio ? (
                         <span className="block truncate text-xs text-paper-dim">{e.telefonoNegocio}</span>
@@ -174,6 +249,11 @@ export default function SearchSection() {
                           {e.programa ? ` · ${e.programa}` : ""}
                         </span>
                       </span>
+                      {sector && (
+                        <span className="mt-2 inline-flex items-center rounded-full border border-paper/10 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.1em] text-paper-dim/70">
+                          {sector}
+                        </span>
+                      )}
                     </span>
                   </Link>
                 </motion.div>

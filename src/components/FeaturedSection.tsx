@@ -126,6 +126,10 @@ export default function FeaturedSection() {
                     {person.tipo}
                     {person.anioEgreso ? ` · Egresado ${person.anioEgreso}` : ""}
                   </p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-gold opacity-0 transition-opacity group-hover:opacity-100">
+                    Conocer su historia
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </span>
                 </Link>
               </motion.div>
             ))}

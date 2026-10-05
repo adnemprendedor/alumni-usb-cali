@@ -7,7 +7,7 @@ import content from "../data/content.json";
  * datos" y los enlaces) vive en src/data/content.json → conecta, y se puede
  * editar desde el panel de administración (/admin) sin tocar código.
  */
-const { eyebrow, titulo, subtitulo, pasos, requisitos, actualizar, enlaces } = content.conecta;
+const { eyebrow, titulo, subtitulo, pasos, requisitos, actualizar, enlaces, convocatoria } = content.conecta;
 
 export default function ConectaSection() {
   return (
@@ -26,6 +26,36 @@ export default function ConectaSection() {
           </h2>
           <p className="mt-4 max-w-xl text-sm text-paper-dim">{subtitulo}</p>
         </motion.div>
+
+        {/* convocatoria para nuevos emprendedores — el CTA principal de esta sección */}
+        {convocatoria && (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.8 }}
+            className="relative mb-16 overflow-hidden rounded-3xl border border-gold/40 bg-gradient-to-br from-ink-2 to-ink p-8 sm:p-12"
+          >
+            <div className="grain absolute inset-0 opacity-30" />
+            <div className="relative z-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="max-w-xl">
+                <p className="mb-2 text-xs uppercase tracking-[0.25em] text-gold">ADN Emprendedor</p>
+                <h3 className="font-display text-balance text-2xl font-light text-paper sm:text-3xl">
+                  {convocatoria.titulo}
+                </h3>
+                <p className="mt-3 text-sm text-paper-dim">{convocatoria.texto}</p>
+              </div>
+              <a
+                href={convocatoria.href || "#"}
+                data-cursor-hover
+                className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-gold px-7 py-3.5 text-sm uppercase tracking-[0.15em] text-ink transition-opacity hover:opacity-90"
+              >
+                {convocatoria.ctaLabel}
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
+            </div>
+          </motion.div>
+        )}
 
         {/* pasos */}
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">

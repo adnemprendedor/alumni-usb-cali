@@ -1,5 +1,6 @@
 import { egresados, type Egresado } from "./egresados";
 import { fotos } from "./fotos";
+import { SECTORES, sectorDe } from "../lib/sector";
 
 export interface EnfoqueGroup {
   nombre: string;
@@ -12,6 +13,22 @@ export const enfoques: EnfoqueGroup[] = ENFOQUE_ORDER.map((nombre) => ({
   nombre,
   count: egresados.filter((e) => e.enfoque === nombre).length,
 })).filter((e) => e.count > 0);
+
+/**
+ * Categoría / sector de cada emprendimiento, siguiendo la propuesta "ADN
+ * Emprendedor" (Gastronomía, Moda y belleza, Educación, Tecnología, Salud y
+ * bienestar, Servicios profesionales, Arte y cultura, Comercio, Turismo,
+ * Otros). Es una clasificación automática por palabras clave — ver
+ * src/lib/sector.ts para el detalle y cómo corregir un caso puntual.
+ */
+export const sectorPorSlug: Record<string, string> = Object.fromEntries(
+  egresados.map((e) => [e.slug, sectorDe(e)])
+);
+
+export const sectores: EnfoqueGroup[] = SECTORES.map((nombre) => ({
+  nombre,
+  count: egresados.filter((e) => sectorPorSlug[e.slug] === nombre).length,
+})).filter((s) => s.count > 0);
 
 export interface ProgramaGroup {
   nombre: string;
@@ -55,3 +72,22 @@ export const destacados: Egresado[] =
 export const emprendimientosDestacados: Egresado[] = egresados
   .filter((e) => e.emprendimientoAsociadoA && !destacados.some((d) => d.id === e.id))
   .slice(0, 14);
+
+/**
+ * "Emprendimiento destacado": una sola selección que rota periódicamente
+ * (cada semana del año), de la propuesta "ADN Emprendedor" — una sección
+ * dinámica distinta del listado narrativo de "destacados". Se elige entre
+ * quienes tienen una descripción real (historia propia), para que el
+ * destacado siempre cuente con una historia que mostrar.
+ */
+const conHistoria = egresados.filter((e) => e.descripcion);
+const pool = conHistoria.length > 0 ? conHistoria : egresados.slice(0, 20);
+
+function numeroDeSemanaDelAnio(fecha: Date): number {
+  const inicio = new Date(fecha.getFullYear(), 0, 1);
+  const dias = Math.floor((fecha.getTime() - inicio.getTime()) / 86400000);
+  return Math.floor(dias / 7);
+}
+
+export const emprendimientoDestacado: Egresado =
+  pool[numeroDeSemanaDelAnio(new Date()) % pool.length];

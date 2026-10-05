@@ -5,11 +5,11 @@ import content from "../data/content.json";
 const { titulo: SECTION_TITLE, subtitulo: SECTION_SUBTITLE } = content.secciones.explora;
 
 const ITEMS = [
-  { title: "Egresados", desc: "El directorio completo, con buscador y filtros.", href: "#buscador", hue: 22, span: "lg:col-span-7" },
+  { title: "ADN Emprendedor", desc: "El directorio completo, con buscador y filtros.", href: "#buscador", hue: 22, span: "lg:col-span-7" },
   { title: "Emprendimientos", desc: "Los proyectos que construyen.", href: "#emprendimientos", hue: 30, span: "lg:col-span-5" },
-  { title: "Enfoques", desc: "Empresarial, social, ambiental y más.", href: "#categorias", hue: 26, span: "lg:col-span-4" },
+  { title: "Categorías", desc: "Gastronomía, moda, tecnología y más.", href: "#categorias", hue: 26, span: "lg:col-span-4" },
   { title: "Programas", desc: "El talento según su programa académico.", href: "#carreras", hue: 34, span: "lg:col-span-4" },
-  { title: "Conecta", desc: "Actualiza tus datos y encuentra capacitaciones.", href: "#conecta", hue: 20, span: "lg:col-span-4" },
+  { title: "Participa", desc: "Registra tu emprendimiento y conecta con Alumni.", href: "#conecta", hue: 20, span: "lg:col-span-4" },
 ];
 
 export default function ExploreSection() {

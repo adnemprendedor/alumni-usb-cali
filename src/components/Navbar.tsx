@@ -6,11 +6,11 @@ import alumniLogo from "../assets/brand/alumni-logo.png";
 
 const LINKS = [
   { label: "Inicio", href: "#inicio" },
-  { label: "Explorar", href: "#explora" },
-  { label: "Emprendedores", href: "#buscador" },
-  { label: "Enfoques", href: "#categorias" },
+  { label: "ADN Emprendedor", href: "#buscador" },
+  { label: "Destacado", href: "#destacado-semana" },
+  { label: "Egresados que Inspiran", href: "#destacados" },
   { label: "Programas", href: "#carreras" },
-  { label: "Conecta", href: "#conecta" },
+  { label: "Participa", href: "#conecta" },
   { label: "Juego", href: "#/juego" },
 ];
 

@@ -4,7 +4,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { egresados } from "../data/egresados";
 import { fotos } from "../data/fotos";
 import { logos } from "../data/logos";
+import { sectorPorSlug } from "../data/derived";
 import { hueSeed } from "../lib/color";
+import { whatsappLink } from "../lib/whatsapp";
 import Portrait from "../components/Portrait";
 import Footer from "../components/Footer";
 
@@ -22,7 +24,11 @@ export default function ProfilePage() {
 
   if (!persona) return <Navigate to="/" replace />;
 
+  const sector = sectorPorSlug[persona.slug];
+  const wa = whatsappLink(persona.telefonoNegocio);
+
   const campos = [
+    { label: "Categoría / Sector", valor: sector },
     { label: "Enfoque del emprendimiento", valor: persona.enfoque },
     { label: "Tipo de emprendimiento", valor: persona.tipo },
     { label: "Asociado a", valor: persona.emprendimientoAsociadoA },
@@ -177,6 +183,18 @@ export default function ProfilePage() {
                 {persona.correo}
               </a>
             )}
+            {wa && (
+              <a
+                href={wa}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor-hover
+                className="group inline-flex items-center gap-3 rounded-full border border-gold/40 bg-ink-2/50 px-6 py-3 text-sm text-paper transition-colors hover:border-gold hover:bg-gold hover:text-ink"
+              >
+                <span className="text-gold transition-colors group-hover:text-ink">✆</span>
+                WhatsApp
+              </a>
+            )}
             {persona.sitioWeb && (
               <a
                 href={persona.sitioWeb}
@@ -247,7 +265,7 @@ export default function ProfilePage() {
             transition={{ duration: 0.7 }}
             className="mb-4 text-xs uppercase tracking-[0.3em] text-gold"
           >
-            Conecta
+            Participa
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 24 }}

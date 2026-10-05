@@ -1,9 +1,9 @@
 {
   "hero": {
-    "eyebrow": "Alumni USB Cali · Red de Graduados",
-    "titulo": "USB Conecta y emprende.",
-    "subtitulo": "Descubre los emprendimientos de egresados que están construyendo nuevas ideas, y conecta con la red Alumni USB Cali.",
-    "ctaLabel": "Explorar directorio",
+    "eyebrow": "ADN Emprendedor · Alumni USB Cali",
+    "titulo": "El talento Alumni que transforma ideas en oportunidades.",
+    "subtitulo": "Descubre los emprendimientos de nuestros egresados y conecta con la red Alumni USB Cali.",
+    "ctaLabel": "Explorar emprendimientos",
     "scrollLabel": "Desplázate"
   },
   "secciones": {
@@ -12,12 +12,12 @@
       "subtitulo": "Cinco formas de descubrir a los egresados que están emprendiendo."
     },
     "enfoques": {
-      "eyebrow": "Enfoques",
-      "titulo": "Explora por enfoque de emprendimiento"
+      "eyebrow": "Categorías",
+      "titulo": "Explora por categoría o sector"
     },
     "destacados": {
-      "eyebrow": "ADN Emprendedor",
-      "titulo": "ADN Emprendedor Egresados USB"
+      "eyebrow": "Egresados que Inspiran",
+      "titulo": "Las historias detrás de cada emprendimiento"
     },
     "buscador": {
       "eyebrow": "Directorio completo",
@@ -33,9 +33,15 @@
     }
   },
   "conecta": {
-    "eyebrow": "Conecta",
+    "eyebrow": "Participa",
     "titulo": "Inscríbete como egresado",
     "subtitulo": "Así de simple es hacer parte oficial de la Red de Graduados Alumni USB Cali.",
+    "convocatoria": {
+      "titulo": "¿Eres egresado USB y tienes un emprendimiento?",
+      "texto": "Haz parte de ADN Emprendedor. Queremos visibilizar los proyectos, empresas, marcas e iniciativas de nuestra comunidad de egresados.",
+      "ctaLabel": "Quiero aparecer en el directorio",
+      "href": "#"
+    },
     "pasos": [
       {
         "numero": "01",
@@ -70,14 +76,14 @@
     },
     "enlaces": [
       {
-        "titulo": "Regístrate como egresado emprendedor",
-        "desc": "Inscribe tu emprendimiento para que aparezca en este directorio.",
-        "href": "#"
-      },
-      {
         "titulo": "Capacitaciones",
         "desc": "Consulta la oferta de formación continua y talleres para egresados.",
         "href": "#"
+      },
+      {
+        "titulo": "Conoce el directorio",
+        "desc": "Explora los emprendimientos de egresados ya registrados en ADN Emprendedor.",
+        "href": "#buscador"
       }
     ]
   }
