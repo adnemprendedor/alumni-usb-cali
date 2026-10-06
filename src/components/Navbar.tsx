@@ -8,7 +8,7 @@ const LINKS = [
   { label: "Inicio", href: "#inicio" },
   { label: "ADN Emprendedor", href: "#buscador" },
   { label: "Destacado", href: "#destacado-semana" },
-  { label: "Egresados que Inspiran", href: "#destacados" },
+  { label: "Inspiran", href: "#destacados" },
   { label: "Programas", href: "#carreras" },
   { label: "Participa", href: "#conecta" },
   { label: "Juego", href: "#/juego" },
@@ -31,7 +31,7 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-8 sm:pt-6">
       <motion.nav
-        className="flex w-full max-w-6xl items-center justify-between rounded-full px-5 py-3 sm:px-6"
+        className="flex w-full max-w-6xl items-center justify-between gap-3 rounded-full px-4 py-2.5 sm:px-5 sm:py-3"
         animate={{
           backgroundColor: scrolled ? "rgba(29,29,27,0.78)" : "rgba(29,29,27,0)",
           backdropFilter: scrolled ? "blur(16px)" : "blur(0px)",
@@ -41,24 +41,29 @@ export default function Navbar() {
         style={{ borderWidth: 1, borderStyle: "solid" }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <Link to="/" className="flex items-center gap-2" data-cursor-hover>
-          <span className="flex h-10 items-center gap-2.5 rounded-lg bg-paper px-2.5 py-1.5 sm:h-11">
+        <Link to="/" className="flex shrink-0 items-center gap-2" data-cursor-hover>
+          <span className="flex h-9 items-center gap-2 rounded-lg bg-paper px-2 py-1.5 sm:h-10">
             <img src={usbLogo} alt="Universidad de San Buenaventura Cali" className="h-full w-auto object-contain" />
-            <span className="h-6 w-px shrink-0 bg-ink/15" />
+            <span className="h-5 w-px shrink-0 bg-ink/15" />
             <img src={alumniLogo} alt="Alumni USB Cali" className="h-full w-auto object-contain" />
           </span>
-          <span className="hidden text-[8px] uppercase leading-tight tracking-[0.1em] text-paper-dim sm:block">
+          <span className="hidden text-[8px] uppercase leading-tight tracking-[0.1em] text-paper-dim xl:block">
             Vigilada
             <br />
             Mineducación
           </span>
         </Link>
 
-        <ul className="hidden items-center gap-7 text-sm text-paper-dim lg:flex">
+        <ul className="hidden items-center gap-5 whitespace-nowrap text-[13px] text-paper-dim xl:flex">
           {LINKS.map((link) => (
             <li key={link.label}>
-              <a href={link.href} className="relative transition-colors hover:text-paper" data-cursor-hover>
+              <a
+                href={link.href}
+                className="group relative inline-block py-1 transition-colors hover:text-paper"
+                data-cursor-hover
+              >
                 {link.label}
+                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
               </a>
             </li>
           ))}
@@ -67,14 +72,14 @@ export default function Navbar() {
         <a
           href="#explora"
           data-cursor-hover
-          className="hidden rounded-full border border-gold/50 px-5 py-2 text-sm text-gold transition-colors hover:bg-gold hover:text-ink sm:inline-block"
+          className="hidden shrink-0 rounded-full border border-gold/50 px-4 py-2 text-xs uppercase tracking-[0.1em] text-gold transition-colors hover:bg-gold hover:text-ink sm:inline-block sm:text-sm sm:normal-case sm:tracking-normal"
         >
           Explorar
         </a>
 
         <button
           aria-label="Abrir menú"
-          className="flex flex-col gap-1.5 lg:hidden"
+          className="flex shrink-0 flex-col gap-1.5 xl:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           <motion.span
@@ -96,7 +101,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute left-4 right-4 top-[calc(100%+0.5rem)] rounded-3xl border border-gold/15 bg-ink-2/95 p-6 backdrop-blur-xl lg:hidden"
+            className="absolute left-4 right-4 top-[calc(100%+0.5rem)] rounded-3xl border border-gold/15 bg-ink-2/95 p-6 backdrop-blur-xl xl:hidden"
           >
             <ul className="flex flex-col gap-4 text-lg text-paper">
               {LINKS.map((link) => (

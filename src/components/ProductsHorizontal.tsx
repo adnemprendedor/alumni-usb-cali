@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "../lib/gsap";
-import { emprendimientosDestacados } from "../data/derived";
+import { emprendimientosDestacados, sectorPorSlug } from "../data/derived";
+import { logos } from "../data/logos";
 import { hueSeed } from "../lib/color";
 import Portrait from "./Portrait";
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
@@ -57,27 +58,49 @@ export default function ProductsHorizontal() {
           className={`flex ${reducedMotion ? "flex-wrap gap-6 overflow-x-auto px-4 sm:px-8" : "gap-6 pl-4 sm:pl-8"}`}
           style={reducedMotion ? undefined : { width: "max-content" }}
         >
-          {emprendimientosDestacados.map((e, i) => (
-            <Link
-              to={`/egresado/${e.slug}`}
-              data-cursor-hover
-              key={e.id}
-              className="relative h-[52vh] w-[78vw] flex-shrink-0 overflow-hidden rounded-3xl border border-paper/10 sm:w-[46vw] lg:w-[30vw]"
-            >
-              <Portrait hue={hueSeed(e.id)} variant="wide" className="h-full w-full">
-                <div className="absolute inset-0 flex flex-col justify-between p-7">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs uppercase tracking-[0.25em] text-gold">{e.emprendimientoAsociadoA}</span>
-                    <span className="font-display text-2xl text-paper/50">{String(i + 1).padStart(2, "0")}</span>
+          {emprendimientosDestacados.map((e, i) => {
+            const sector = sectorPorSlug[e.slug];
+            const logo = logos[e.slug];
+            return (
+              <Link
+                to={`/egresado/${e.slug}`}
+                data-cursor-hover
+                key={e.id}
+                className="relative h-[52vh] w-[78vw] flex-shrink-0 overflow-hidden rounded-3xl border border-paper/10 sm:w-[46vw] lg:w-[30vw]"
+              >
+                <Portrait hue={hueSeed(e.id)} variant="wide" sector={sector} className="h-full w-full">
+                  <div className="absolute inset-0 flex flex-col justify-between p-7">
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center rounded-full border border-paper/20 bg-ink/40 px-3 py-1 text-xs uppercase tracking-[0.2em] text-gold">
+                        {sector ?? e.emprendimientoAsociadoA ?? "Emprendimiento"}
+                      </span>
+                      <span className="font-display text-2xl text-paper/50">{String(i + 1).padStart(2, "0")}</span>
+                    </div>
+                    <div>
+                      {logo && (
+                        <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-paper p-2">
+                          <img
+                            src={logo}
+                            alt={`Logo de ${e.nombreEmprendimiento}`}
+                            className="h-full w-full object-contain"
+                          />
+                        </span>
+                      )}
+                      <h3 className="font-display text-2xl text-paper sm:text-3xl">{e.nombreEmprendimiento}</h3>
+                      {e.descripcion ? (
+                        <p className="mt-2 line-clamp-2 max-w-sm text-sm text-paper-dim">{e.descripcion}</p>
+                      ) : (
+                        <p className="mt-1 text-sm text-paper-dim">
+                          {e.nombre}
+                          {e.programa ? ` · ${e.programa}` : ""}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-display text-2xl text-paper sm:text-3xl">{e.nombreEmprendimiento}</h3>
-                    <p className="mt-1 text-sm text-paper-dim">{e.nombre}</p>
-                  </div>
-                </div>
-              </Portrait>
-            </Link>
-          ))}
+                </Portrait>
+              </Link>
+            );
+          })}
           <div className="w-[4vw] flex-shrink-0" />
         </div>
       </div>

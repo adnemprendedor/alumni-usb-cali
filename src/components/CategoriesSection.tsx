@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { sectores } from "../data/derived";
 import { hueSeed } from "../lib/color";
+import { Motif, MOTIVO_POR_SECTOR } from "./Portrait";
+import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 import content from "../data/content.json";
 
 const { eyebrow, titulo: SECTION_TITLE } = content.secciones.enfoques;
@@ -17,6 +19,8 @@ function irAlDirectorioFiltrado(nombre: string) {
 }
 
 export default function CategoriesSection() {
+  const reducedMotion = usePrefersReducedMotion();
+
   return (
     <section id="categorias" className="relative overflow-hidden bg-ink px-4 py-28 sm:px-8 lg:py-40">
       <div className="mx-auto max-w-6xl">
@@ -41,6 +45,8 @@ export default function CategoriesSection() {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {sectores.map((cat, i) => {
             const hue = 18 + (hueSeed(cat.nombre) % 40);
+            const motivo = MOTIVO_POR_SECTOR[cat.nombre] ?? "blob";
+            const stroke = `hsla(${hue + 14}, 70%, 70%, 0.3)`;
             return (
               <motion.div
                 key={cat.nombre}
@@ -53,7 +59,7 @@ export default function CategoriesSection() {
                   href="#buscador"
                   data-cursor-hover
                   onClick={() => irAlDirectorioFiltrado(cat.nombre)}
-                  className="group relative flex h-36 flex-col justify-between overflow-hidden rounded-2xl border border-paper/10 p-5 transition-colors hover:border-gold/50 sm:h-40"
+                  className="group isolate relative flex h-36 flex-col justify-between overflow-hidden rounded-2xl border border-paper/10 p-5 transition-colors hover:border-gold/50 sm:h-40"
                 >
                   <div
                     className="absolute inset-0 -z-10 opacity-80 transition-opacity duration-500 group-hover:opacity-100"
@@ -62,6 +68,9 @@ export default function CategoriesSection() {
                     }}
                   />
                   <div className="grain absolute inset-0 -z-10" />
+                  <div className="absolute inset-0 -z-10">
+                    <Motif motivo={motivo} stroke={stroke} reducedMotion={reducedMotion} seed={hue + i} />
+                  </div>
 
                   <span className="text-xs uppercase tracking-[0.2em] text-paper-dim/80 transition-colors group-hover:text-gold">
                     +{cat.count}

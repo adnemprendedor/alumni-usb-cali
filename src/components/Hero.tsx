@@ -1,12 +1,17 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
+import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 import content from "../data/content.json";
 
 const { eyebrow, titulo: TITLE, subtitulo, ctaLabel, scrollLabel } = content.hero;
 
+const TYPE_SPEED_MS = 32; // ms por carácter
+const TYPE_START_DELAY = 550; // ms, después de que aparece el eyebrow
+
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const reducedMotion = usePrefersReducedMotion();
 
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "35%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
@@ -14,10 +19,59 @@ export default function Hero() {
   const contentScale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
   const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.55, 0.9]);
 
-  const words = TITLE.split(" ");
+  // brillo que sigue al cursor — da sensación de profundidad/interactividad
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const smx = useSpring(mx, { stiffness: 60, damping: 20 });
+  const smy = useSpring(my, { stiffness: 60, damping: 20 });
+
+  const handleMove = (e: React.MouseEvent) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    mx.set(e.clientX - rect.left);
+    my.set(e.clientY - rect.top);
+  };
+
+  // efecto "escrito en computadora": el titular se escribe carácter a carácter
+  const [typedLength, setTypedLength] = useState(reducedMotion ? TITLE.length : 0);
+  const [typingDone, setTypingDone] = useState(reducedMotion);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setTypedLength(TITLE.length);
+      setTypingDone(true);
+      return;
+    }
+    let i = 0;
+    let interval: ReturnType<typeof setInterval>;
+    const startTimeout = setTimeout(() => {
+      interval = setInterval(() => {
+        i++;
+        setTypedLength(i);
+        if (i >= TITLE.length) {
+          clearInterval(interval);
+          setTypingDone(true);
+        }
+      }, TYPE_SPEED_MS);
+    }, TYPE_START_DELAY);
+
+    return () => {
+      clearTimeout(startTimeout);
+      clearInterval(interval);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reducedMotion]);
+
+  const typingDurationS = (TITLE.length * TYPE_SPEED_MS) / 1000;
+  const afterTypeDelay = TYPE_START_DELAY / 1000 + typingDurationS;
 
   return (
-    <section id="inicio" ref={ref} className="relative h-[100svh] overflow-hidden bg-ink">
+    <section
+      id="inicio"
+      ref={ref}
+      onMouseMove={handleMove}
+      className="relative h-[100svh] overflow-hidden bg-ink"
+    >
       {/* cinematic background */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <div
@@ -30,7 +84,45 @@ export default function Hero() {
             `,
           }}
         />
+
+        {/* malla / circuito sutil, evoca "ADN" y tecnología sin ser ruidosa */}
+        <svg className="absolute inset-0 h-full w-full opacity-[0.12]" preserveAspectRatio="none">
+          <defs>
+            <pattern id="hero-grid" width="64" height="64" patternUnits="userSpaceOnUse">
+              <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#ef7d00" strokeWidth="0.6" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hero-grid)" />
+        </svg>
+
+        {/* brillo que sigue el cursor */}
+        {!reducedMotion && (
+          <motion.div
+            className="pointer-events-none absolute h-[32rem] w-[32rem] rounded-full blur-3xl"
+            style={{
+              left: smx,
+              top: smy,
+              translateX: "-50%",
+              translateY: "-50%",
+              backgroundImage: "radial-gradient(circle, hsla(30,90%,55%,0.18), transparent 70%)",
+            }}
+          />
+        )}
+
         <div className="grain absolute inset-0" />
+
+        {/* barrido de luz, tipo "scanline" cinematográfico */}
+        {!reducedMotion && (
+          <motion.div
+            className="pointer-events-none absolute inset-x-0 h-1/3"
+            style={{
+              backgroundImage: "linear-gradient(180deg, transparent, hsla(30,80%,60%,0.06), transparent)",
+            }}
+            animate={{ top: ["-33%", "100%"] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
+          />
+        )}
+
         {/* floating graphic elements */}
         <motion.div
           className="absolute left-[8%] top-[20%] h-40 w-40 rounded-full border border-gold/20 sm:h-56 sm:w-56"
@@ -61,28 +153,20 @@ export default function Hero() {
         </motion.p>
 
         <h1 className="font-display max-w-4xl text-balance text-[9vw] font-light leading-[1.05] text-paper sm:text-[6.5vw] lg:text-[4.4rem]">
-          {words.map((word, i) => (
-            <span key={i} className="inline-block overflow-hidden pb-2 pr-[0.22em] align-bottom">
-              <motion.span
-                className="inline-block"
-                initial={{ y: "110%", opacity: 0, filter: "blur(14px)", letterSpacing: "-0.02em" }}
-                animate={{ y: "0%", opacity: 1, filter: "blur(0px)", letterSpacing: "0em" }}
-                transition={{
-                  duration: 1.1,
-                  delay: 0.35 + i * 0.12,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-              >
-                {word}
-              </motion.span>
-            </span>
-          ))}
+          {TITLE.slice(0, typedLength)}
+          <motion.span
+            aria-hidden
+            className="ml-1 inline-block w-[0.5ch] translate-y-[0.08em] bg-gold align-middle"
+            style={{ height: "0.78em" }}
+            animate={{ opacity: [1, 1, 0, 0] }}
+            transition={{ duration: 1, repeat: Infinity, times: [0, 0.5, 0.5, 1], ease: "linear" }}
+          />
         </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 1.15, ease: [0.16, 1, 0.3, 1] }}
+          animate={{ opacity: typingDone ? 1 : 0, y: typingDone ? 0 : 14 }}
+          transition={{ duration: 0.7, delay: typingDone ? 0 : afterTypeDelay }}
           className="mt-6 max-w-xl text-balance text-base text-paper-dim sm:text-lg"
         >
           {subtitulo}
@@ -92,8 +176,8 @@ export default function Hero() {
           href="#explora"
           data-cursor-hover
           initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
+          animate={{ opacity: typingDone ? 1 : 0, y: typingDone ? 0 : 14 }}
+          transition={{ duration: 0.7, delay: typingDone ? 0.15 : afterTypeDelay + 0.15 }}
           whileHover="hover"
           className="group relative mt-12 inline-flex items-center gap-3 overflow-hidden rounded-full border border-paper/25 px-8 py-4 text-sm uppercase tracking-[0.15em] text-paper"
         >

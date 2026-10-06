@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { destacados } from "../data/derived";
+import { destacados, sectorPorSlug } from "../data/derived";
 import { fotos } from "../data/fotos";
 import { logos } from "../data/logos";
 import { hueSeed } from "../lib/color";
@@ -73,7 +73,7 @@ export default function FeaturedSection() {
                         </div>
                       </div>
                     ) : (
-                      <Portrait hue={hueSeed(activeItem.id)} className="h-full w-full">
+                      <Portrait hue={hueSeed(activeItem.id)} sector={sectorPorSlug[activeItem.slug]} className="h-full w-full">
                         <div className="absolute bottom-0 left-0 right-0 p-8">
                           <p className="text-xs uppercase tracking-[0.25em] text-gold">{activeItem.enfoque}</p>
                           <h3 className="font-display mt-2 text-3xl text-paper">{activeItem.nombreEmprendimiento}</h3>

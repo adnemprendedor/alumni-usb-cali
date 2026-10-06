@@ -1,5 +1,6 @@
 import { egresados, type Egresado } from "./egresados";
 import { fotos } from "./fotos";
+import { logos } from "./logos";
 import { SECTORES, sectorDe } from "../lib/sector";
 
 export interface EnfoqueGroup {
@@ -68,10 +69,23 @@ export const destacados: Egresado[] =
     ? conFoto
     : egresados.filter((e) => e.programa && e.enfoque && e.tipo && e.nombreEmprendimiento).slice(0, 6);
 
-/** A second, non-overlapping sample for the horizontal "emprendimientos" showcase. */
-export const emprendimientosDestacados: Egresado[] = egresados
-  .filter((e) => e.emprendimientoAsociadoA && !destacados.some((d) => d.id === e.id))
-  .slice(0, 14);
+/**
+ * Segunda muestra, sin solapar con "destacados", para el carril horizontal
+ * "Lo que construyen los egresados". Prioriza quienes tienen algo real que
+ * mostrar (logo, foto o descripción) para que las tarjetas no se vean
+ * vacías; completa el resto con egresados que al menos tienen el campo
+ * "emprendimiento asociado a" diligenciado.
+ */
+const conContenidoReal = egresados.filter(
+  (e) => (fotos[e.slug] || logos[e.slug] || e.descripcion) && !destacados.some((d) => d.id === e.id)
+);
+const relleno = egresados.filter(
+  (e) =>
+    e.emprendimientoAsociadoA &&
+    !destacados.some((d) => d.id === e.id) &&
+    !conContenidoReal.some((r) => r.id === e.id)
+);
+export const emprendimientosDestacados: Egresado[] = [...conContenidoReal, ...relleno].slice(0, 16);
 
 /**
  * "Emprendimiento destacado": una sola selección que rota periódicamente

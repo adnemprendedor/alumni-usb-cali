@@ -58,7 +58,7 @@ export default function ProfilePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
               </div>
             ) : (
-              <Portrait hue={hue} className="h-full w-full" />
+              <Portrait hue={hue} sector={sector} className="h-full w-full" />
             )}
           </motion.div>
 

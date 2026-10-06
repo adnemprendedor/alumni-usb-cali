@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Motif, type Motivo } from "./Portrait";
+import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 import content from "../data/content.json";
 
 const { titulo: SECTION_TITLE, subtitulo: SECTION_SUBTITLE } = content.secciones.explora;
 
-const ITEMS = [
-  { title: "ADN Emprendedor", desc: "El directorio completo, con buscador y filtros.", href: "#buscador", hue: 22, span: "lg:col-span-7" },
-  { title: "Emprendimientos", desc: "Los proyectos que construyen.", href: "#emprendimientos", hue: 30, span: "lg:col-span-5" },
-  { title: "Categorías", desc: "Gastronomía, moda, tecnología y más.", href: "#categorias", hue: 26, span: "lg:col-span-4" },
-  { title: "Programas", desc: "El talento según su programa académico.", href: "#carreras", hue: 34, span: "lg:col-span-4" },
-  { title: "Participa", desc: "Registra tu emprendimiento y conecta con Alumni.", href: "#conecta", hue: 20, span: "lg:col-span-4" },
+const ITEMS: { title: string; desc: string; href: string; hue: number; span: string; motivo: Motivo }[] = [
+  { title: "ADN Emprendedor", desc: "El directorio completo, con buscador y filtros.", href: "#buscador", hue: 22, span: "lg:col-span-7", motivo: "grid" },
+  { title: "Emprendimientos", desc: "Los proyectos que construyen.", href: "#emprendimientos", hue: 30, span: "lg:col-span-5", motivo: "dots" },
+  { title: "Categorías", desc: "Gastronomía, moda, tecnología y más.", href: "#categorias", hue: 26, span: "lg:col-span-4", motivo: "chevron" },
+  { title: "Programas", desc: "El talento según su programa académico.", href: "#carreras", hue: 34, span: "lg:col-span-4", motivo: "circles" },
+  { title: "Participa", desc: "Registra tu emprendimiento y conecta con Alumni.", href: "#conecta", hue: 20, span: "lg:col-span-4", motivo: "blob" },
 ];
 
 export default function ExploreSection() {
   const [hovered, setHovered] = useState<number | null>(null);
+  const reducedMotion = usePrefersReducedMotion();
 
   return (
     <section id="explora" className="relative bg-ink px-4 py-28 sm:px-8 lg:py-40">
@@ -58,6 +61,12 @@ export default function ExploreSection() {
                 }}
               />
               <div className="grain absolute inset-0" />
+              <Motif
+                motivo={item.motivo}
+                stroke={`hsla(${item.hue + 14}, 70%, 70%, 0.35)`}
+                reducedMotion={reducedMotion}
+                seed={item.hue + i}
+              />
               <motion.div
                 className="absolute inset-0 bg-ink/40"
                 animate={{ opacity: hovered === i ? 0.15 : 0.45 }}

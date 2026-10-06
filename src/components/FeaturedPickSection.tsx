@@ -49,7 +49,7 @@ export default function FeaturedPickSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-ink/10" />
               </div>
             ) : (
-              <Portrait hue={hue} variant="wide" className="h-full w-full" />
+              <Portrait hue={hue} variant="wide" sector={sector} className="h-full w-full" />
             )}
             {logo && (
               <span className="absolute bottom-6 left-6 flex h-16 w-16 items-center justify-center rounded-xl bg-paper p-2.5 shadow-lg sm:h-20 sm:w-20">
