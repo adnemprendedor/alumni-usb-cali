@@ -42,9 +42,9 @@ export default function Navbar() {
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         <Link to="/" className="flex shrink-0 items-center gap-2" data-cursor-hover>
-          <span className="flex h-9 items-center gap-2 rounded-lg bg-paper px-2 py-1.5 sm:h-10">
+          <span className="flex h-16 items-center gap-3 rounded-lg bg-paper px-3.5 py-2 sm:h-20">
             <img src={usbLogo} alt="Universidad de San Buenaventura Cali" className="h-full w-auto object-contain" />
-            <span className="h-5 w-px shrink-0 bg-ink/15" />
+            <span className="h-9 w-px shrink-0 bg-ink/15 sm:h-12" />
             <img src={alumniLogo} alt="Alumni USB Cali" className="h-full w-auto object-contain" />
           </span>
           <span className="hidden text-[8px] uppercase leading-tight tracking-[0.1em] text-paper-dim xl:block">

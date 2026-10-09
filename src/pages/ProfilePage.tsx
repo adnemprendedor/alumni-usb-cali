@@ -32,11 +32,9 @@ export default function ProfilePage() {
     { label: "Enfoque del emprendimiento", valor: persona.enfoque },
     { label: "Tipo de emprendimiento", valor: persona.tipo },
     { label: "Asociado a", valor: persona.emprendimientoAsociadoA },
-    { label: "Antigüedad", valor: persona.antiguedad },
     { label: "País de residencia", valor: persona.paisResidencia },
     { label: "Programa académico", valor: persona.programa },
     { label: "Facultad", valor: persona.facultad },
-    { label: "Año de egreso", valor: persona.anioEgreso },
   ].filter((c) => c.valor);
 
   const hue = hueSeed(persona.id);

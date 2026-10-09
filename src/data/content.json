@@ -21,7 +21,10 @@
     },
     "buscador": {
       "eyebrow": "Directorio completo",
-      "titulo": "¿A quién estás buscando?"
+      "titulo": "¿A quién estás buscando?",
+      "queEs": "¿Qué es ADN Emprendedor?",
+      "descripcion": "ADN Emprendedor es un espacio creado para visibilizar, conectar y fortalecer los emprendimientos de nuestros egresados de la Universidad de San Buenaventura Cali. Aquí podrás conocer sus proyectos, productos y servicios, descubrir las historias detrás de cada iniciativa y apoyar el talento de nuestra comunidad Alumni.",
+      "tagline": "Conoce sus historias. Descubre sus emprendimientos. Conecta con nuestro talento."
     },
     "carreras": {
       "eyebrow": "Programas",
@@ -40,7 +43,7 @@
       "titulo": "¿Eres egresado USB y tienes un emprendimiento?",
       "texto": "Haz parte de ADN Emprendedor. Queremos visibilizar los proyectos, empresas, marcas e iniciativas de nuestra comunidad de egresados.",
       "ctaLabel": "Quiero aparecer en el directorio",
-      "href": "#"
+      "href": "https://forms.cloud.microsoft/pages/responsepage.aspx?id=lrCHvOZJ_0ON7XeBaIaGdmk-n3eKc99NmkCXOKAdmfRUQlE2RDdPMlpLOVc2V01CSTI3TkRJNDVUVi4u&origin=lprLink&route=shorturl"
     },
     "pasos": [
       {
@@ -72,13 +75,13 @@
     "actualizar": {
       "titulo": "Actualiza tus datos",
       "desc": "Mantén tu información de contacto y laboral al día en el sistema de egresados.",
-      "href": "#"
+      "href": "https://campus.usbco.edu.co/psp/USCS90PR/EMPLOYEE/SA/c/USB_FAE_MENU.USB_FAE_INGRESO.GBL?"
     },
     "enlaces": [
       {
         "titulo": "Capacitaciones",
         "desc": "Consulta la oferta de formación continua y talleres para egresados.",
-        "href": "#"
+        "href": "https://www.instagram.com/alumniusbcali/"
       },
       {
         "titulo": "Conoce el directorio",

@@ -86,13 +86,49 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6, delay: 0.16 }}
-            className="col-span-2 sm:col-span-1 lg:col-span-2"
           >
             <p className="mb-4 text-xs uppercase tracking-[0.25em] text-paper-dim">Alumni USB Cali</p>
             <p className="max-w-xs text-sm text-paper/80">
               Red de Graduados de la Universidad de San Buenaventura Cali — un espacio para descubrir y conectar con
               los emprendimientos de nuestros egresados.
             </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.24 }}
+            className="col-span-2 sm:col-span-1 lg:col-span-1"
+          >
+            <p className="mb-4 text-xs uppercase tracking-[0.25em] text-paper-dim">Contacto</p>
+            <p className="text-sm text-paper/80">Karol Yurani Valderrama Herrera</p>
+            <p className="text-sm text-paper-dim">Profesional de Egresados y Empleabilidad</p>
+            <ul className="mt-3 flex flex-col gap-1.5">
+              <li>
+                <a
+                  href="mailto:prof.egresados@usbcali.edu.co"
+                  className="text-sm text-paper/80 transition-colors hover:text-gold"
+                >
+                  prof.egresados@usbcali.edu.co
+                </a>
+              </li>
+              <li>
+                <a href="tel:+576024882222" className="text-sm text-paper/80 transition-colors hover:text-gold">
+                  (602) 488 22 22 · Ext. 527
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/573204713006"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-paper/80 transition-colors hover:text-gold"
+                >
+                  WhatsApp 320 471 3006
+                </a>
+              </li>
+            </ul>
           </motion.div>
         </div>
 

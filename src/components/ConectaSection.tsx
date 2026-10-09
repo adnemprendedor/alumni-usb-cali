@@ -47,6 +47,8 @@ export default function ConectaSection() {
               </div>
               <a
                 href={convocatoria.href || "#"}
+                target={convocatoria.href?.startsWith("http") ? "_blank" : undefined}
+                rel={convocatoria.href?.startsWith("http") ? "noopener noreferrer" : undefined}
                 data-cursor-hover
                 className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-gold px-7 py-3.5 text-sm uppercase tracking-[0.15em] text-ink transition-opacity hover:opacity-90"
               >
@@ -78,6 +80,8 @@ export default function ConectaSection() {
         {/* CTA principal: actualizar datos, con el logo de Alumni */}
         <motion.a
           href={actualizar.href || "#"}
+          target={actualizar.href?.startsWith("http") ? "_blank" : undefined}
+          rel={actualizar.href?.startsWith("http") ? "noopener noreferrer" : undefined}
           data-cursor-hover
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +90,7 @@ export default function ConectaSection() {
           className="group relative mt-16 flex flex-col items-start gap-6 overflow-hidden rounded-3xl border border-gold/40 bg-ink-2/60 p-8 transition-colors hover:border-gold sm:flex-row sm:items-center sm:justify-between sm:p-10"
         >
           <div className="flex items-center gap-5">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-paper p-2">
+            <span className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg bg-paper p-3">
               <img src={alumniLogo} alt="Alumni USB Cali" className="h-full w-full object-contain" />
             </span>
             <div>
@@ -125,6 +129,8 @@ export default function ConectaSection() {
             <motion.a
               key={link.titulo}
               href={link.href || "#"}
+              target={link.href?.startsWith("http") ? "_blank" : undefined}
+              rel={link.href?.startsWith("http") ? "noopener noreferrer" : undefined}
               data-cursor-hover
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}

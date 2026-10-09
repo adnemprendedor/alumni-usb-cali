@@ -9,9 +9,8 @@ const { titulo: SECTION_TITLE, subtitulo: SECTION_SUBTITLE } = content.secciones
 const ITEMS: { title: string; desc: string; href: string; hue: number; span: string; motivo: Motivo }[] = [
   { title: "ADN Emprendedor", desc: "El directorio completo, con buscador y filtros.", href: "#buscador", hue: 22, span: "lg:col-span-7", motivo: "grid" },
   { title: "Emprendimientos", desc: "Los proyectos que construyen.", href: "#emprendimientos", hue: 30, span: "lg:col-span-5", motivo: "dots" },
-  { title: "Categorías", desc: "Gastronomía, moda, tecnología y más.", href: "#categorias", hue: 26, span: "lg:col-span-4", motivo: "chevron" },
-  { title: "Programas", desc: "El talento según su programa académico.", href: "#carreras", hue: 34, span: "lg:col-span-4", motivo: "circles" },
-  { title: "Participa", desc: "Registra tu emprendimiento y conecta con Alumni.", href: "#conecta", hue: 20, span: "lg:col-span-4", motivo: "blob" },
+  { title: "Categorías", desc: "Gastronomía, moda, tecnología y más.", href: "#categorias", hue: 26, span: "lg:col-span-6", motivo: "chevron" },
+  { title: "Participa", desc: "Registra tu emprendimiento y conecta con Alumni.", href: "#conecta", hue: 20, span: "lg:col-span-6", motivo: "blob" },
 ];
 
 export default function ExploreSection() {

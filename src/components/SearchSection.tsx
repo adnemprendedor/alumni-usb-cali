@@ -9,7 +9,7 @@ import { hueSeed } from "../lib/color";
 import { whatsappLink } from "../lib/whatsapp";
 import content from "../data/content.json";
 
-const { eyebrow, titulo: SECTION_TITLE } = content.secciones.buscador;
+const { eyebrow, titulo: SECTION_TITLE, queEs, descripcion, tagline } = content.secciones.buscador;
 
 const PAGE_SIZE = 24;
 
@@ -90,6 +90,21 @@ export default function SearchSection() {
             Explora los {egresados.length} egresados emprendedores registrados, por nombre, emprendimiento, programa,
             categoría o enfoque.
           </p>
+
+          {(queEs || descripcion || tagline) && (
+            <div className="mx-auto mt-10 max-w-2xl rounded-3xl border border-gold/20 bg-ink-2/60 p-7 text-left sm:p-9">
+              {queEs && (
+                <h3 className="font-display mb-3 text-xl font-light text-paper sm:text-2xl">{queEs}</h3>
+              )}
+              {descripcion && (
+                <p className="text-sm leading-relaxed text-paper-dim">
+                  <strong className="font-medium text-paper">ADN Emprendedor</strong>
+                  {descripcion.replace(/^ADN Emprendedor/, "")}
+                </p>
+              )}
+              {tagline && <p className="mt-4 text-sm font-medium text-gold">{tagline}</p>}
+            </div>
+          )}
         </motion.div>
 
         <motion.div
