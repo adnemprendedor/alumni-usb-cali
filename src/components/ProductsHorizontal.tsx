@@ -78,7 +78,7 @@ export default function ProductsHorizontal() {
                     </div>
                     <div>
                       {logo && (
-                        <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-paper p-2">
+                        <span className="mb-4 flex h-24 w-24 items-center justify-center rounded-2xl bg-paper p-3 shadow-lg sm:h-28 sm:w-28">
                           <img
                             src={logo}
                             alt={`Logo de ${e.nombreEmprendimiento}`}

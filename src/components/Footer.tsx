@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import alumniLogo from "../assets/brand/alumni-logo.png";
+import content from "../data/content.json";
+
+const { direccion } = content.contacto;
 
 const COLUMNS = [
   {
@@ -31,7 +34,7 @@ export default function Footer() {
       />
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex flex-wrap items-center gap-4">
-          <span className="flex h-12 items-center rounded-lg bg-paper px-3 py-2">
+          <span className="flex h-20 items-center rounded-xl bg-paper px-4 py-3 shadow-lg sm:h-24">
             <img src={alumniLogo} alt="Alumni USB Cali — Red de Graduados" className="h-full w-auto object-contain" />
           </span>
         </div>
@@ -129,6 +132,26 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+
+            <p className="mb-1 mt-5 text-sm text-paper/80">Juan Pablo López Pérez</p>
+            <p className="text-sm text-paper-dim">Bolsa de Empleo y Emprendimiento</p>
+            <ul className="mt-3 flex flex-col gap-1.5">
+              <li>
+                <a
+                  href="mailto:asistente.proysocial@usbcali.edu.co"
+                  className="text-sm text-paper/80 transition-colors hover:text-gold"
+                >
+                  asistente.proysocial@usbcali.edu.co
+                </a>
+              </li>
+              <li>
+                <a href="tel:+576024882222" className="text-sm text-paper/80 transition-colors hover:text-gold">
+                  (602) 488 22 22 · Ext. 316
+                </a>
+              </li>
+            </ul>
+
+            {direccion && <p className="mt-5 text-sm text-paper-dim">{direccion}</p>}
           </motion.div>
         </div>
 

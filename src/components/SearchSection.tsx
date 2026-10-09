@@ -9,7 +9,7 @@ import { hueSeed } from "../lib/color";
 import { whatsappLink } from "../lib/whatsapp";
 import content from "../data/content.json";
 
-const { eyebrow, titulo: SECTION_TITLE, queEs, descripcion, tagline } = content.secciones.buscador;
+const { eyebrow, titulo: SECTION_TITLE, subtitulo, queEs, descripcion, tagline } = content.secciones.buscador;
 
 const PAGE_SIZE = 24;
 
@@ -86,9 +86,15 @@ export default function SearchSection() {
           <h2 className="font-display text-balance text-4xl font-light text-paper sm:text-5xl lg:text-6xl">
             {SECTION_TITLE}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm text-paper-dim">
-            Explora los {egresados.length} egresados emprendedores registrados, por nombre, emprendimiento, programa,
-            categoría o enfoque.
+          <p className="mx-auto mt-4 max-w-xl text-balance text-base text-paper-dim">
+            {subtitulo ? (
+              subtitulo.replace("{total}", String(egresados.length))
+            ) : (
+              <>
+                Explora los {egresados.length} egresados emprendedores registrados, por nombre, emprendimiento,
+                programa, categoría o enfoque.
+              </>
+            )}
           </p>
 
           {(queEs || descripcion || tagline) && (

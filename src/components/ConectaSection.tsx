@@ -89,8 +89,8 @@ export default function ConectaSection() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="group relative mt-16 flex flex-col items-start gap-6 overflow-hidden rounded-3xl border border-gold/40 bg-ink-2/60 p-8 transition-colors hover:border-gold sm:flex-row sm:items-center sm:justify-between sm:p-10"
         >
-          <div className="flex items-center gap-5">
-            <span className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg bg-paper p-3">
+          <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+            <span className="flex h-28 w-28 shrink-0 items-center justify-center rounded-2xl bg-paper p-4 shadow-lg sm:h-32 sm:w-32">
               <img src={alumniLogo} alt="Alumni USB Cali" className="h-full w-full object-contain" />
             </span>
             <div>

@@ -1,4 +1,7 @@
 {
+  "contacto": {
+    "direccion": null
+  },
   "hero": {
     "eyebrow": "ADN Emprendedor · Alumni USB Cali",
     "titulo": "El talento Alumni que transforma ideas en oportunidades.",
@@ -22,9 +25,10 @@
     "buscador": {
       "eyebrow": "Directorio completo",
       "titulo": "¿A quién estás buscando?",
+      "subtitulo": "{total} historias de egresados que emprenden, crean y venden — descubre la tuya por nombre, emprendimiento, programa, categoría o enfoque.",
       "queEs": "¿Qué es ADN Emprendedor?",
       "descripcion": "ADN Emprendedor es un espacio creado para visibilizar, conectar y fortalecer los emprendimientos de nuestros egresados de la Universidad de San Buenaventura Cali. Aquí podrás conocer sus proyectos, productos y servicios, descubrir las historias detrás de cada iniciativa y apoyar el talento de nuestra comunidad Alumni.",
-      "tagline": "Conoce sus historias. Descubre sus emprendimientos. Conecta con nuestro talento."
+      "tagline": "Más de 300 historias de egresados que crean, venden y transforman su futuro — encuentra la tuya."
     },
     "carreras": {
       "eyebrow": "Programas",

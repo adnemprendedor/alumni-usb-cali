@@ -52,7 +52,7 @@ export default function FeaturedPickSection() {
               <Portrait hue={hue} variant="wide" sector={sector} className="h-full w-full" />
             )}
             {logo && (
-              <span className="absolute bottom-6 left-6 flex h-16 w-16 items-center justify-center rounded-xl bg-paper p-2.5 shadow-lg sm:h-20 sm:w-20">
+              <span className="absolute bottom-6 left-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-paper p-3 shadow-lg sm:h-28 sm:w-28">
                 <img src={logo} alt={`Logo de ${e.nombreEmprendimiento}`} className="h-full w-full object-contain" />
               </span>
             )}
