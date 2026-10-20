@@ -1,169 +1,82 @@
 [
   {
     "id": "juego-01",
-    "slug": "valentina-rojas",
-    "nombre": "Valentina Rojas",
-    "tipo": "Emprendedor",
-    "nombreNegocio": "Verde Cacao",
-    "tiempoEmprendimiento": "3 años"
+    "slug": "brigitte-colonia",
+    "nombre": "Brigitte Colonia",
+    "foto": "juego/brigitte-colonia.png",
+    "pais": "Curitiba, Brasil",
+    "programa": "Ingeniería Agroindustrial",
+    "empresa": "Mondelēz International",
+    "ocupacion": "Científica de datos con más de 15 años de experiencia"
   },
   {
     "id": "juego-02",
-    "slug": "andres-felipe-mina",
-    "nombre": "Andrés Felipe Mina",
-    "tipo": "Empleado",
-    "cargo": "Analista de Marketing",
-    "aniosEnCargo": "2 años",
-    "nombreEmpresa": "Bancolombia"
+    "slug": "carlos-andres-castano",
+    "nombre": "Carlos Andrés Castaño",
+    "foto": "juego/carlos-andres-castano.png",
+    "pais": "Barcelona, España",
+    "programa": "Ingeniería Electrónica",
+    "empresa": "Spinoff Predictheon",
+    "ocupacion": "Ingeniero de software de dispositivos médicos"
   },
   {
     "id": "juego-03",
-    "slug": "laura-camila-ospina",
-    "nombre": "Laura Camila Ospina",
-    "tipo": "Empresario",
-    "nombreNegocio": "Ospina & Cía. Logística",
-    "tiempoEmprendimiento": "8 años"
+    "slug": "gustavo-cortes",
+    "nombre": "Gustavo Cortés",
+    "foto": "juego/gustavo-cortes.png",
+    "pais": "Alemania",
+    "programa": "Maestría en Analítica de Datos",
+    "empresa": "Unión Temporal Recaudo y Tecnología",
+    "ocupacion": "Gerente de soluciones de recaudo y desarrollo"
   },
   {
     "id": "juego-04",
-    "slug": "juan-david-lopez",
-    "nombre": "Juan David López",
-    "tipo": "Emprendedor",
-    "nombreNegocio": "Rueda Urbana Bikes",
-    "tiempoEmprendimiento": "1 año"
+    "slug": "edward-eli-loboa-ortega",
+    "nombre": "Edward Eli Loboa Ortega",
+    "foto": "juego/edward-eli-loboa-ortega.png",
+    "pais": "Boston, Estados Unidos",
+    "programa": "Doctorado en Administración de Negocios",
+    "empresa": "Baseemp Multiservices LLC",
+    "ocupacion": "Fundador y CEO"
   },
   {
     "id": "juego-05",
-    "slug": "mariana-perez",
-    "nombre": "Mariana Pérez",
-    "tipo": "Empleado",
-    "cargo": "Ingeniera de Producto",
-    "aniosEnCargo": "4 años",
-    "nombreEmpresa": "Rappi"
+    "slug": "carolina-orozco-martinez",
+    "nombre": "Carolina Orozco Martínez",
+    "foto": "juego/carolina-orozco-martinez.png",
+    "pais": "Barcelona, España",
+    "programa": "Arquitectura",
+    "empresa": "Universitat de Barcelona y Observatori Metropolità de l'Habitatge de Barcelona",
+    "ocupacion": "Investigadora en el Observatori Metropolità de l'Habitatge de Barcelona"
   },
   {
     "id": "juego-06",
-    "slug": "santiago-hurtado",
-    "nombre": "Santiago Hurtado",
-    "tipo": "Emprendedor",
-    "nombreNegocio": "Café de la Loma",
-    "tiempoEmprendimiento": "5 años"
+    "slug": "freddy-galileo-santacruz-bastidas",
+    "nombre": "Freddy Galileo Santacruz Bastidas",
+    "foto": "juego/freddy-galileo-santacruz-bastidas.png",
+    "pais": "Brasil",
+    "programa": "Ingeniería de Materiales",
+    "empresa": "Universidade Federal do Rio Grande do Sul (UFRGS)",
+    "ocupacion": "Investigador posdoctoral"
   },
   {
     "id": "juego-07",
-    "slug": "isabella-caicedo",
-    "nombre": "Isabella Caicedo",
-    "tipo": "Empresario",
-    "nombreNegocio": "Grupo Caicedo Textiles",
-    "tiempoEmprendimiento": "12 años"
+    "slug": "pammela-pino",
+    "nombre": "Pammela Pino",
+    "foto": "juego/pammela-pino.png",
+    "pais": "París, Francia",
+    "programa": "Administración de Negocios",
+    "empresa": "Nestlé",
+    "ocupacion": "Responsable de marca – Perrier®"
   },
   {
     "id": "juego-08",
-    "slug": "daniel-esteban-vidal",
-    "nombre": "Daniel Esteban Vidal",
-    "tipo": "Empleado",
-    "cargo": "Contador Senior",
-    "aniosEnCargo": "6 años",
-    "nombreEmpresa": "Grupo Éxito"
-  },
-  {
-    "id": "juego-09",
-    "slug": "camila-andrea-torres",
-    "nombre": "Camila Andrea Torres",
-    "tipo": "Emprendedor",
-    "nombreNegocio": "Taller Flora",
-    "tiempoEmprendimiento": "2 años"
-  },
-  {
-    "id": "juego-10",
-    "slug": "carlos-mario-gomez",
-    "nombre": "Carlos Mario Gómez",
-    "tipo": "Empresario",
-    "nombreNegocio": "Gómez Construcciones",
-    "tiempoEmprendimiento": "15 años"
-  },
-  {
-    "id": "juego-11",
-    "slug": "sara-sofia-benitez",
-    "nombre": "Sara Sofía Benítez",
-    "tipo": "Empleado",
-    "cargo": "Diseñadora UX",
-    "aniosEnCargo": "3 años",
-    "nombreEmpresa": "Platzi"
-  },
-  {
-    "id": "juego-12",
-    "slug": "felipe-andres-castano",
-    "nombre": "Felipe Andrés Castaño",
-    "tipo": "Emprendedor",
-    "nombreNegocio": "Estudio Castaño Audiovisual",
-    "tiempoEmprendimiento": "4 años"
-  },
-  {
-    "id": "juego-13",
-    "slug": "natalia-jimenez",
-    "nombre": "Natalia Jiménez",
-    "tipo": "Empleado",
-    "cargo": "Coordinadora de Talento Humano",
-    "aniosEnCargo": "5 años",
-    "nombreEmpresa": "Comfandi"
-  },
-  {
-    "id": "juego-14",
-    "slug": "julian-david-arboleda",
-    "nombre": "Julián David Arboleda",
-    "tipo": "Empresario",
-    "nombreNegocio": "Arboleda Alimentos",
-    "tiempoEmprendimiento": "10 años"
-  },
-  {
-    "id": "juego-15",
-    "slug": "paula-andrea-salazar",
-    "nombre": "Paula Andrea Salazar",
-    "tipo": "Emprendedor",
-    "nombreNegocio": "Salazar Skincare",
-    "tiempoEmprendimiento": "1 año"
-  },
-  {
-    "id": "juego-16",
-    "slug": "esteban-david-ramirez",
-    "nombre": "Esteban David Ramírez",
-    "tipo": "Empleado",
-    "cargo": "Ingeniero Civil",
-    "aniosEnCargo": "7 años",
-    "nombreEmpresa": "Constructora Bolívar"
-  },
-  {
-    "id": "juego-17",
-    "slug": "gabriela-maria-fernandez",
-    "nombre": "Gabriela María Fernández",
-    "tipo": "Emprendedor",
-    "nombreNegocio": "Dulce Panadería GF",
-    "tiempoEmprendimiento": "6 años"
-  },
-  {
-    "id": "juego-18",
-    "slug": "diego-alejandro-quintero",
-    "nombre": "Diego Alejandro Quintero",
-    "tipo": "Empresario",
-    "nombreNegocio": "Quintero Repuestos",
-    "tiempoEmprendimiento": "9 años"
-  },
-  {
-    "id": "juego-19",
-    "slug": "maria-jose-valencia",
-    "nombre": "María José Valencia",
-    "tipo": "Empleado",
-    "cargo": "Abogada Corporativa",
-    "aniosEnCargo": "3 años",
-    "nombreEmpresa": "Cervecería Bavaria"
-  },
-  {
-    "id": "juego-20",
-    "slug": "sebastian-david-morales",
-    "nombre": "Sebastián David Morales",
-    "tipo": "Emprendedor",
-    "nombreNegocio": "Morales Studio Fitness",
-    "tiempoEmprendimiento": "2 años"
+    "slug": "carolina-magana",
+    "nombre": "Carolina Magaña",
+    "foto": "juego/carolina-magana.png",
+    "pais": "España",
+    "programa": "Economía",
+    "empresa": "Universidad Nebrija",
+    "ocupacion": "Oficina de Proyectos"
   }
 ]

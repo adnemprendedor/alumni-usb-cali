@@ -4,6 +4,12 @@ import content from "../data/content.json";
 
 const { direccion } = content.contacto;
 
+const BASE = import.meta.env.BASE_URL;
+const fotoKarol = `${BASE}equipo/equipo-karol.jpg`;
+const fotoJuanPablo = `${BASE}equipo/equipo-juan-pablo.jpg`;
+const fotoJuanCarlos = `${BASE}equipo/equipo-juan-carlos.jpg`;
+const logoTalentoSanbue = `${BASE}logos/logo-talento-sanbue.png`;
+
 const COLUMNS = [
   {
     title: "ADN Emprendedor",
@@ -105,53 +111,77 @@ export default function Footer() {
             className="col-span-2 sm:col-span-1 lg:col-span-1"
           >
             <p className="mb-4 text-xs uppercase tracking-[0.25em] text-paper-dim">Contacto</p>
-            <p className="text-sm text-paper/80">Karol Yurani Valderrama Herrera</p>
-            <p className="text-sm text-paper-dim">Profesional de Egresados y Empleabilidad</p>
-            <ul className="mt-3 flex flex-col gap-1.5">
-              <li>
-                <a
-                  href="mailto:prof.egresados@usbcali.edu.co"
-                  className="text-sm text-paper/80 transition-colors hover:text-gold"
-                >
-                  prof.egresados@usbcali.edu.co
-                </a>
-              </li>
-              <li>
-                <a href="tel:+576024882222" className="text-sm text-paper/80 transition-colors hover:text-gold">
-                  (602) 488 22 22 · Ext. 527
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://wa.me/573204713006"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-paper/80 transition-colors hover:text-gold"
-                >
-                  WhatsApp 320 471 3006
-                </a>
-              </li>
-            </ul>
 
-            <p className="mb-1 mt-5 text-sm text-paper/80">Juan Pablo López Pérez</p>
-            <p className="text-sm text-paper-dim">Bolsa de Empleo y Emprendimiento</p>
-            <ul className="mt-3 flex flex-col gap-1.5">
-              <li>
-                <a
-                  href="mailto:asistente.proysocial@usbcali.edu.co"
-                  className="text-sm text-paper/80 transition-colors hover:text-gold"
-                >
-                  asistente.proysocial@usbcali.edu.co
-                </a>
-              </li>
-              <li>
-                <a href="tel:+576024882222" className="text-sm text-paper/80 transition-colors hover:text-gold">
-                  (602) 488 22 22 · Ext. 316
-                </a>
-              </li>
-            </ul>
+            <div className="flex flex-col gap-5">
+              <div className="flex items-start gap-3">
+                <span className="h-11 w-11 shrink-0 overflow-hidden rounded-full border border-paper/15">
+                  <img src={fotoKarol} alt="Karol Yurani Valderrama Herrera" className="h-full w-full object-cover" />
+                </span>
+                <div>
+                  <p className="text-sm text-paper/80">Karol Yurani Valderrama Herrera</p>
+                  <p className="text-xs text-paper-dim">Profesional de Egresados y Empleabilidad</p>
+                  <a
+                    href="mailto:prof.egresados@usbcali.edu.co"
+                    className="mt-1.5 block text-xs text-paper/80 transition-colors hover:text-gold"
+                  >
+                    prof.egresados@usbcali.edu.co
+                  </a>
+                  <span className="block text-xs text-paper-dim">(602) 488 22 22 · Ext. 527</span>
+                  <a
+                    href="https://wa.me/573204713006"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-xs text-paper/80 transition-colors hover:text-gold"
+                  >
+                    WhatsApp 320 471 3006
+                  </a>
+                </div>
+              </div>
 
-            {direccion && <p className="mt-5 text-sm text-paper-dim">{direccion}</p>}
+              <div className="flex items-start gap-3">
+                <span className="h-11 w-11 shrink-0 overflow-hidden rounded-full border border-paper/15">
+                  <img src={fotoJuanPablo} alt="Juan Pablo López Pérez" className="h-full w-full object-cover" />
+                </span>
+                <div>
+                  <p className="text-sm text-paper/80">Juan Pablo López Pérez</p>
+                  <p className="text-xs text-paper-dim">Bolsa de Empleo y Emprendimiento</p>
+                  <a
+                    href="mailto:asistente.proysocial@usbcali.edu.co"
+                    className="mt-1.5 block text-xs text-paper/80 transition-colors hover:text-gold"
+                  >
+                    asistente.proysocial@usbcali.edu.co
+                  </a>
+                  <span className="block text-xs text-paper-dim">(602) 488 22 22 · Ext. 316</span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <span className="h-11 w-11 shrink-0 overflow-hidden rounded-full border border-paper/15">
+                  <img src={fotoJuanCarlos} alt="Juan Carlos Aristizabal Giraldo" className="h-full w-full object-cover" />
+                </span>
+                <div>
+                  <p className="text-sm text-paper/80">Juan Carlos Aristizabal Giraldo</p>
+                  <p className="text-xs text-paper-dim">Profesional de Prácticas</p>
+                  <a
+                    href="mailto:prof.empleaypractica@usbcali.edu.co"
+                    className="mt-1.5 block text-xs text-paper/80 transition-colors hover:text-gold"
+                  >
+                    prof.empleaypractica@usbcali.edu.co
+                  </a>
+                  <span className="block text-xs text-paper-dim">(602) 488 22 22 · Ext. 367</span>
+                  <span className="mt-1.5 inline-flex items-center gap-1.5">
+                    <img src={logoTalentoSanbue} alt="Talento SanBue" className="h-4 w-auto rounded-sm bg-paper p-0.5" />
+                    <span className="text-[10px] uppercase tracking-[0.1em] text-paper-dim">Talento SanBue</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-5 text-xs uppercase tracking-[0.15em] text-paper-dim">
+              Lun – Vie, 8:00 a.m. – 12:00 m. y 2:00 p.m. – 6:00 p.m.
+            </p>
+
+            {direccion && <p className="mt-2 text-sm text-paper-dim">{direccion}</p>}
           </motion.div>
         </div>
 

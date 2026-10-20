@@ -91,6 +91,11 @@
         "titulo": "Conoce el directorio",
         "desc": "Explora los emprendimientos de egresados ya registrados en ADN Emprendedor.",
         "href": "#buscador"
+      },
+      {
+        "titulo": "Prácticas Profesionales",
+        "desc": "Conoce el micrositio oficial de la Universidad sobre prácticas profesionales.",
+        "href": "https://usbcali.edu.co/practicas-profesionales/"
       }
     ]
   }

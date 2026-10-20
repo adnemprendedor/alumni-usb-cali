@@ -31,7 +31,7 @@ export default function JuegoPage() {
             transition={{ duration: 0.8, delay: 0.05 }}
             className="font-display text-balance text-4xl font-light text-paper sm:text-5xl lg:text-6xl"
           >
-            ¿Empleado, empresario o emprendedor?
+            Egresados USB por el mundo
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -39,15 +39,15 @@ export default function JuegoPage() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="mt-5 max-w-2xl text-balance text-paper-dim"
           >
-            Toca cualquier tarjeta para girarla y descubrir la historia de cada egresado: si es empleado, empresario o
-            emprendedor, y los datos de su trayectoria.
+            Toca cualquier tarjeta para girarla y descubrir en qué país está cada egresado, qué estudió en la USB, en qué
+            empresa trabaja y a qué se dedica.
           </motion.p>
         </div>
       </section>
 
       <section className="relative px-4 pb-28 sm:px-8 lg:pb-40">
         <div className="mx-auto max-w-6xl">
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4 xl:grid-cols-5">
+          <div className="mx-auto grid max-w-sm grid-cols-1 gap-5 sm:max-w-none sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {juego.map((persona, i) => (
               <motion.div
                 key={persona.id}
@@ -61,10 +61,6 @@ export default function JuegoPage() {
             ))}
           </div>
 
-          <p className="mt-12 max-w-2xl text-xs text-paper-dim">
-            Estas 20 tarjetas son un ejemplo de relleno mientras se recopilan las fotos y los datos reales de los
-            egresados. Se actualizarán con la información definitiva más adelante, siguiendo el mismo formato.
-          </p>
         </div>
       </section>
 
