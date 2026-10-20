@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { gsap } from "../lib/gsap";
+import { gsap, ScrollTrigger } from "../lib/gsap";
 import { emprendimientosDestacados, sectorPorSlug } from "../data/derived";
 import { logos } from "../data/logos";
 import { hueSeed } from "../lib/color";
@@ -40,7 +40,29 @@ export default function ProductsHorizontal() {
       return () => tween.scrollTrigger?.kill();
     }, section);
 
-    return () => ctx.revert();
+    // El buscador (justo encima) cambia de alto al cargar más resultados,
+    // filtrar o terminar de cargar imágenes/fuentes. Si el punto donde se
+    // "fija" esta sección no se recalcula, se fija antes de tiempo y tapa la
+    // lista de egresados. Se recalcula cada vez que cambia el alto de la página.
+    let timer: number | undefined;
+    let lastHeight = document.body.scrollHeight;
+    const ro = new ResizeObserver(() => {
+      const h = document.body.scrollHeight;
+      if (Math.abs(h - lastHeight) < 2) return;
+      lastHeight = h;
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => ScrollTrigger.refresh(), 150);
+    });
+    const anterior = section.parentElement?.previousElementSibling ?? section.previousElementSibling;
+    if (anterior) ro.observe(anterior);
+    ro.observe(document.body);
+    window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
+
+    return () => {
+      ro.disconnect();
+      window.clearTimeout(timer);
+      ctx.revert();
+    };
   }, [reducedMotion]);
 
   return (
