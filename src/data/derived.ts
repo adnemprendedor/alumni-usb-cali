@@ -71,21 +71,17 @@ export const destacados: Egresado[] =
 
 /**
  * Segunda muestra, sin solapar con "destacados", para el carril horizontal
- * "Lo que construyen los egresados". Prioriza quienes tienen algo real que
- * mostrar (logo, foto o descripción) para que las tarjetas no se vean
- * vacías; completa el resto con egresados que al menos tienen el campo
- * "emprendimiento asociado a" diligenciado.
+ * "Lo que construyen los egresados". Primero van los emprendimientos con
+ * logo (el logo es el protagonista de la tarjeta), luego los que tienen
+ * descripción, y por último relleno con "emprendimiento asociado a".
  */
-const conContenidoReal = egresados.filter(
-  (e) => (fotos[e.slug] || logos[e.slug] || e.descripcion) && !destacados.some((d) => d.id === e.id)
-);
+const noDestacado = (e: Egresado) => !destacados.some((d) => d.id === e.id);
+const conLogo = egresados.filter((e) => logos[e.slug] && noDestacado(e));
+const conDescripcion = egresados.filter((e) => !logos[e.slug] && e.descripcion && noDestacado(e));
 const relleno = egresados.filter(
-  (e) =>
-    e.emprendimientoAsociadoA &&
-    !destacados.some((d) => d.id === e.id) &&
-    !conContenidoReal.some((r) => r.id === e.id)
+  (e) => !logos[e.slug] && !e.descripcion && e.emprendimientoAsociadoA && noDestacado(e)
 );
-export const emprendimientosDestacados: Egresado[] = [...conContenidoReal, ...relleno].slice(0, 16);
+export const emprendimientosDestacados: Egresado[] = [...conLogo, ...conDescripcion, ...relleno].slice(0, 16);
 
 /**
  * "Emprendimiento destacado": una sola selección que rota periódicamente

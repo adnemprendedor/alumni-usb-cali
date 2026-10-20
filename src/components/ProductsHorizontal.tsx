@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap, ScrollTrigger } from "../lib/gsap";
 import { emprendimientosDestacados, sectorPorSlug } from "../data/derived";
@@ -9,6 +9,101 @@ import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 import content from "../data/content.json";
 
 const { eyebrow, titulo: SECTION_TITLE } = content.secciones.emprendimientos;
+
+const CARD_SIZE = "h-[52vh] w-[78vw] sm:w-[46vw] lg:w-[30vw]";
+
+/**
+ * Color del borde del logo (promedio de las 4 esquinas). Se usa como fondo de
+ * la tarjeta para que el logo, a pantalla completa, se funda con ella sin que
+ * se note el recuadro de la imagen.
+ */
+function useColorBorde(src: string): string {
+  const [color, setColor] = useState("#ffffff");
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const c = document.createElement("canvas");
+        c.width = img.naturalWidth;
+        c.height = img.naturalHeight;
+        const ctx = c.getContext("2d");
+        if (!ctx) return;
+        ctx.drawImage(img, 0, 0);
+        const w = c.width - 1;
+        const h = c.height - 1;
+        const puntos = [
+          [1, 1],
+          [w - 1, 1],
+          [1, h - 1],
+          [w - 1, h - 1],
+        ];
+        let r = 0, g = 0, b = 0;
+        for (const [x, y] of puntos) {
+          const d = ctx.getImageData(x, y, 1, 1).data;
+          r += d[0];
+          g += d[1];
+          b += d[2];
+        }
+        setColor(`rgb(${Math.round(r / 4)}, ${Math.round(g / 4)}, ${Math.round(b / 4)})`);
+      } catch {
+        // si no se puede leer la imagen, queda el fondo blanco
+      }
+    };
+    img.src = src;
+  }, [src]);
+  return color;
+}
+
+function LogoCard({
+  slug,
+  logo,
+  numero,
+  etiqueta,
+  titulo,
+  texto,
+}: {
+  slug: string;
+  logo: string;
+  numero: number;
+  etiqueta: string;
+  titulo: string;
+  texto: string;
+}) {
+  const fondo = useColorBorde(logo);
+  return (
+    <Link
+      to={`/egresado/${slug}`}
+      data-cursor-hover
+      className={`group relative flex ${CARD_SIZE} flex-shrink-0 flex-col overflow-hidden rounded-3xl border border-paper/10 bg-ink-2`}
+    >
+      {/* logo a pantalla completa */}
+      <div className="relative flex-1 overflow-hidden" style={{ backgroundColor: fondo }}>
+        <img
+          src={logo}
+          alt={`Logo de ${titulo}`}
+          className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5">
+          <span className="inline-flex items-center rounded-full bg-ink/75 px-3 py-1 text-xs uppercase tracking-[0.2em] text-gold backdrop-blur-sm">
+            {etiqueta}
+          </span>
+          <span className="font-display rounded-full bg-ink/75 px-3 py-0.5 text-lg text-paper/80 backdrop-blur-sm">
+            {String(numero).padStart(2, "0")}
+          </span>
+        </div>
+      </div>
+      <div className="border-t border-paper/10 px-6 py-5">
+        <h3 className="font-display truncate text-2xl text-paper sm:text-[1.7rem]">{titulo}</h3>
+        <p className="mt-1.5 line-clamp-2 text-sm text-paper-dim">{texto}</p>
+      </div>
+    </Link>
+  );
+}
+
+function iniciales(nombre: string): string {
+  const palabras = nombre.split(/\s+/).filter((p) => /^[\p{L}\d]/u.test(p) && p.length > 2);
+  return (palabras.slice(0, 2).map((p) => p[0]).join("") || nombre.charAt(0)).toUpperCase();
+}
 
 export default function ProductsHorizontal() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -84,11 +179,22 @@ export default function ProductsHorizontal() {
             const sector = sectorPorSlug[e.slug];
             const logo = logos[e.slug];
             return (
+              logo ? (
+                <LogoCard
+                  key={e.id}
+                  slug={e.slug}
+                  logo={logo}
+                  numero={i + 1}
+                  etiqueta={sector ?? e.emprendimientoAsociadoA ?? "Emprendimiento"}
+                  titulo={e.nombreEmprendimiento}
+                  texto={e.descripcion || `${e.nombre}${e.programa ? ` · ${e.programa}` : ""}`}
+                />
+              ) : (
               <Link
                 to={`/egresado/${e.slug}`}
                 data-cursor-hover
                 key={e.id}
-                className="relative h-[52vh] w-[78vw] flex-shrink-0 overflow-hidden rounded-3xl border border-paper/10 sm:w-[46vw] lg:w-[30vw]"
+                className={`group relative ${CARD_SIZE} flex-shrink-0 overflow-hidden rounded-3xl border border-paper/10`}
               >
                 <Portrait hue={hueSeed(e.id)} variant="wide" sector={sector} className="h-full w-full">
                   <div className="absolute inset-0 flex flex-col justify-between p-7">
@@ -98,16 +204,15 @@ export default function ProductsHorizontal() {
                       </span>
                       <span className="font-display text-2xl text-paper/50">{String(i + 1).padStart(2, "0")}</span>
                     </div>
+                    <div className="flex flex-1 items-center justify-center py-4">
+                      <span
+                        className="font-display flex aspect-square h-full max-h-44 items-center justify-center rounded-3xl border border-gold/30 bg-ink/50 text-6xl font-light text-gold shadow-2xl"
+                        aria-hidden
+                      >
+                        {iniciales(e.nombreEmprendimiento)}
+                      </span>
+                    </div>
                     <div>
-                      {logo && (
-                        <span className="mb-4 flex h-24 w-24 items-center justify-center rounded-2xl bg-paper p-3 shadow-lg sm:h-28 sm:w-28">
-                          <img
-                            src={logo}
-                            alt={`Logo de ${e.nombreEmprendimiento}`}
-                            className="h-full w-full object-contain"
-                          />
-                        </span>
-                      )}
                       <h3 className="font-display text-2xl text-paper sm:text-3xl">{e.nombreEmprendimiento}</h3>
                       {e.descripcion ? (
                         <p className="mt-2 line-clamp-2 max-w-sm text-sm text-paper-dim">{e.descripcion}</p>
@@ -121,6 +226,7 @@ export default function ProductsHorizontal() {
                   </div>
                 </Portrait>
               </Link>
+              )
             );
           })}
           <div className="w-[4vw] flex-shrink-0" />

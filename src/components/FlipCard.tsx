@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Portrait from "./Portrait";
 import { hueSeed } from "../lib/color";
@@ -14,10 +14,20 @@ function Dato({ label, value }: { label: string; value?: string | null }) {
   );
 }
 
-export default function FlipCard({ persona }: { persona: JuegoEgresado }) {
+const url = (p?: string | null) => (p ? `${import.meta.env.BASE_URL}${p}` : null);
+
+export default function FlipCard({ persona, resetSignal = 0 }: { persona: JuegoEgresado; resetSignal?: number }) {
   const [flipped, setFlipped] = useState(false);
   const hue = hueSeed(persona.id);
-  const foto = persona.foto ? `${import.meta.env.BASE_URL}${persona.foto}` : null;
+  const base = 18 + (((hue % 34) + 34) % 34);
+  const foto = url(persona.foto);
+  const logo = url(persona.logo);
+  const esEmprendedor = persona.tipo === "Emprendedor";
+
+  // Al mezclar las tarjetas, todas vuelven a mostrar el frente.
+  useEffect(() => {
+    setFlipped(false);
+  }, [resetSignal]);
 
   return (
     <button
@@ -47,7 +57,8 @@ export default function FlipCard({ persona }: { persona: JuegoEgresado }) {
                   src={foto}
                   alt={persona.nombre}
                   loading="lazy"
-                  className="aspect-square w-[68%] rounded-full object-cover object-top ring-2 ring-gold/60 ring-offset-2 ring-offset-transparent shadow-xl"
+                  draggable={false}
+                  className="aspect-square w-[68%] rounded-full object-cover object-top shadow-xl ring-2 ring-gold/60"
                 />
               </div>
             )}
@@ -63,20 +74,37 @@ export default function FlipCard({ persona }: { persona: JuegoEgresado }) {
           </Portrait>
         </div>
 
-        {/* reverso: programa, empresa y ocupación */}
+        {/* reverso: logo + programa, empresa y ocupación */}
         <div
-          className="absolute inset-0 flex flex-col overflow-y-auto rounded-2xl border border-gold/30 bg-ink-2 p-5 shadow-lg"
+          className="absolute inset-0 flex flex-col overflow-y-auto rounded-2xl border border-gold/30 bg-ink-2 p-5 shadow-lg xl:p-4"
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
           <div className="my-auto">
-          <p className="text-[10px] uppercase tracking-[0.25em] text-gold">{persona.pais}</p>
-          <p className="font-display mt-1 text-base leading-tight text-paper sm:text-lg">{persona.nombre}</p>
+            {logo ? (
+              <span className="mb-3 inline-flex h-14 min-w-14 max-w-[11rem] items-center justify-center rounded-xl bg-paper p-1.5 shadow-md">
+                <img src={logo} alt={`Logo de ${persona.empresa ?? ""}`} draggable={false} className="h-full w-auto max-w-full object-contain" />
+              </span>
+            ) : (
+              persona.empresa && (
+                <span
+                  className="mb-3 flex h-14 w-14 items-center justify-center rounded-xl text-2xl font-medium text-paper"
+                  style={{ backgroundColor: `hsl(${base}, 55%, 22%)` }}
+                  aria-hidden
+                >
+                  {persona.empresa.charAt(0)}
+                </span>
+              )
+            )}
+            <p className="text-[10px] uppercase tracking-[0.25em] text-gold">
+              {esEmprendedor ? "Emprendedor" : "Empleado"} · {persona.pais}
+            </p>
+            <p className="font-display mt-1 text-base leading-tight text-paper sm:text-lg">{persona.nombre}</p>
 
-          <div className="mt-3 flex flex-col gap-2.5 border-t border-paper/10 pt-3">
-            <Dato label="Programa USB" value={persona.programa} />
-            <Dato label="Empresa" value={persona.empresa} />
-            <Dato label="Ocupación" value={persona.ocupacion} />
-          </div>
+            <div className="mt-3 flex flex-col gap-2.5 border-t border-paper/10 pt-3">
+              <Dato label="Programa USB" value={persona.programa} />
+              <Dato label={esEmprendedor ? "Empresa / emprendimiento" : "Empresa"} value={persona.empresa} />
+              <Dato label="Ocupación" value={persona.ocupacion} />
+            </div>
           </div>
         </div>
       </motion.div>
