@@ -91,7 +91,11 @@ export const emprendimientosDestacados: Egresado[] = [...conLogo, ...conDescripc
  * destacado siempre cuente con una historia que mostrar.
  */
 const conHistoria = egresados.filter((e) => e.descripcion);
-const pool = conHistoria.length > 0 ? conHistoria : egresados.slice(0, 20);
+// Se priorizan quienes, además de historia, tienen logo o foto, para que la
+// tarjeta del destacado siempre tenga una imagen del emprendimiento.
+const conHistoriaEImagen = conHistoria.filter((e) => logos[e.slug] || fotos[e.slug]);
+const pool =
+  conHistoriaEImagen.length > 0 ? conHistoriaEImagen : conHistoria.length > 0 ? conHistoria : egresados.slice(0, 20);
 
 function numeroDeSemanaDelAnio(fecha: Date): number {
   const inicio = new Date(fecha.getFullYear(), 0, 1);

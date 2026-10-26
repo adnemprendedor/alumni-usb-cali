@@ -6,7 +6,6 @@ import SearchSection from "../components/SearchSection";
 import ProductsHorizontal from "../components/ProductsHorizontal";
 import FeaturedSection from "../components/FeaturedSection";
 import VideoStoriesSection from "../components/VideoStoriesSection";
-import CareersSection from "../components/CareersSection";
 import StatsSection from "../components/StatsSection";
 import ConectaSection from "../components/ConectaSection";
 import Footer from "../components/Footer";
@@ -22,7 +21,6 @@ export default function HomePage() {
       <ProductsHorizontal />
       <FeaturedSection />
       <VideoStoriesSection />
-      <CareersSection />
       <StatsSection />
       <ConectaSection />
       <Footer />

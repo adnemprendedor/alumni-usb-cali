@@ -24,7 +24,6 @@ const COLUMNS = [
     title: "Descubrir",
     links: [
       { label: "Egresados que Inspiran", href: "#destacados" },
-      { label: "Programas", href: "#carreras" },
       { label: "Participa", href: "#conecta" },
       { label: "Juego de egresados", href: "#/juego" },
     ],

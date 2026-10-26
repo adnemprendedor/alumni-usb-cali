@@ -5,6 +5,27 @@ import { fotos } from "../data/fotos";
 import { logos } from "../data/logos";
 import { hueSeed } from "../lib/color";
 import Portrait from "./Portrait";
+import { useColorBorde } from "../hooks/useColorBorde";
+
+/** Pieza fija de marca para cuando el emprendimiento no tiene logo ni foto. */
+function PiezaSemana({ hue, sector, nombre }: { hue: number; sector?: string; nombre: string }) {
+  return (
+    <Portrait hue={hue} variant="wide" sector={sector} className="h-full w-full">
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center">
+        <span className="text-5xl text-gold" aria-hidden>
+          ★
+        </span>
+        <p className="font-display mt-4 text-3xl font-light uppercase leading-tight tracking-[0.12em] text-paper sm:text-4xl">
+          Emprendedor
+          <br />
+          de la semana
+        </p>
+        <p className="mt-4 text-xs uppercase tracking-[0.3em] text-gold">ADN Emprendedor · Alumni USB Cali</p>
+        <p className="font-display mt-6 max-w-xs text-xl text-paper/80">{nombre}</p>
+      </div>
+    </Portrait>
+  );
+}
 
 /**
  * Sección "Emprendimiento destacado" de la propuesta ADN Emprendedor: una
@@ -14,10 +35,11 @@ import Portrait from "./Portrait";
  */
 export default function FeaturedPickSection() {
   const e = emprendimientoDestacado;
+  const foto = e ? fotos[e.slug] : undefined;
+  const logo = e ? logos[e.slug] : undefined;
+  const fondoLogo = useColorBorde(logo ?? "");
   if (!e) return null;
 
-  const foto = fotos[e.slug];
-  const logo = logos[e.slug];
   const sector = sectorPorSlug[e.slug];
   const hue = hueSeed(e.id);
 
@@ -42,16 +64,30 @@ export default function FeaturedPickSection() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 overflow-hidden rounded-3xl border border-gold/25 bg-ink-2/40 lg:grid-cols-2"
         >
-          <div className="relative h-72 lg:h-auto lg:min-h-[420px]">
+          <div className="relative h-80 overflow-hidden lg:h-auto lg:min-h-[440px]">
             {foto ? (
               <div className="relative h-full w-full">
                 <img src={foto} alt={e.nombre} className="h-full w-full object-cover object-top" />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-ink/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
+              </div>
+            ) : logo ? (
+              <div className="relative h-full w-full" style={{ backgroundColor: fondoLogo }}>
+                <img
+                  src={logo}
+                  alt={`Logo de ${e.nombreEmprendimiento}`}
+                  className="absolute inset-0 h-full w-full object-contain p-6"
+                />
               </div>
             ) : (
-              <Portrait hue={hue} variant="wide" sector={sector} className="h-full w-full" />
+              <PiezaSemana hue={hue} sector={sector} nombre={e.nombreEmprendimiento} />
             )}
-            {logo && (
+
+            {/* sello fijo "Emprendedor de la semana" */}
+            <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full bg-gold px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] text-ink shadow-lg">
+              <span aria-hidden>★</span> Emprendedor de la semana
+            </div>
+
+            {foto && logo && (
               <span className="absolute bottom-6 left-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-paper p-3 shadow-lg sm:h-28 sm:w-28">
                 <img src={logo} alt={`Logo de ${e.nombreEmprendimiento}`} className="h-full w-full object-contain" />
               </span>

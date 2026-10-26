@@ -9,7 +9,6 @@ const LINKS = [
   { label: "ADN Emprendedor", href: "#buscador" },
   { label: "Destacado", href: "#destacado-semana" },
   { label: "Inspiran", href: "#destacados" },
-  { label: "Programas", href: "#carreras" },
   { label: "Participa", href: "#conecta" },
   { label: "Juego", href: "#/juego" },
 ];

@@ -1,4 +1,5 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef } from "react";
+import { useColorBorde } from "../hooks/useColorBorde";
 import { Link } from "react-router-dom";
 import { gsap, ScrollTrigger } from "../lib/gsap";
 import { emprendimientosDestacados, sectorPorSlug } from "../data/derived";
@@ -11,48 +12,6 @@ import content from "../data/content.json";
 const { eyebrow, titulo: SECTION_TITLE } = content.secciones.emprendimientos;
 
 const CARD_SIZE = "h-[52vh] w-[78vw] sm:w-[46vw] lg:w-[30vw]";
-
-/**
- * Color del borde del logo (promedio de las 4 esquinas). Se usa como fondo de
- * la tarjeta para que el logo, a pantalla completa, se funda con ella sin que
- * se note el recuadro de la imagen.
- */
-function useColorBorde(src: string): string {
-  const [color, setColor] = useState("#ffffff");
-  useEffect(() => {
-    const img = new Image();
-    img.onload = () => {
-      try {
-        const c = document.createElement("canvas");
-        c.width = img.naturalWidth;
-        c.height = img.naturalHeight;
-        const ctx = c.getContext("2d");
-        if (!ctx) return;
-        ctx.drawImage(img, 0, 0);
-        const w = c.width - 1;
-        const h = c.height - 1;
-        const puntos = [
-          [1, 1],
-          [w - 1, 1],
-          [1, h - 1],
-          [w - 1, h - 1],
-        ];
-        let r = 0, g = 0, b = 0;
-        for (const [x, y] of puntos) {
-          const d = ctx.getImageData(x, y, 1, 1).data;
-          r += d[0];
-          g += d[1];
-          b += d[2];
-        }
-        setColor(`rgb(${Math.round(r / 4)}, ${Math.round(g / 4)}, ${Math.round(b / 4)})`);
-      } catch {
-        // si no se puede leer la imagen, queda el fondo blanco
-      }
-    };
-    img.src = src;
-  }, [src]);
-  return color;
-}
 
 function LogoCard({
   slug,
