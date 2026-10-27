@@ -3,15 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import usbLogo from "../assets/brand/usb-logo.png";
 import alumniLogo from "../assets/brand/alumni-logo.png";
+import { sitio } from "../data/sitio";
 
-const LINKS = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "ADN Emprendedor", href: "#buscador" },
-  { label: "Destacado", href: "#destacado-semana" },
-  { label: "Inspiran", href: "#destacados" },
-  { label: "Participa", href: "#conecta" },
-  { label: "Juego", href: "#/juego" },
-];
+const LINKS = sitio.menu;
+const BOTON = sitio.botonMenu;
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -54,8 +49,8 @@ export default function Navbar() {
         </Link>
 
         <ul className="hidden items-center gap-5 whitespace-nowrap text-[13px] text-paper-dim xl:flex">
-          {LINKS.map((link) => (
-            <li key={link.label}>
+          {LINKS.map((link, i) => (
+            <li key={`${link.label}-${i}`}>
               <a
                 href={link.href}
                 className="group relative inline-block py-1 transition-colors hover:text-paper"
@@ -68,13 +63,15 @@ export default function Navbar() {
           ))}
         </ul>
 
+        {BOTON?.label && (
         <a
-          href="#explora"
+          href={BOTON.href}
           data-cursor-hover
           className="hidden shrink-0 rounded-full border border-gold/50 px-4 py-2 text-xs uppercase tracking-[0.1em] text-gold transition-colors hover:bg-gold hover:text-ink sm:inline-block sm:text-sm sm:normal-case sm:tracking-normal"
         >
-          Explorar
+          {BOTON.label}
         </a>
+        )}
 
         <button
           aria-label="Abrir menú"
@@ -103,8 +100,8 @@ export default function Navbar() {
             className="absolute left-4 right-4 top-[calc(100%+0.5rem)] rounded-3xl border border-gold/15 bg-ink-2/95 p-6 backdrop-blur-xl xl:hidden"
           >
             <ul className="flex flex-col gap-4 text-lg text-paper">
-              {LINKS.map((link) => (
-                <li key={link.label}>
+              {LINKS.map((link, i) => (
+                <li key={`${link.label}-${i}`}>
                   <a href={link.href} onClick={() => setOpen(false)}>
                     {link.label}
                   </a>

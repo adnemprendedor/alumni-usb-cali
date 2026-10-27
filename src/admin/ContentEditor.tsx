@@ -46,7 +46,6 @@ const SECCION_LABELS: Record<string, string> = {
   enfoques: "Enfoques de emprendimiento",
   destacados: "ADN Emprendedor (destacados)",
   buscador: "Buscador / directorio completo",
-  carreras: "Programas académicos",
   emprendimientos: "Emprendimientos",
 };
 
@@ -157,7 +156,7 @@ export default function ContentEditor({ config }: { config: GithubConfig }) {
         <Field label="Texto 'desplázate'" value={data.hero.scrollLabel} onChange={(v) => setData({ ...data, hero: { ...data.hero, scrollLabel: v } })} />
       </Card>
 
-      {Object.entries(data.secciones).map(([key, seccion]) => (
+      {Object.entries(data.secciones).filter(([key]) => key !== "carreras").map(([key, seccion]) => (
         <Card key={key} title={SECCION_LABELS[key] ?? key}>
           {seccion.eyebrow !== undefined && (
             <Field

@@ -118,3 +118,24 @@ body {
 .mask-fade-b {
   mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
+
+/* Panel de administración: los editores más antiguos usan los colores del
+   sitio (oscuros). Dentro del panel claro se re-mapean los mismos tokens a
+   una paleta clara tipo WordPress, sin tener que reescribir esos editores. */
+.admin-legacy {
+  --color-ink: #ffffff;
+  --color-ink-2: #f6f7f7;
+  --color-ink-3: #f0f0f1;
+  --color-paper: #1d2327;
+  --color-paper-dim: #50575e;
+  color: #1d2327;
+}
+.admin-legacy .text-emerald-400 {
+  color: #008a20;
+}
+.admin-legacy .text-red-400 {
+  color: #d63638;
+}
+.admin-claro ::selection {
+  color: #ffffff;
+}

@@ -2,6 +2,7 @@ import { egresados, type Egresado } from "./egresados";
 import { fotos } from "./fotos";
 import { logos } from "./logos";
 import { SECTORES, sectorDe } from "../lib/sector";
+import { sitio } from "./sitio";
 
 export interface EnfoqueGroup {
   nombre: string;
@@ -103,5 +104,11 @@ function numeroDeSemanaDelAnio(fecha: Date): number {
   return Math.floor(dias / 7);
 }
 
+// Si en el panel se eligió un emprendedor a mano, se usa ese; si no, rota cada semana.
+const elegidoAMano =
+  sitio.destacadoSemana?.modo === "manual" && sitio.destacadoSemana.slug
+    ? egresados.find((e) => e.slug === sitio.destacadoSemana.slug)
+    : undefined;
+
 export const emprendimientoDestacado: Egresado =
-  pool[numeroDeSemanaDelAnio(new Date()) % pool.length];
+  elegidoAMano ?? pool[numeroDeSemanaDelAnio(new Date()) % pool.length];

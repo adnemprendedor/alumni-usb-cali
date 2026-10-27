@@ -1,34 +1,9 @@
 import { motion } from "framer-motion";
 import alumniLogo from "../assets/brand/alumni-logo.png";
-import content from "../data/content.json";
+import { rutaPublica, sitio } from "../data/sitio";
 
-const { direccion } = content.contacto;
-
-const BASE = import.meta.env.BASE_URL;
-const fotoKarol = `${BASE}equipo/equipo-karol.jpg`;
-const fotoJuanPablo = `${BASE}equipo/equipo-juan-pablo.jpg`;
-const fotoJuanCarlos = `${BASE}equipo/equipo-juan-carlos.jpg`;
-const logoTalentoSanbue = `${BASE}logos/logo-talento-sanbue.png`;
-
-const COLUMNS = [
-  {
-    title: "ADN Emprendedor",
-    links: [
-      { label: "Directorio", href: "#buscador" },
-      { label: "Categorías", href: "#categorias" },
-      { label: "Emprendimientos", href: "#emprendimientos" },
-      { label: "Destacado de la semana", href: "#destacado-semana" },
-    ],
-  },
-  {
-    title: "Descubrir",
-    links: [
-      { label: "Egresados que Inspiran", href: "#destacados" },
-      { label: "Participa", href: "#conecta" },
-      { label: "Juego de egresados", href: "#/juego" },
-    ],
-  },
-];
+const pie = sitio.pie;
+const COLUMNS = pie.columnas.map((c) => ({ title: c.titulo, links: c.enlaces }));
 
 export default function Footer() {
   return (
@@ -51,12 +26,16 @@ export default function Footer() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="font-display text-balance text-4xl font-light leading-tight text-paper sm:text-5xl lg:text-6xl"
         >
-          USB Conecta
-          <br />y emprende.
+          {pie.titulo.split("\n").map((linea, i) => (
+            <span key={i}>
+              {i > 0 && <br />}
+              {linea}
+            </span>
+          ))}
         </motion.h2>
 
         <motion.a
-          href="#explora"
+          href={pie.botonHref}
           data-cursor-hover
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -64,7 +43,7 @@ export default function Footer() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="group mt-10 inline-flex items-center gap-3 text-sm uppercase tracking-[0.2em] text-gold"
         >
-          Explorar directorio
+          {pie.botonLabel}
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </motion.a>
 
@@ -80,7 +59,7 @@ export default function Footer() {
               <p className="mb-4 text-xs uppercase tracking-[0.25em] text-paper-dim">{col.title}</p>
               <ul className="flex flex-col gap-2">
                 {col.links.map((l) => (
-                  <li key={l.label}>
+                  <li key={`${l.label}-${l.href}`}>
                     <a href={l.href} className="text-sm text-paper/80 transition-colors hover:text-gold">
                       {l.label}
                     </a>
@@ -95,11 +74,24 @@ export default function Footer() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.6, delay: 0.16 }}
           >
-            <p className="mb-4 text-xs uppercase tracking-[0.25em] text-paper-dim">Alumni USB Cali</p>
-            <p className="max-w-xs text-sm text-paper/80">
-              Red de Graduados de la Universidad de San Buenaventura Cali — un espacio para descubrir y conectar con
-              los emprendimientos de nuestros egresados.
-            </p>
+            <p className="mb-4 text-xs uppercase tracking-[0.25em] text-paper-dim">{pie.acercaTitulo}</p>
+            <p className="max-w-xs text-sm text-paper/80">{pie.acercaTexto}</p>
+            {sitio.redes.length > 0 && (
+              <div className="mt-5 flex flex-wrap gap-2">
+                {sitio.redes.map((r) => (
+                  <a
+                    key={r.url}
+                    href={r.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor-hover
+                    className="rounded-full border border-paper/15 px-3 py-1 text-xs text-paper/80 transition-colors hover:border-gold/50 hover:text-gold"
+                  >
+                    {r.nombre}
+                  </a>
+                ))}
+              </div>
+            )}
           </motion.div>
 
           <motion.div
@@ -112,82 +104,61 @@ export default function Footer() {
             <p className="mb-4 text-xs uppercase tracking-[0.25em] text-paper-dim">Contacto</p>
 
             <div className="flex flex-col gap-5">
-              <div className="flex items-start gap-3">
-                <span className="h-11 w-11 shrink-0 overflow-hidden rounded-full border border-paper/15">
-                  <img src={fotoKarol} alt="Karol Yurani Valderrama Herrera" className="h-full w-full object-cover" />
-                </span>
-                <div>
-                  <p className="text-sm text-paper/80">Karol Yurani Valderrama Herrera</p>
-                  <p className="text-xs text-paper-dim">Profesional de Egresados y Empleabilidad</p>
-                  <a
-                    href="mailto:prof.egresados@usbcali.edu.co"
-                    className="mt-1.5 block text-xs text-paper/80 transition-colors hover:text-gold"
-                  >
-                    prof.egresados@usbcali.edu.co
-                  </a>
-                  <span className="block text-xs text-paper-dim">(602) 488 22 22 · Ext. 527</span>
-                  <a
-                    href="https://wa.me/573204713006"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-xs text-paper/80 transition-colors hover:text-gold"
-                  >
-                    WhatsApp 320 471 3006
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <span className="h-11 w-11 shrink-0 overflow-hidden rounded-full border border-paper/15">
-                  <img src={fotoJuanPablo} alt="Juan Pablo López Pérez" className="h-full w-full object-cover" />
-                </span>
-                <div>
-                  <p className="text-sm text-paper/80">Juan Pablo López Pérez</p>
-                  <p className="text-xs text-paper-dim">Bolsa de Empleo y Emprendimiento</p>
-                  <a
-                    href="mailto:asistente.proysocial@usbcali.edu.co"
-                    className="mt-1.5 block text-xs text-paper/80 transition-colors hover:text-gold"
-                  >
-                    asistente.proysocial@usbcali.edu.co
-                  </a>
-                  <span className="block text-xs text-paper-dim">(602) 488 22 22 · Ext. 316</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <span className="h-11 w-11 shrink-0 overflow-hidden rounded-full border border-paper/15">
-                  <img src={fotoJuanCarlos} alt="Juan Carlos Aristizabal Giraldo" className="h-full w-full object-cover" />
-                </span>
-                <div>
-                  <p className="text-sm text-paper/80">Juan Carlos Aristizabal Giraldo</p>
-                  <p className="text-xs text-paper-dim">Profesional de Prácticas</p>
-                  <a
-                    href="mailto:prof.empleaypractica@usbcali.edu.co"
-                    className="mt-1.5 block text-xs text-paper/80 transition-colors hover:text-gold"
-                  >
-                    prof.empleaypractica@usbcali.edu.co
-                  </a>
-                  <span className="block text-xs text-paper-dim">(602) 488 22 22 · Ext. 367</span>
-                  <span className="mt-1.5 inline-flex items-center gap-1.5">
-                    <img src={logoTalentoSanbue} alt="Talento SanBue" className="h-4 w-auto rounded-sm bg-paper p-0.5" />
-                    <span className="text-[10px] uppercase tracking-[0.1em] text-paper-dim">Talento SanBue</span>
-                  </span>
-                </div>
-              </div>
+              {pie.contactos.map((c) => {
+                const foto = rutaPublica(c.foto);
+                const logo = rutaPublica(c.logo);
+                return (
+                  <div key={c.nombre} className="flex items-start gap-3">
+                    {foto && (
+                      <span className="h-11 w-11 shrink-0 overflow-hidden rounded-full border border-paper/15">
+                        <img src={foto} alt={c.nombre} className="h-full w-full object-cover" />
+                      </span>
+                    )}
+                    <div>
+                      <p className="text-sm text-paper/80">{c.nombre}</p>
+                      <p className="text-xs text-paper-dim">{c.cargo}</p>
+                      {c.correo && (
+                        <a
+                          href={`mailto:${c.correo}`}
+                          className="mt-1.5 block text-xs text-paper/80 transition-colors hover:text-gold"
+                        >
+                          {c.correo}
+                        </a>
+                      )}
+                      {c.telefono && <span className="block text-xs text-paper-dim">{c.telefono}</span>}
+                      {c.whatsapp && (
+                        <a
+                          href={`https://wa.me/${c.whatsapp.replace(/\D/g, "")}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block text-xs text-paper/80 transition-colors hover:text-gold"
+                        >
+                          WhatsApp {c.whatsapp.replace(/^57/, "").replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3")}
+                        </a>
+                      )}
+                      {logo && (
+                        <span className="mt-1.5 inline-flex items-center gap-1.5">
+                          <img src={logo} alt={c.logoTexto ?? ""} className="h-4 w-auto rounded-sm bg-paper p-0.5" />
+                          {c.logoTexto && (
+                            <span className="text-[10px] uppercase tracking-[0.1em] text-paper-dim">{c.logoTexto}</span>
+                          )}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <p className="mt-5 text-xs uppercase tracking-[0.15em] text-paper-dim">
-              Lun – Vie, 8:00 a.m. – 12:00 m. y 2:00 p.m. – 6:00 p.m.
-            </p>
+            {pie.horario && <p className="mt-5 text-xs uppercase tracking-[0.15em] text-paper-dim">{pie.horario}</p>}
 
-            {direccion && <p className="mt-2 text-sm text-paper-dim">{direccion}</p>}
+            {pie.direccion && <p className="mt-2 text-sm text-paper-dim">{pie.direccion}</p>}
           </motion.div>
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-paper/10 pt-8 text-xs text-paper-dim sm:flex-row">
           <span>
-            © {new Date().getFullYear()} Universidad de San Buenaventura Cali. Todos los derechos reservados. ·
-            Vigilada Mineducación
+            © {new Date().getFullYear()} {pie.copyright}
           </span>
           <div className="flex items-center gap-4">
             <span>Alumni USB Cali · Red de Graduados</span>

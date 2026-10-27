@@ -1,0 +1,106 @@
+{
+  "secciones": [
+    { "id": "hero", "nombre": "Portada principal", "visible": true },
+    { "id": "explora", "nombre": "Explora la red Alumni", "visible": true },
+    { "id": "destacado-semana", "nombre": "Emprendedor de la semana", "visible": true },
+    { "id": "categorias", "nombre": "Categorías", "visible": true },
+    { "id": "buscador", "nombre": "Directorio / buscador", "visible": true },
+    { "id": "emprendimientos", "nombre": "Lo que construyen los egresados", "visible": true },
+    { "id": "destacados", "nombre": "Egresados que inspiran", "visible": true },
+    { "id": "videos", "nombre": "Historias en video", "visible": true },
+    { "id": "estadisticas", "nombre": "Cifras", "visible": true },
+    { "id": "conecta", "nombre": "Participa / inscríbete", "visible": true }
+  ],
+  "destacadoSemana": {
+    "modo": "auto",
+    "slug": null
+  },
+  "menu": [
+    { "label": "Inicio", "href": "#inicio" },
+    { "label": "ADN Emprendedor", "href": "#buscador" },
+    { "label": "Destacado", "href": "#destacado-semana" },
+    { "label": "Inspiran", "href": "#destacados" },
+    { "label": "Participa", "href": "#conecta" },
+    { "label": "Juego", "href": "#/juego" }
+  ],
+  "botonMenu": { "label": "Explorar", "href": "#explora" },
+  "pie": {
+    "titulo": "USB Conecta\ny emprende.",
+    "botonLabel": "Explorar directorio",
+    "botonHref": "#explora",
+    "columnas": [
+      {
+        "titulo": "ADN Emprendedor",
+        "enlaces": [
+          { "label": "Directorio", "href": "#buscador" },
+          { "label": "Categorías", "href": "#categorias" },
+          { "label": "Emprendimientos", "href": "#emprendimientos" },
+          { "label": "Destacado de la semana", "href": "#destacado-semana" }
+        ]
+      },
+      {
+        "titulo": "Descubrir",
+        "enlaces": [
+          { "label": "Egresados que Inspiran", "href": "#destacados" },
+          { "label": "Participa", "href": "#conecta" },
+          { "label": "Juego de egresados", "href": "#/juego" }
+        ]
+      }
+    ],
+    "acercaTitulo": "Alumni USB Cali",
+    "acercaTexto": "Red de Graduados de la Universidad de San Buenaventura Cali — un espacio para descubrir y conectar con los emprendimientos de nuestros egresados.",
+    "contactos": [
+      {
+        "nombre": "Karol Yurani Valderrama Herrera",
+        "cargo": "Profesional de Egresados y Empleabilidad",
+        "correo": "prof.egresados@usbcali.edu.co",
+        "telefono": "(602) 488 22 22 · Ext. 527",
+        "whatsapp": "573204713006",
+        "foto": "equipo/equipo-karol.jpg",
+        "logo": null,
+        "logoTexto": null
+      },
+      {
+        "nombre": "Juan Pablo López Pérez",
+        "cargo": "Bolsa de Empleo y Emprendimiento",
+        "correo": "asistente.proysocial@usbcali.edu.co",
+        "telefono": "(602) 488 22 22 · Ext. 316",
+        "whatsapp": null,
+        "foto": "equipo/equipo-juan-pablo.jpg",
+        "logo": null,
+        "logoTexto": null
+      },
+      {
+        "nombre": "Juan Carlos Aristizabal Giraldo",
+        "cargo": "Profesional de Prácticas",
+        "correo": "prof.empleaypractica@usbcali.edu.co",
+        "telefono": "(602) 488 22 22 · Ext. 367",
+        "whatsapp": null,
+        "foto": "equipo/equipo-juan-carlos.jpg",
+        "logo": "logos/logo-talento-sanbue.png",
+        "logoTexto": "Talento SanBue"
+      }
+    ],
+    "horario": "Lun – Vie, 8:00 a.m. – 12:00 m. y 2:00 p.m. – 6:00 p.m.",
+    "direccion": null,
+    "copyright": "Universidad de San Buenaventura Cali. Todos los derechos reservados. · Vigilada Mineducación"
+  },
+  "redes": [
+    { "nombre": "Instagram", "url": "https://www.instagram.com/alumniusbcali/" }
+  ],
+  "videos": {
+    "eyebrow": "Egresados que Inspiran",
+    "titulo": "Historias en video",
+    "subtitulo": "Conoce de primera mano a los egresados que están emprendiendo — los mismos videos que compartimos en nuestro Instagram.",
+    "videoPrincipal": "videos/historia-destacada.mp4",
+    "feriaTitulo": "Última feria de emprendimiento",
+    "feriaReel": "https://www.instagram.com/reel/DZVR56WR86H/",
+    "historiasTitulo": "Historias individuales",
+    "historias": [
+      { "titulo": "Francisco Ceballos", "subtitulo": "Workfix Consulting", "reel": "https://www.instagram.com/reel/DXraig7D91J/" },
+      { "titulo": "Historia de un egresado", "subtitulo": "Alumni USB Cali", "reel": "https://www.instagram.com/reel/DMdYPtQAdRh/" },
+      { "titulo": "Historia de un egresado", "subtitulo": "Alumni USB Cali", "reel": "https://www.instagram.com/reel/Cy4TOf2skPO/" },
+      { "titulo": "Historia de un egresado", "subtitulo": "Alumni USB Cali", "reel": "https://www.instagram.com/reel/CyBmo8OgGP4/" }
+    ]
+  }
+}
