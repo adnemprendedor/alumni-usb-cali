@@ -24,6 +24,8 @@ export interface Contacto {
   foto?: string | null;
   logo?: string | null;
   logoTexto?: string | null;
+  /** Encuadre de la foto grande (object-position), p. ej. "50% 25%" */
+  encuadre?: string | null;
 }
 
 export interface Historia {
@@ -35,6 +37,7 @@ export interface Historia {
 export interface SitioConfig {
   secciones: SeccionConfig[];
   destacadoSemana: { modo: "auto" | "manual"; slug: string | null };
+  contacto?: { eyebrow: string; titulo: string; subtitulo: string };
   menu: Enlace[];
   botonMenu: Enlace;
   pie: {

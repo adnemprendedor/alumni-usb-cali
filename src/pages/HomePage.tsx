@@ -9,6 +9,7 @@ import FeaturedSection from "../components/FeaturedSection";
 import VideoStoriesSection from "../components/VideoStoriesSection";
 import StatsSection from "../components/StatsSection";
 import ConectaSection from "../components/ConectaSection";
+import ContactoSection from "../components/ContactoSection";
 import Footer from "../components/Footer";
 import { sitio } from "../data/sitio";
 
@@ -24,6 +25,7 @@ const SECCIONES: Record<string, ComponentType> = {
   videos: VideoStoriesSection,
   estadisticas: StatsSection,
   conecta: ConectaSection,
+  contacto: ContactoSection,
 };
 
 export default function HomePage() {

@@ -16,6 +16,7 @@ const DESTINOS = [
   { label: "Egresados que inspiran", href: "#destacados" },
   { label: "Historias en video", href: "#videos" },
   { label: "Participa", href: "#conecta" },
+  { label: "Contacto / equipo", href: "#contacto" },
   { label: "Juego de cartas", href: "#/juego" },
 ];
 
@@ -136,8 +137,19 @@ export default function MenuPieEditor({ config }: { config: GithubConfig }) {
         </div>
       </Card>
 
+      <Card title="Sección “Contacto” — encabezado" description="La sección con las fotos grandes del equipo. Se ordena o se oculta en “Secciones de la página”.">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Field label="Texto pequeño superior" value={data.contacto?.eyebrow} onChange={(v) => setData({ ...data, contacto: { eyebrow: v, titulo: data.contacto?.titulo ?? "", subtitulo: data.contacto?.subtitulo ?? "" } })} />
+          <Field label="Título" value={data.contacto?.titulo} onChange={(v) => setData({ ...data, contacto: { eyebrow: data.contacto?.eyebrow ?? "", titulo: v, subtitulo: data.contacto?.subtitulo ?? "" } })} />
+          <div className="sm:col-span-2">
+            <Field label="Subtítulo" value={data.contacto?.subtitulo} multiline onChange={(v) => setData({ ...data, contacto: { eyebrow: data.contacto?.eyebrow ?? "", titulo: data.contacto?.titulo ?? "", subtitulo: v } })} />
+          </div>
+        </div>
+      </Card>
+
       <Card
-        title="Pie de página — personas de contacto"
+        title="Personas de contacto"
+        description="Salen con foto grande en la sección “Contacto” y con nombre y correo en el pie de página."
         right={
           <Button small onClick={() => setPie({ contactos: [...pie.contactos, { nombre: "", cargo: "", correo: "", telefono: "", whatsapp: "", foto: null, logo: null, logoTexto: null }] })}>
             + Agregar persona
@@ -164,6 +176,19 @@ export default function MenuPieEditor({ config }: { config: GithubConfig }) {
                   <Field label="Teléfono / extensión" value={c.telefono} onChange={(v) => setContacto(i, { telefono: v })} />
                   <Field label="WhatsApp (con 57 adelante)" value={c.whatsapp} placeholder="573001234567" onChange={(v) => setContacto(i, { whatsapp: v })} help="Déjalo vacío si no tiene." />
                   <Field label="Texto junto al logo (opcional)" value={c.logoTexto} onChange={(v) => setContacto(i, { logoTexto: v })} />
+                  <label className="block">
+                    <span className="mb-1 block text-[13px] font-medium text-[#1d2327]">Encuadre de la foto grande</span>
+                    <select
+                      value={c.encuadre ?? "50% 25%"}
+                      onChange={(e) => setContacto(i, { encuadre: e.target.value })}
+                      className="w-full rounded border border-[#8c8f94] bg-white px-3 py-2 text-sm text-[#1d2327]"
+                    >
+                      <option value="22% 30%">Persona a la izquierda de la foto</option>
+                      <option value="50% 25%">Persona en el centro</option>
+                      <option value="78% 30%">Persona a la derecha de la foto</option>
+                      {c.encuadre && !["22% 30%", "50% 25%", "78% 30%"].includes(c.encuadre) && <option value={c.encuadre}>Personalizado ({c.encuadre})</option>}
+                    </select>
+                  </label>
                 </div>
                 <div className="mt-3 flex flex-wrap items-end justify-between gap-3">
                   <MediaPicker

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import alumniLogo from "../assets/brand/alumni-logo.png";
-import { rutaPublica, sitio } from "../data/sitio";
+import { sitio } from "../data/sitio";
 
 const pie = sitio.pie;
 const COLUMNS = pie.columnas.map((c) => ({ title: c.titulo, links: c.enlaces }));
@@ -103,52 +103,23 @@ export default function Footer() {
           >
             <p className="mb-4 text-xs uppercase tracking-[0.25em] text-paper-dim">Contacto</p>
 
-            <div className="flex flex-col gap-5">
-              {pie.contactos.map((c) => {
-                const foto = rutaPublica(c.foto);
-                const logo = rutaPublica(c.logo);
-                return (
-                  <div key={c.nombre} className="flex items-start gap-3">
-                    {foto && (
-                      <span className="h-11 w-11 shrink-0 overflow-hidden rounded-full border border-paper/15">
-                        <img src={foto} alt={c.nombre} className="h-full w-full object-cover" />
-                      </span>
-                    )}
-                    <div>
-                      <p className="text-sm text-paper/80">{c.nombre}</p>
-                      <p className="text-xs text-paper-dim">{c.cargo}</p>
-                      {c.correo && (
-                        <a
-                          href={`mailto:${c.correo}`}
-                          className="mt-1.5 block text-xs text-paper/80 transition-colors hover:text-gold"
-                        >
-                          {c.correo}
-                        </a>
-                      )}
-                      {c.telefono && <span className="block text-xs text-paper-dim">{c.telefono}</span>}
-                      {c.whatsapp && (
-                        <a
-                          href={`https://wa.me/${c.whatsapp.replace(/\D/g, "")}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block text-xs text-paper/80 transition-colors hover:text-gold"
-                        >
-                          WhatsApp {c.whatsapp.replace(/^57/, "").replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3")}
-                        </a>
-                      )}
-                      {logo && (
-                        <span className="mt-1.5 inline-flex items-center gap-1.5">
-                          <img src={logo} alt={c.logoTexto ?? ""} className="h-4 w-auto rounded-sm bg-paper p-0.5" />
-                          {c.logoTexto && (
-                            <span className="text-[10px] uppercase tracking-[0.1em] text-paper-dim">{c.logoTexto}</span>
-                          )}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            <ul className="flex flex-col gap-3">
+              {pie.contactos.map((c) => (
+                <li key={c.nombre}>
+                  <p className="text-sm text-paper/80">{c.nombre}</p>
+                  {c.correo && (
+                    <a href={`mailto:${c.correo}`} className="block text-xs text-paper-dim transition-colors hover:text-gold">
+                      {c.correo}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+            {sitio.secciones.some((x) => x.id === "contacto" && x.visible) && (
+              <a href="#contacto" data-cursor-hover className="mt-4 inline-block text-xs uppercase tracking-[0.15em] text-gold hover:underline">
+                Ver equipo de contacto →
+              </a>
+            )}
 
             {pie.horario && <p className="mt-5 text-xs uppercase tracking-[0.15em] text-paper-dim">{pie.horario}</p>}
 
