@@ -1,6 +1,7 @@
 import { type CSSProperties, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
+import { ALUMNI_STROKE, alumniHue } from "../lib/color";
 
 interface PortraitProps {
   hue: number;
@@ -39,17 +40,19 @@ export default function Portrait({ hue, className = "", children, variant = "por
   // Clamp any incoming seed into a narrow warm amber→orange band and use
   // saturation/lightness (not hue) to create variety, so every generated
   // portrait reads as "USB orange" rather than a rainbow of categories.
-  const base = 18 + (((hue % 34) + 34) % 34); // 18–52: deep amber → USB orange
-  const sat = 55 + (((hue * 7) % 25) + 25) % 25; // 55–80%
+  // Gama Alumni USB Cali: azul marino → morado → rosa, con acento naranja.
+  const base = alumniHue(hue);
+  const sat = 38 + (((hue * 7) % 22) + 22) % 22; // 38–60%
   const lift = ((hue * 3) % 10) - 5; // -5..+5 lightness jitter for texture
 
   const motivo: Motivo = (sector && MOTIVO_POR_SECTOR[sector]) || "blob";
-  const stroke = `hsla(${base + 14}, 70%, 70%, 0.35)`;
+  const stroke = ALUMNI_STROKE;
 
   const style: CSSProperties = {
     backgroundImage: `
       radial-gradient(120% 90% at 20% 0%, hsla(${base}, ${sat}%, ${55 + lift}%, 0.5) 0%, transparent 55%),
-      radial-gradient(100% 80% at 85% 100%, hsla(${base + 10}, ${sat - 10}%, 30%, 0.6) 0%, transparent 60%),
+      radial-gradient(90% 70% at 90% 100%, hsla(24, 90%, 50%, 0.18) 0%, transparent 60%),
+      radial-gradient(100% 80% at 85% 100%, hsla(${base + 14}, ${sat}%, 30%, 0.55) 0%, transparent 60%),
       linear-gradient(160deg, hsla(${base}, 30%, 12%, 1) 0%, hsla(${base}, 25%, 7%, 1) 100%)
     `,
   };
@@ -59,7 +62,7 @@ export default function Portrait({ hue, className = "", children, variant = "por
       <div
         className="absolute inset-0 opacity-40"
         style={{
-          backgroundImage: `radial-gradient(circle at 50% ${variant === "portrait" ? "30%" : "50%"}, hsla(${base + 6}, 75%, 65%, 0.22), transparent 60%)`,
+          backgroundImage: `radial-gradient(circle at 50% ${variant === "portrait" ? "30%" : "50%"}, hsla(${base + 6}, 60%, 65%, 0.22), transparent 60%)`,
         }}
       />
 
@@ -76,7 +79,7 @@ export default function Portrait({ hue, className = "", children, variant = "por
               ? "M0 500 C 60 300, 120 250, 200 220 C 280 250, 340 300, 400 500 Z"
               : "M0 500 C 100 350, 300 350, 400 500 Z"
           }
-          fill={`hsla(${base + 12}, 55%, 78%, 0.45)`}
+          fill={`hsla(${base + 12}, 45%, 78%, 0.4)`}
         />
       </svg>
       <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />

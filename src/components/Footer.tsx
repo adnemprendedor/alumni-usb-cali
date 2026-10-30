@@ -10,7 +10,12 @@ export default function Footer() {
     <footer className="relative overflow-hidden border-t border-paper/10 bg-ink px-4 pb-10 pt-24 sm:px-8 lg:pt-32">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px"
-        style={{ backgroundImage: "linear-gradient(90deg, transparent, rgba(239,125,0,0.5), transparent)" }}
+        style={{ backgroundImage: "linear-gradient(90deg, transparent, #313467, #ec455f, #f57206, transparent)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full opacity-40 blur-3xl"
+        style={{ backgroundImage: "radial-gradient(circle, rgba(49,52,103,0.9), rgba(236,69,95,0.35) 50%, transparent 70%)" }}
       />
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex flex-wrap items-center gap-4">
@@ -24,12 +29,12 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-balance text-4xl font-light leading-tight text-paper sm:text-5xl lg:text-6xl"
+          className="font-display relative text-balance text-4xl font-light leading-tight text-paper sm:text-5xl lg:text-6xl"
         >
           {pie.titulo.split("\n").map((linea, i) => (
             <span key={i}>
               {i > 0 && <br />}
-              {linea}
+              <span className={i > 0 ? "alumni-text" : undefined}>{linea}</span>
             </span>
           ))}
         </motion.h2>

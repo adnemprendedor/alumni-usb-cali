@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Portrait from "./Portrait";
-import { hueSeed } from "../lib/color";
+import { alumniHue, hueSeed } from "../lib/color";
 import type { JuegoEgresado } from "../data/juego";
 
 function Dato({ label, value }: { label: string; value?: string | null }) {
@@ -19,7 +19,7 @@ const url = (p?: string | null) => (p ? `${import.meta.env.BASE_URL}${p}` : null
 export default function FlipCard({ persona, resetSignal = 0 }: { persona: JuegoEgresado; resetSignal?: number }) {
   const [flipped, setFlipped] = useState(false);
   const hue = hueSeed(persona.id);
-  const base = 18 + (((hue % 34) + 34) % 34);
+  const base = alumniHue(hue);
   const foto = url(persona.foto);
   const logo = url(persona.logo);
   const esEmprendedor = persona.tipo === "Emprendedor";
@@ -88,7 +88,7 @@ export default function FlipCard({ persona, resetSignal = 0 }: { persona: JuegoE
               persona.empresa && (
                 <span
                   className="mb-3 flex h-14 w-14 items-center justify-center rounded-xl text-2xl font-medium text-paper"
-                  style={{ backgroundColor: `hsl(${base}, 55%, 22%)` }}
+                  style={{ backgroundColor: `hsl(${base}, 42%, 30%)` }}
                   aria-hidden
                 >
                   {persona.empresa.charAt(0)}

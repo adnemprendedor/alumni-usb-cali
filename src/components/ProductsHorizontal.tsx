@@ -123,7 +123,7 @@ export default function ProductsHorizontal() {
     <section id="emprendimientos" ref={sectionRef} className="relative overflow-hidden bg-ink">
       <div className="flex h-[100svh] flex-col justify-center">
         <div className="mx-auto mb-8 w-full max-w-6xl px-4 sm:px-8">
-          <p className="mb-3 text-xs uppercase tracking-[0.3em] text-gold">{eyebrow}</p>
+          <p className="eyebrow mb-3 text-xs uppercase tracking-[0.3em] text-gold">{eyebrow}</p>
           <h2 className="font-display text-balance text-4xl font-light text-paper sm:text-5xl lg:text-6xl">
             {SECTION_TITLE}
           </h2>

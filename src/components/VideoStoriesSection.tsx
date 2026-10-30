@@ -69,7 +69,7 @@ export default function VideoStoriesSection() {
           transition={{ duration: 0.8 }}
           className="mb-14"
         >
-          <p className="mb-3 text-xs uppercase tracking-[0.3em] text-gold">{v.eyebrow}</p>
+          <p className="eyebrow mb-3 text-xs uppercase tracking-[0.3em] text-gold">{v.eyebrow}</p>
           <h2 className="font-display text-balance text-4xl font-light text-paper sm:text-5xl lg:text-6xl">
             {v.titulo}
           </h2>

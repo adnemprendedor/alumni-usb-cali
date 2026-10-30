@@ -1,0 +1,131 @@
+/* Logo 3D de ADN Emprendedor (forma Alumni USB Cali) — extrusión por capas en
+   CSS 3D. Misma técnica que public/logo-3d/index.html, con prefijo l3d- para
+   no chocar con otras clases del sitio. Medidas en cqw (ancho del logo). */
+.l3d {
+  --l3d-step: 2.2px;
+  --l3d-navy: #313467;
+  --l3d-plum: #6b3a72;
+  --l3d-pink: #ec455f;
+  --l3d-orange: #f57206;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 100 / 70;
+  container-type: inline-size;
+  perspective: 1100px;
+  perspective-origin: 50% 42%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: pan-y;
+  outline: none;
+}
+.l3d:focus-visible { box-shadow: 0 0 0 3px rgba(239, 125, 0, 0.7); border-radius: 24px; }
+
+.l3d-scene, .l3d-sway, .l3d-stage, .l3d-grp, .l3d-layer, .l3d-word { transform-style: preserve-3d; }
+.l3d-scene {
+  position: absolute; inset: 0;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.6s cubic-bezier(0.16, 0.8, 0.3, 1);
+}
+.l3d-sway { position: absolute; inset: 0; animation: l3d-sway 9s ease-in-out infinite; }
+@keyframes l3d-sway {
+  0%, 100% { transform: rotateY(-14deg) rotateX(6deg); }
+  50% { transform: rotateY(14deg) rotateX(-4deg); }
+}
+.l3d-stage { position: absolute; inset: 0; }
+
+/* manchas que respiran */
+.l3d-blobs { position: absolute; inset: 4% 2%; transform: translateZ(-70px); transform-style: preserve-3d; }
+.l3d-blobs i {
+  position: absolute; display: block; filter: blur(10px); opacity: 0.55;
+  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+  animation: l3d-morph 12s ease-in-out infinite;
+}
+.l3d-blobs .b1 { left: 0; top: 0; width: 50%; height: 62%; background: radial-gradient(circle at 40% 35%, #4a4f9a, var(--l3d-navy) 80%); }
+.l3d-blobs .b2 { right: 0; top: 6%; width: 48%; height: 66%; background: radial-gradient(circle at 60% 40%, #ff6b80, var(--l3d-pink) 80%); animation-duration: 15s; animation-direction: reverse; }
+.l3d-blobs .b3 { left: 30%; top: 16%; width: 44%; height: 42%; background: radial-gradient(circle at 50% 50%, #ff9a3c, var(--l3d-orange) 85%); animation-duration: 13s; opacity: 0.32; }
+@keyframes l3d-morph {
+  0%, 100% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+  33% { border-radius: 63% 37% 38% 62% / 55% 61% 39% 45%; }
+  66% { border-radius: 36% 64% 52% 48% / 62% 38% 62% 38%; }
+}
+
+/* sombra proyectada */
+.l3d-shadow {
+  position: absolute; left: 50%; top: 76%; width: 78%; height: 16%; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3) 60%, transparent);
+  filter: blur(14px);
+  transform: translateX(calc(-50% + var(--shx, 0px))) translateY(var(--shy, 0px)) translateZ(-120px) rotateX(80deg);
+  transition: transform 0.6s cubic-bezier(0.16, 0.8, 0.3, 1);
+}
+
+/* capas */
+.l3d-grp { position: absolute; inset: 0; transform: translateZ(var(--z, 0px)); }
+.l3d-layer {
+  position: absolute; inset: 0; pointer-events: none;
+  transform: translateZ(calc(var(--i) * var(--l3d-step) * -1));
+  transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.25, 1.15);
+  transition-delay: calc(var(--d, 0ms) + var(--i) * 40ms);
+}
+.l3d-folded .l3d-layer { transform: translateZ(0); }
+
+.l3d-card {
+  position: absolute; left: 6cqw; right: 6cqw; top: 12cqw; height: 33cqw; border-radius: 2.2cqw;
+  background: linear-gradient(90deg, var(--l3d-navy) 0%, #3e3768 22%, var(--l3d-plum) 55%, #b13f66 80%, var(--l3d-pink) 100%);
+}
+.l3d-slab .l3d-layer:not(.l3d-top) .l3d-card { filter: brightness(calc(0.72 - var(--t) * 0.4)); }
+.l3d-sheen {
+  position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(60% 90% at var(--sx, 30%) var(--sy, 20%), rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 60%);
+  mix-blend-mode: screen;
+}
+.l3d-ribbon {
+  position: absolute; left: 11.2cqw; width: 5.6cqw; top: 12cqw; height: 45cqw;
+  background: linear-gradient(90deg, #ff8a24, var(--l3d-orange) 45%, #e66000);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 4.2cqw), 0 100%);
+}
+.l3d-rib .l3d-layer:not(.l3d-top) .l3d-ribbon { background: rgb(var(--rc)); }
+.l3d-pill {
+  position: absolute; left: 28cqw; right: 9cqw; top: 40.5cqw; height: 8.4cqw; border-radius: 1.6cqw;
+  background: linear-gradient(180deg, #ff8a24, var(--l3d-orange) 55%, #e66400);
+}
+.l3d-pil .l3d-layer:not(.l3d-top) .l3d-pill { background: rgb(var(--rc)); }
+.l3d-pill-txt {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 4cqw; letter-spacing: 0.14em; text-indent: 0.14em; color: #fff; white-space: nowrap;
+  text-shadow: 0 0.15cqw 0 rgba(120, 45, 0, 0.35);
+}
+.l3d-txt {
+  position: absolute; left: 21cqw; right: 8cqw; top: 13cqw; height: 27cqw;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: "Montserrat", system-ui, sans-serif; line-height: 0.86;
+  user-select: none; -webkit-user-select: none;
+}
+.l3d-word { display: block; position: relative; white-space: nowrap; }
+.l3d-w1 { font-weight: 800; font-size: 19.5cqw; letter-spacing: -0.04em; }
+.l3d-w2 { font-weight: 600; font-size: 7.1cqw; letter-spacing: -0.01em; margin-top: 0.2em; align-self: flex-end; margin-right: 3cqw; }
+.l3d-c { display: inline-block; animation: l3d-wave 3.2s ease-in-out infinite; animation-delay: calc(var(--k) * 90ms); }
+@keyframes l3d-wave { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-9px); } }
+
+.l3d-letters .l3d-top .l3d-c {
+  color: transparent;
+  background-image:
+    radial-gradient(circle at var(--sx, 30%) var(--sy, 25%), #fff 0%, rgba(255, 255, 255, 0.95) 8%, rgba(255, 255, 255, 0) 32%),
+    linear-gradient(175deg, #ffffff 0%, #fbf4fa 50%, #f1d9e6 100%);
+  background-size: var(--lw, 100px) var(--lh, 100px);
+  background-position: calc(var(--ox, 0px) * -1) calc(var(--oy, 0px) * -1);
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.l3d-boom .l3d-c { animation: l3d-jump 0.7s cubic-bezier(0.2, 0.9, 0.25, 1.3); animation-delay: calc(var(--k) * 40ms); }
+@keyframes l3d-jump { 0% { transform: none; } 40% { transform: translateY(-26px) rotate(-8deg); } 100% { transform: none; } }
+
+.l3d-paused .l3d-sway, .l3d-paused .l3d-blobs i, .l3d-paused .l3d-c { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .l3d-sway, .l3d-blobs i, .l3d-c, .l3d-boom .l3d-c { animation: none !important; }
+  .l3d-scene, .l3d-layer, .l3d-shadow { transition: none !important; }
+  .l3d-folded .l3d-layer { transform: translateZ(calc(var(--i) * var(--l3d-step) * -1)); }
+  .l3d-sway { transform: rotateY(-12deg) rotateX(5deg); }
+}

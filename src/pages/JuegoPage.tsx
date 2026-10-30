@@ -137,7 +137,7 @@ export default function JuegoPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="mb-3 text-xs uppercase tracking-[0.3em] text-gold"
+            className="eyebrow mb-3 text-xs uppercase tracking-[0.3em] text-gold"
           >
             Juego · Conoce a nuestros egresados
           </motion.p>

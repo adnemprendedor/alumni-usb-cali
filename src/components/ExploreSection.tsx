@@ -7,10 +7,10 @@ import content from "../data/content.json";
 const { titulo: SECTION_TITLE, subtitulo: SECTION_SUBTITLE } = content.secciones.explora;
 
 const ITEMS: { title: string; desc: string; href: string; hue: number; span: string; motivo: Motivo }[] = [
-  { title: "ADN Emprendedor", desc: "El directorio completo, con buscador y filtros.", href: "#buscador", hue: 22, span: "lg:col-span-7", motivo: "grid" },
-  { title: "Emprendimientos", desc: "Los proyectos que construyen.", href: "#emprendimientos", hue: 30, span: "lg:col-span-5", motivo: "dots" },
-  { title: "Categorías", desc: "Gastronomía, moda, tecnología y más.", href: "#categorias", hue: 26, span: "lg:col-span-6", motivo: "chevron" },
-  { title: "Participa", desc: "Registra tu emprendimiento y conecta con Alumni.", href: "#conecta", hue: 20, span: "lg:col-span-6", motivo: "blob" },
+  { title: "ADN Emprendedor", desc: "El directorio completo, con buscador y filtros.", href: "#buscador", hue: 238, span: "lg:col-span-7", motivo: "grid" },
+  { title: "Emprendimientos", desc: "Los proyectos que construyen.", href: "#emprendimientos", hue: 300, span: "lg:col-span-5", motivo: "dots" },
+  { title: "Categorías", desc: "Gastronomía, moda, tecnología y más.", href: "#categorias", hue: 262, span: "lg:col-span-6", motivo: "chevron" },
+  { title: "Participa", desc: "Registra tu emprendimiento y conecta con Alumni.", href: "#conecta", hue: 338, span: "lg:col-span-6", motivo: "blob" },
 ];
 
 export default function ExploreSection() {
@@ -56,13 +56,13 @@ export default function ExploreSection() {
                 animate={{ scale: hovered === i ? 1.08 : 1 }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 style={{
-                  backgroundImage: `radial-gradient(120% 100% at 30% 20%, hsla(${item.hue}, 60%, 30%, 0.9), hsla(${item.hue}, 40%, 8%, 1) 65%)`,
+                  backgroundImage: `radial-gradient(120% 100% at 30% 20%, hsla(${item.hue}, 45%, 32%, 0.95), hsla(${item.hue}, 35%, 9%, 1) 68%), radial-gradient(70% 60% at 100% 100%, hsla(24, 90%, 50%, 0.22), transparent 70%)`,
                 }}
               />
               <div className="grain absolute inset-0" />
               <Motif
                 motivo={item.motivo}
-                stroke={`hsla(${item.hue + 14}, 70%, 70%, 0.35)`}
+                stroke="hsla(28, 95%, 62%, 0.32)"
                 reducedMotion={reducedMotion}
                 seed={item.hue + i}
               />

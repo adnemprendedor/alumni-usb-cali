@@ -26,7 +26,7 @@ export default function FeaturedSection() {
           transition={{ duration: 0.8 }}
           className="mb-16"
         >
-          <p className="mb-3 text-xs uppercase tracking-[0.3em] text-gold">{eyebrow}</p>
+          <p className="eyebrow mb-3 text-xs uppercase tracking-[0.3em] text-gold">{eyebrow}</p>
           <h2 className="font-display text-balance text-4xl font-light text-paper sm:text-5xl lg:text-6xl">
             {SECTION_TITLE}
           </h2>

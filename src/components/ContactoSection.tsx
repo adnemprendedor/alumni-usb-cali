@@ -22,7 +22,7 @@ export default function ContactoSection() {
           transition={{ duration: 0.8 }}
           className="mb-14"
         >
-          <p className="mb-3 text-xs uppercase tracking-[0.3em] text-gold">{enc.eyebrow}</p>
+          <p className="eyebrow mb-3 text-xs uppercase tracking-[0.3em] text-gold">{enc.eyebrow}</p>
           <h2 className="font-display text-balance text-4xl font-light text-paper sm:text-5xl lg:text-6xl">{enc.titulo}</h2>
           {enc.subtitulo && <p className="mt-4 max-w-xl text-sm text-paper-dim">{enc.subtitulo}</p>}
         </motion.div>

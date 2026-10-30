@@ -87,7 +87,7 @@ export default function ProfilePage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-4 text-xs uppercase tracking-[0.3em] text-gold"
+              className="eyebrow mb-4 text-xs uppercase tracking-[0.3em] text-gold"
             >
               {persona.enfoque ?? "Egresado emprendedor"}
             </motion.p>
@@ -121,7 +121,7 @@ export default function ProfilePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.7 }}
-            className="mb-3 text-xs uppercase tracking-[0.3em] text-gold"
+            className="eyebrow mb-3 text-xs uppercase tracking-[0.3em] text-gold"
           >
             Ficha del emprendimiento
           </motion.p>
@@ -261,7 +261,7 @@ export default function ProfilePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.7 }}
-            className="mb-4 text-xs uppercase tracking-[0.3em] text-gold"
+            className="eyebrow mb-4 text-xs uppercase tracking-[0.3em] text-gold"
           >
             Participa
           </motion.p>

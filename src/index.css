@@ -139,3 +139,63 @@ body {
 .admin-claro ::selection {
   color: #ffffff;
 }
+
+/* ==========================================================================
+   Rediseño 2026-10 · identidad Alumni USB Cali sobre el fondo oscuro del sitio
+   ========================================================================== */
+@theme {
+  --color-navy: #313467;
+  --color-plum: #6b3a72;
+  --color-pink: #ec455f;
+  --color-alumni: #f57206;
+}
+
+/* título pequeño de cada sección con el marcapáginas naranja del logo Alumni */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8em;
+}
+.eyebrow::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.72em;
+  height: 1.25em;
+  background: linear-gradient(90deg, #ff8a24, var(--color-alumni) 50%, #e66000);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+}
+
+/* fondos alternados: brillo azul marino / rosa para separar las secciones */
+#explora,
+#categorias,
+#emprendimientos,
+#videos,
+#contacto,
+#destacados-alt {
+  background:
+    radial-gradient(55% 45% at 0% 0%, rgba(49, 52, 103, 0.42), transparent 70%),
+    radial-gradient(45% 40% at 100% 100%, rgba(236, 69, 95, 0.13), transparent 70%),
+    #1b1b22;
+}
+#explora::before,
+#categorias::before,
+#videos::before,
+#contacto::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(107, 58, 114, 0.7), rgba(236, 69, 95, 0.6), rgba(245, 114, 6, 0.55), transparent);
+  pointer-events: none;
+}
+
+/* texto con el degradado Alumni (legible sobre fondo oscuro) */
+.alumni-text {
+  background: linear-gradient(90deg, #a3a7f0 0%, #f0738a 55%, #ff9a3c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.alumni-bg {
+  background: linear-gradient(90deg, var(--color-navy) 0%, var(--color-plum) 55%, var(--color-pink) 100%);
+}

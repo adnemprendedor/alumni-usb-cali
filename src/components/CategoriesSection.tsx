@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { motion } from "framer-motion";
 import { sectores } from "../data/derived";
-import { hueSeed } from "../lib/color";
+import { alumniHue, hueSeed } from "../lib/color";
 import { Motif, MOTIVO_POR_SECTOR } from "./Portrait";
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 import content from "../data/content.json";
@@ -86,7 +86,7 @@ export default function CategoriesSection() {
           className="mb-14 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end"
         >
           <div>
-            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-gold">{eyebrow}</p>
+            <p className="eyebrow mb-3 text-xs uppercase tracking-[0.3em] text-gold">{eyebrow}</p>
             <h2 className="font-display text-balance text-4xl font-light text-paper sm:text-5xl lg:text-6xl">
               {SECTION_TITLE}
             </h2>
@@ -98,9 +98,9 @@ export default function CategoriesSection() {
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {sectores.map((cat, i) => {
-            const hue = 18 + (hueSeed(cat.nombre) % 40);
+            const hue = alumniHue(hueSeed(cat.nombre));
             const motivo = MOTIVO_POR_SECTOR[cat.nombre] ?? "blob";
-            const stroke = `hsla(${hue + 14}, 70%, 70%, 0.3)`;
+            const stroke = "hsla(28, 95%, 62%, 0.28)";
             return (
               <motion.div
                 key={cat.nombre}
@@ -118,7 +118,7 @@ export default function CategoriesSection() {
                   <div
                     className="absolute inset-0 -z-10 opacity-80 transition-opacity duration-500 group-hover:opacity-100"
                     style={{
-                      backgroundImage: `radial-gradient(120% 120% at 20% 0%, hsla(${hue}, 55%, 24%, 1), hsla(${hue}, 40%, 10%, 1) 70%)`,
+                      backgroundImage: `radial-gradient(120% 120% at 20% 0%, hsla(${hue}, 42%, 26%, 1), hsla(${hue}, 35%, 10%, 1) 70%)`,
                     }}
                   />
                   <div className="grain absolute inset-0 -z-10" />

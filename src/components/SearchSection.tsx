@@ -5,7 +5,7 @@ import { egresados } from "../data/egresados";
 import { enfoques, sectores, sectorPorSlug } from "../data/derived";
 import { fotos } from "../data/fotos";
 import { logos } from "../data/logos";
-import { hueSeed } from "../lib/color";
+import { alumniHue, hueSeed } from "../lib/color";
 import { whatsappLink } from "../lib/whatsapp";
 import content from "../data/content.json";
 
@@ -82,7 +82,7 @@ export default function SearchSection() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <p className="mb-3 text-xs uppercase tracking-[0.3em] text-gold">{eyebrow}</p>
+          <p className="eyebrow mb-3 text-xs uppercase tracking-[0.3em] text-gold">{eyebrow}</p>
           <h2 className="font-display text-balance text-4xl font-light text-paper sm:text-5xl lg:text-6xl">
             {SECTION_TITLE}
           </h2>
@@ -201,7 +201,7 @@ export default function SearchSection() {
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {visibles.map((e, i) => {
               const hue = hueSeed(e.id);
-              const base = 18 + (((hue % 34) + 34) % 34);
+              const base = alumniHue(hue);
               const sector = sectorPorSlug[e.slug];
               const wa = whatsappLink(e.telefonoNegocio);
               return (
@@ -228,7 +228,7 @@ export default function SearchSection() {
                     ) : (
                       <span
                         className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl text-lg font-medium text-paper"
-                        style={{ backgroundColor: `hsl(${base}, 55%, 22%)` }}
+                        style={{ backgroundColor: `hsl(${base}, 42%, 30%)` }}
                       >
                         {e.nombreEmprendimiento.charAt(0)}
                       </span>
