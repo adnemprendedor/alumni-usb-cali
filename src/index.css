@@ -199,3 +199,57 @@ body {
 .alumni-bg {
   background: linear-gradient(90deg, var(--color-navy) 0%, var(--color-plum) 55%, var(--color-pink) 100%);
 }
+
+/* ── Contacto: foto con sello de logo interactivo ─────────────────────── */
+.ct-escena { perspective: 900px; }
+.ct-foto {
+  transform: rotateX(var(--ct-rx, 0deg)) rotateY(var(--ct-ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ct-img { transform: scale(1.04) translate(calc(var(--ct-px, 0px) * -0.35), calc(var(--ct-py, 0px) * -0.35)); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.group:hover .ct-img { transform: scale(1.09) translate(calc(var(--ct-px, 0px) * -0.35), calc(var(--ct-py, 0px) * -0.35)); }
+.ct-luz {
+  background: radial-gradient(45% 35% at var(--ct-lx, 50%) var(--ct-ly, 30%), rgba(255, 255, 255, 0.16), transparent 70%);
+  opacity: 0; transition: opacity 0.4s;
+}
+.group:hover .ct-luz { opacity: 1; }
+.ct-texto { transform: translate(calc(var(--ct-px, 0px) * 0.25), calc(var(--ct-py, 0px) * 0.25)); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* el sello flota y se despega de la foto (paralaje) */
+.ct-sello {
+  perspective: 600px; cursor: pointer; border-radius: 22%;
+  transform: translate(var(--ct-px, 0px), var(--ct-py, 0px));
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+.ct-sello:focus-visible { outline: 3px solid rgba(239, 125, 0, 0.8); outline-offset: 4px; }
+.ct-sello-giro {
+  position: absolute; inset: 0; display: block; transform-style: preserve-3d;
+  animation: ct-flotar 5s ease-in-out infinite; animation-delay: var(--ct-delay, 0s);
+  transition: transform 0.7s cubic-bezier(0.34, 1.4, 0.5, 1);
+}
+.group:hover .ct-sello-giro { animation-play-state: paused; transform: rotate(0deg) scale(1.1); }
+.ct-sello-giro.is-volteado, .group:hover .ct-sello-giro.is-volteado { animation: none; transform: rotateY(180deg) scale(1.1); }
+@keyframes ct-flotar {
+  0%, 100% { transform: rotate(7deg) translateY(0); }
+  50% { transform: rotate(3deg) translateY(-7px); }
+}
+.ct-cara {
+  position: absolute; inset: 0; border-radius: 22%; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.65), 0 0 0 2px rgba(255, 255, 255, 0.7);
+}
+.ct-dorso { transform: rotateY(180deg); background: linear-gradient(135deg, var(--color-navy), var(--color-plum) 50%, var(--color-pink)); }
+.ct-brillo {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.75) 48%, transparent 62%);
+  transform: translateX(-120%);
+}
+.group:hover .ct-brillo { transform: translateX(120%); transition: transform 0.9s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ct-foto, .ct-img, .ct-texto, .ct-sello { transform: none !important; transition: none !important; }
+  .ct-sello-giro { animation: none; transform: rotate(7deg); }
+  .ct-sello-giro.is-volteado { transform: rotateY(180deg); }
+  .ct-brillo { display: none; }
+}

@@ -149,8 +149,8 @@
         "telefono": "(602) 488 22 22 · Ext. 527",
         "whatsapp": "573204713006",
         "foto": "equipo/equipo-karol.jpg",
-        "logo": null,
-        "logoTexto": null,
+        "logo": "logos/logo-alumni-usb.png",
+        "logoTexto": "Alumni USB Cali",
         "encuadre": "50% 25%"
       },
       {
@@ -160,8 +160,8 @@
         "telefono": "(602) 488 22 22 · Ext. 316",
         "whatsapp": null,
         "foto": "equipo/equipo-juan-pablo.jpg",
-        "logo": null,
-        "logoTexto": null,
+        "logo": "logos/logo-bolsa-empleo-usb.png",
+        "logoTexto": "Bolsa de Empleo USB",
         "encuadre": "50% 25%"
       },
       {
