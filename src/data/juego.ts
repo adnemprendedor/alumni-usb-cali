@@ -20,10 +20,12 @@ export interface JuegoEgresado {
   foto?: string | null;
   logo?: string | null;
   pais: string;
-  programa: string;
+  programa: string | null;
   /** Empresa donde trabaja o nombre del emprendimiento */
   empresa?: string | null;
   ocupacion?: string | null;
+  /** Recorte solo de la cara para el juego de percepción (sin logos en la ropa). Opcional. */
+  fotoJuego?: string | null;
 }
 
 export const juego: JuegoEgresado[] = data as JuegoEgresado[];

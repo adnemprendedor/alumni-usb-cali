@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 import { stats } from "../data/derived";
 import Logo3D from "./Logo3D";
+import { exterior, paisesExterior } from "../data/exterior";
+
+const MapaMundi = lazy(() => import("./MapaMundi"));
 import content from "../data/content.json";
 
 const { eyebrow, titulo: TITLE, subtitulo, ctaLabel, scrollLabel } = content.hero;
@@ -34,6 +37,14 @@ export default function Hero() {
     if (!rect) return;
     mx.set(e.clientX - rect.left);
     my.set(e.clientY - rect.top);
+  };
+
+  // mapamundi de egresados en el exterior (se carga al abrirlo)
+  const [mapaAbierto, setMapaAbierto] = useState(false);
+  const [mapaMontado, setMapaMontado] = useState(false);
+  const abrirMapa = () => {
+    setMapaMontado(true);
+    setMapaAbierto(true);
   };
 
   // titular "escrito a máquina"
@@ -173,7 +184,7 @@ export default function Hero() {
               data-cursor-hover
               className="inline-flex items-center gap-2 rounded-full border border-paper/20 bg-paper/5 whitespace-nowrap px-6 py-3.5 text-xs uppercase tracking-[0.12em] text-paper backdrop-blur-sm sm:text-sm lg:px-5 lg:tracking-[0.08em] transition-colors hover:border-gold/60 hover:text-gold-soft"
             >
-              <span aria-hidden>♠</span> Jugar con las cartas
+              <span aria-hidden>👁</span> Juego de percepción
             </a>
           </motion.div>
 
@@ -189,6 +200,39 @@ export default function Hero() {
               </div>
             ))}
           </motion.dl>
+
+          {/* egresados en el exterior → abre el mapamundi */}
+          <motion.button
+            {...aparece(0.36)}
+            type="button"
+            onClick={abrirMapa}
+            data-cursor-hover
+            className="group mx-auto mt-5 flex w-full max-w-lg items-center gap-4 rounded-2xl border border-paper/10 bg-paper/[0.04] p-3 pr-5 text-left backdrop-blur-sm transition-colors hover:border-alumni/60 hover:bg-paper/[0.07] lg:mx-0"
+          >
+            <span
+              aria-hidden
+              className="mm-globo relative flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-full shadow-[inset_-6px_-6px_14px_rgba(0,0,0,0.45),0_0_24px_rgba(236,69,95,0.35)]"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 45%), repeating-linear-gradient(90deg, #313467 0 9px, #6b3a72 9px 14px, #ec455f 14px 17px, #313467 17px 26px)",
+                backgroundSize: "100% 100%, 200% 100%",
+              }}
+            >
+              <span className="absolute h-2.5 w-2.5 animate-ping rounded-full bg-alumni" />
+              <span className="relative h-2 w-2 rounded-full bg-alumni ring-2 ring-white" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-[11px] uppercase tracking-[0.18em] text-gold">Egresados por el mundo</span>
+              <span className="mt-0.5 block text-sm leading-snug text-paper">
+                <strong className="alumni-text font-display text-lg font-semibold">{exterior.egresados.length}</strong> egresados
+                en <strong className="font-semibold">{paisesExterior.length} países</strong> ·{" "}
+                <span className="text-paper-dim">{paisesExterior.map((p) => p.pais).join(", ")}</span>
+              </span>
+            </span>
+            <span className="flex-shrink-0 text-xs uppercase tracking-[0.14em] text-alumni transition-transform group-hover:translate-x-1">
+              <span className="hidden sm:inline">Ver mapa </span>→
+            </span>
+          </motion.button>
         </div>
       </motion.div>
 
@@ -210,6 +254,11 @@ export default function Hero() {
           )}
         </span>
       </motion.a>
+      {mapaMontado && (
+        <Suspense fallback={null}>
+          <MapaMundi abierto={mapaAbierto} onCerrar={() => setMapaAbierto(false)} />
+        </Suspense>
+      )}
     </section>
   );
 }

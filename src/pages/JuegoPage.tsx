@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { juego, type JuegoEgresado } from "../data/juego";
 import FlipCard from "../components/FlipCard";
 import Footer from "../components/Footer";
+import JuegoPercepcion from "../components/JuegoPercepcion";
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 
 function mezclar(lista: JuegoEgresado[]): JuegoEgresado[] {
@@ -35,6 +36,11 @@ export default function JuegoPage() {
   const gridRef = useRef<HTMLDivElement>(null);
   const mazoRef = useRef<HTMLDivElement>(null);
   const timers = useRef<number[]>([]);
+
+  // al entrar al juego, empezar arriba (la intro en slides)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const medir = useCallback(() => {
     const grid = gridRef.current;
@@ -123,7 +129,7 @@ export default function JuegoPage() {
 
   return (
     <div className="bg-ink pt-32 sm:pt-40">
-      <section className="relative px-4 pb-16 sm:px-8">
+      <section className="relative px-4 pb-20 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <Link
             to="/"
@@ -133,36 +139,20 @@ export default function JuegoPage() {
             ← Volver al directorio
           </Link>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="eyebrow mb-3 text-xs uppercase tracking-[0.3em] text-gold"
-          >
-            Juego · Conoce a nuestros egresados
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.05 }}
-            className="font-display text-balance text-4xl font-light text-paper sm:text-5xl lg:text-6xl"
-          >
-            Egresados que dejan huella
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="mt-5 max-w-2xl text-balance text-paper-dim"
-          >
-            Toca cualquier carta para girarla y descubrir qué estudió cada egresado en la USB, si es empleado o
-            emprendedor, en qué empresa está y a qué se dedica. Baraja de nuevo y vuelve a jugar.
-          </motion.p>
+          <JuegoPercepcion
+            onVerCartas={() => document.getElementById("cartas")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          />
         </div>
       </section>
 
-      <section className="relative px-4 pb-28 sm:px-8 lg:pb-40">
+      <section id="cartas" className="relative scroll-mt-24 border-t border-paper/10 px-4 pb-28 pt-20 sm:px-8 lg:pb-40">
         <div className="mx-auto max-w-6xl">
+          <p className="eyebrow mb-3 text-xs uppercase tracking-[0.3em] text-gold">Modo libre</p>
+          <h2 className="font-display text-balance text-3xl font-light text-paper sm:text-5xl">Todas las cartas</h2>
+          <p className="mb-10 mt-4 max-w-2xl text-balance text-paper-dim">
+            Toca cualquier carta para girarla y descubrir qué estudió cada egresado en la USB, si es empleado o
+            emprendedor, en qué empresa está y a qué se dedica.
+          </p>
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
             <p className="text-xs uppercase tracking-[0.2em] text-paper-dim">{orden.length} cartas</p>
             <button
