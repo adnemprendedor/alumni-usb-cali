@@ -19,7 +19,8 @@
       "foto": "juego/hd/edward-eli-loboa-ortega.jpg",
       "logo": "juego/logos/baseemp.png",
       "perfil": null,
-      "id": "ext-01"
+      "id": "ext-01",
+      "categoria": "emprendimiento"
     },
     {
       "nombre": "Fabian Paya Pinzón",
@@ -33,7 +34,8 @@
       "foto": null,
       "logo": null,
       "perfil": null,
-      "id": "ext-02"
+      "id": "ext-02",
+      "categoria": "investigacion"
     },
     {
       "nombre": "Olaf Upegui",
@@ -47,7 +49,8 @@
       "foto": null,
       "logo": null,
       "perfil": null,
-      "id": "ext-03"
+      "id": "ext-03",
+      "categoria": "empresa"
     },
     {
       "nombre": "Danna Marcela Escobar",
@@ -61,7 +64,8 @@
       "foto": null,
       "logo": null,
       "perfil": "danna-marcela-escobar",
-      "id": "ext-04"
+      "id": "ext-04",
+      "categoria": "emprendimiento"
     },
     {
       "nombre": "Brigitte Colonia",
@@ -75,7 +79,8 @@
       "foto": "juego/hd/brigitte-colonia.jpg",
       "logo": "juego/logos/mondelez.png",
       "perfil": null,
-      "id": "ext-05"
+      "id": "ext-05",
+      "categoria": "empresa"
     },
     {
       "nombre": "Freddy Galileo Santacruz Bastidas",
@@ -89,7 +94,8 @@
       "foto": "juego/hd/freddy-galileo-santacruz-bastidas.jpg",
       "logo": "juego/logos/ufrgs.png",
       "perfil": null,
-      "id": "ext-06"
+      "id": "ext-06",
+      "categoria": "investigacion"
     },
     {
       "nombre": "Carlos Andrés Castaño",
@@ -103,7 +109,8 @@
       "foto": "juego/hd/carlos-andres-castano.jpg",
       "logo": "juego/logos/predictheon.png",
       "perfil": null,
-      "id": "ext-07"
+      "id": "ext-07",
+      "categoria": "empresa"
     },
     {
       "nombre": "Carolina Orozco Martínez",
@@ -117,7 +124,8 @@
       "foto": "juego/hd/carolina-orozco-martinez.jpg",
       "logo": "juego/logos/ub.png",
       "perfil": null,
-      "id": "ext-08"
+      "id": "ext-08",
+      "categoria": "investigacion"
     },
     {
       "nombre": "Carolina Magaña",
@@ -131,7 +139,8 @@
       "foto": "juego/hd/carolina-magana.jpg",
       "logo": "juego/logos/nebrija.png",
       "perfil": null,
-      "id": "ext-09"
+      "id": "ext-09",
+      "categoria": "investigacion"
     },
     {
       "nombre": "Pammela Pino",
@@ -145,7 +154,8 @@
       "foto": "juego/hd/pammela-pino.jpg",
       "logo": "juego/logos/nestle.png",
       "perfil": null,
-      "id": "ext-10"
+      "id": "ext-10",
+      "categoria": "empresa"
     },
     {
       "nombre": "Gustavo Cortés",
@@ -159,7 +169,8 @@
       "foto": "juego/hd/gustavo-cortes.jpg",
       "logo": "juego/logos/utryt.png",
       "perfil": null,
-      "id": "ext-11"
+      "id": "ext-11",
+      "categoria": "empresa"
     },
     {
       "nombre": "Luis Victoria",
@@ -173,7 +184,8 @@
       "foto": "juego/hd/luis-victoria.jpg",
       "logo": "juego/logos/lvl.png",
       "perfil": null,
-      "id": "ext-12"
+      "id": "ext-12",
+      "categoria": "emprendimiento"
     }
   ]
 }

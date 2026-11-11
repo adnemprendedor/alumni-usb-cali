@@ -20,7 +20,20 @@ export interface EgresadoExterior {
   logo: string | null;
   /** slug del perfil en el directorio (opcional) */
   perfil: string | null;
+  /** Para el color en el globo: empresa, investigación o emprendimiento */
+  categoria?: Categoria | null;
 }
+
+export type Categoria = "empresa" | "investigacion" | "emprendimiento";
+
+/** Colores y nombres de cada categoría (globo 3D y leyenda). */
+export const CATEGORIAS: Record<Categoria, { nombre: string; color: string }> = {
+  empresa: { nombre: "Empresa", color: "#8f96ff" },
+  investigacion: { nombre: "Investigación", color: "#4fd1c5" },
+  emprendimiento: { nombre: "Emprendimiento", color: "#ff6b8a" },
+};
+
+export const categoriaDe = (e: EgresadoExterior): Categoria => e.categoria ?? "empresa";
 
 export const exterior = data as {
   titulo: string;
@@ -81,6 +94,15 @@ export const puntosExterior: PuntoMapa[] = (() => {
   }
   return [...mapa.values()];
 })();
+
+/** Categoría que más se repite en un punto (para el color del arco). */
+export function categoriaPunto(p: PuntoMapa): Categoria {
+  const c = new Map<Categoria, number>();
+  for (const e of p.personas) c.set(categoriaDe(e), (c.get(categoriaDe(e)) ?? 0) + 1);
+  return [...c.entries()].sort((a, b) => b[1] - a[1])[0][0];
+}
+
+export const ciudadesExterior = new Set(exterior.egresados.map((e) => `${e.ciudad ?? ""}|${e.pais}`)).size;
 
 export const paisesExterior: { pais: string; total: number }[] = (() => {
   const c = new Map<string, number>();

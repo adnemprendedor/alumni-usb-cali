@@ -43,6 +43,13 @@ export default function Hero() {
   const [mapaAbierto, setMapaAbierto] = useState(false);
   const [mapaMontado, setMapaMontado] = useState(false);
   const abrirMapa = () => {
+    // Si la sección del globo 3D está en la página, baja hasta ella;
+    // si la ocultaron desde el panel, abre el mapa plano.
+    const mundo = document.getElementById("mundo");
+    if (mundo) {
+      mundo.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+      return;
+    }
     setMapaMontado(true);
     setMapaAbierto(true);
   };
@@ -201,7 +208,7 @@ export default function Hero() {
             ))}
           </motion.dl>
 
-          {/* egresados en el exterior → abre el mapamundi */}
+          {/* egresados en el exterior → baja al globo 3D (o abre el mapa plano) */}
           <motion.button
             {...aparece(0.36)}
             type="button"
@@ -230,7 +237,7 @@ export default function Hero() {
               </span>
             </span>
             <span className="flex-shrink-0 text-xs uppercase tracking-[0.14em] text-alumni transition-transform group-hover:translate-x-1">
-              <span className="hidden sm:inline">Ver mapa </span>→
+              <span className="hidden sm:inline">Ver globo </span>↓
             </span>
           </motion.button>
         </div>

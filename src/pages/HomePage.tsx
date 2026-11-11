@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import MundoSection from "../components/MundoSection";
 import Hero from "../components/Hero";
 import ExploreSection from "../components/ExploreSection";
 import FeaturedPickSection from "../components/FeaturedPickSection";
@@ -16,6 +17,7 @@ import { sitio } from "../data/sitio";
 /** Cada sección de la página de inicio, por el id que usa el panel de administración. */
 const SECCIONES: Record<string, ComponentType> = {
   hero: Hero,
+  mundo: MundoSection,
   explora: ExploreSection,
   "destacado-semana": FeaturedPickSection,
   categorias: CategoriesSection,

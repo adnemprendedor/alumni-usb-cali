@@ -260,3 +260,24 @@ body {
 .mm-globo { animation: mm-girar 14s linear infinite; }
 @keyframes mm-girar { to { background-position: -200% 0; } }
 @media (prefers-reduced-motion: reduce) { .mm-pulso, .mm-globo { animation: none; } }
+
+/* ── Egresados por el mundo (globo 3D) ─────────────────────────────── */
+.mundo-seccion {
+  background:
+    radial-gradient(55% 60% at 75% 45%, rgba(49, 52, 103, 0.7), transparent 70%),
+    radial-gradient(35% 40% at 85% 80%, rgba(236, 69, 95, 0.16), transparent 70%),
+    radial-gradient(40% 45% at 10% 20%, rgba(245, 114, 6, 0.1), transparent 70%),
+    linear-gradient(180deg, #121320 0%, #0d0f1a 55%, #15151c 100%);
+}
+.mundo-seccion::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.5;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, #fff, transparent), radial-gradient(1px 1px at 32% 72%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 48% 12%, #fff, transparent), radial-gradient(1px 1px at 64% 88%, #fff, transparent),
+    radial-gradient(1px 1px at 82% 28%, #fff, transparent), radial-gradient(1.5px 1.5px at 92% 62%, #fff, transparent),
+    radial-gradient(1px 1px at 22% 48%, #fff, transparent), radial-gradient(1px 1px at 6% 82%, #fff, transparent);
+}
+.mundo-franja-pista { animation: mundo-franja 32s linear infinite; }
+.mundo-franja:hover .mundo-franja-pista { animation-play-state: paused; }
+@keyframes mundo-franja { from { transform: translateX(0); } to { transform: translateX(-33.333%); } }
+@media (prefers-reduced-motion: reduce) { .mundo-franja-pista { animation: none; } }

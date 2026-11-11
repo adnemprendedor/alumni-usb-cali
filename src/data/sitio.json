@@ -6,6 +6,11 @@
       "visible": true
     },
     {
+      "id": "mundo",
+      "nombre": "Egresados por el mundo (globo 3D)",
+      "visible": true
+    },
+    {
       "id": "explora",
       "nombre": "Explora la red Alumni",
       "visible": true
