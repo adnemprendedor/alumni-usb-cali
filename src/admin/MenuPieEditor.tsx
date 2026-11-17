@@ -7,17 +7,22 @@ import { Button, Card, ErrorBox, Field, Loading, MediaPicker, MoveButtons, PageH
 const SITIO_PATH = "src/data/sitio.json";
 
 const DESTINOS = [
-  { label: "Portada", href: "#inicio" },
-  { label: "Explora la red", href: "#explora" },
+  { label: "Inicio · banner", href: "#inicio" },
+  { label: "Explora Alumni (líneas)", href: "#explora" },
+  { label: "Actualízate y participa", href: "#participa" },
+  { label: "Historias que conectan", href: "#historias" },
+  { label: "Oportunidades", href: "#oportunidades" },
+  { label: "Novedades", href: "#novedades" },
+  { label: "Conéctate con la Universidad", href: "#conecta-red" },
+  { label: "Equipo de la Oficina", href: "#contacto" },
+  { label: "Página ADN Emprendedor", href: "#/adn-emprendedor" },
+  { label: "Directorio / buscador", href: "#buscador" },
   { label: "Emprendedor de la semana", href: "#destacado-semana" },
   { label: "Categorías", href: "#categorias" },
-  { label: "Directorio / buscador", href: "#buscador" },
-  { label: "Emprendimientos", href: "#emprendimientos" },
-  { label: "Egresados que inspiran", href: "#destacados" },
-  { label: "Historias en video", href: "#videos" },
-  { label: "Participa", href: "#conecta" },
-  { label: "Contacto / equipo", href: "#contacto" },
-  { label: "Juego de cartas", href: "#/juego" },
+  { label: "Inscribe tu emprendimiento", href: "#conecta" },
+  { label: "Página Egresados por el mundo", href: "#/egresados-por-el-mundo" },
+  { label: "Página Egresados que inspiran", href: "#/egresados-que-inspiran" },
+  { label: "Juego Alumni USB", href: "#/juego" },
 ];
 
 /** Editor de una lista de enlaces (texto + destino) con agregar, quitar y reordenar. */

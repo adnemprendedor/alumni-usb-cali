@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { juego, type JuegoEgresado } from "../data/juego";
 import FlipCard from "../components/FlipCard";
 import Footer from "../components/Footer";
+import { CabeceraLinea } from "./LineaPage";
 import JuegoPercepcion from "../components/JuegoPercepcion";
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 
@@ -128,7 +129,9 @@ export default function JuegoPage() {
   const apiladas = fase === "mazo" || fase === "recogiendo";
 
   return (
-    <div className="bg-ink pt-32 sm:pt-40">
+    <div className="bg-ink">
+      <CabeceraLinea actual="juego" />
+      <div className="pt-8 sm:pt-10" />
       <section className="relative px-4 pb-20 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <Link
@@ -136,7 +139,7 @@ export default function JuegoPage() {
             data-cursor-hover
             className="mb-8 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-paper-dim hover:text-gold"
           >
-            ← Volver al directorio
+            ← Volver a la Red Alumni
           </Link>
 
           <JuegoPercepcion

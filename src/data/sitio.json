@@ -1,64 +1,112 @@
 {
   "secciones": [
     {
-      "id": "hero",
-      "nombre": "Portada principal",
-      "visible": true
-    },
-    {
-      "id": "mundo",
-      "nombre": "Egresados por el mundo (globo 3D)",
-      "visible": true
+      "id": "red-hero",
+      "nombre": "Banner principal (bienvenida)",
+      "visible": true,
+      "pagina": "inicio"
     },
     {
       "id": "explora",
-      "nombre": "Explora la red Alumni",
-      "visible": true
+      "nombre": "Explora Alumni (líneas de la Red)",
+      "visible": true,
+      "pagina": "inicio"
+    },
+    {
+      "id": "participa",
+      "nombre": "Actualízate y participa",
+      "visible": true,
+      "pagina": "inicio"
+    },
+    {
+      "id": "historias",
+      "nombre": "Historias que conectan (videos)",
+      "visible": true,
+      "pagina": "inicio"
+    },
+    {
+      "id": "oportunidades",
+      "nombre": "Oportunidades para ti",
+      "visible": true,
+      "pagina": "inicio"
+    },
+    {
+      "id": "novedades",
+      "nombre": "Novedades Alumni",
+      "visible": true,
+      "pagina": "inicio"
+    },
+    {
+      "id": "conecta-red",
+      "nombre": "Conéctate con la Universidad",
+      "visible": true,
+      "pagina": "inicio"
+    },
+    {
+      "id": "contacto",
+      "nombre": "Equipo de la Oficina (fotos)",
+      "visible": true,
+      "pagina": "inicio"
+    },
+    {
+      "id": "hero",
+      "nombre": "Portada ADN Emprendedor (logo 3D)",
+      "visible": true,
+      "pagina": "adn"
     },
     {
       "id": "destacado-semana",
       "nombre": "Emprendedor de la semana",
-      "visible": true
+      "visible": true,
+      "pagina": "adn"
     },
     {
       "id": "categorias",
       "nombre": "Categorías",
-      "visible": true
+      "visible": true,
+      "pagina": "adn"
     },
     {
       "id": "buscador",
       "nombre": "Directorio / buscador",
-      "visible": true
+      "visible": true,
+      "pagina": "adn"
     },
     {
       "id": "emprendimientos",
       "nombre": "Lo que construyen los egresados",
-      "visible": true
-    },
-    {
-      "id": "destacados",
-      "nombre": "Egresados que inspiran",
-      "visible": true
-    },
-    {
-      "id": "videos",
-      "nombre": "Historias en video",
-      "visible": true
+      "visible": true,
+      "pagina": "adn"
     },
     {
       "id": "estadisticas",
       "nombre": "Cifras",
-      "visible": true
+      "visible": true,
+      "pagina": "adn"
     },
     {
       "id": "conecta",
-      "nombre": "Participa / inscríbete",
-      "visible": true
+      "nombre": "Inscribe tu emprendimiento",
+      "visible": true,
+      "pagina": "adn"
     },
     {
-      "id": "contacto",
-      "nombre": "Contacto / equipo",
-      "visible": true
+      "id": "mundo",
+      "nombre": "Globo 3D de egresados",
+      "visible": true,
+      "pagina": "mundo"
+    },
+    {
+      "id": "destacados",
+      "nombre": "Egresados que inspiran (historias)",
+      "visible": true,
+      "pagina": "inspiran"
+    },
+    {
+      "id": "videos",
+      "nombre": "Historias en video",
+      "visible": true,
+      "pagina": "inspiran"
     }
   ],
   "destacadoSemana": {
@@ -76,20 +124,28 @@
       "href": "#inicio"
     },
     {
-      "label": "ADN Emprendedor",
-      "href": "#buscador"
+      "label": "La Red",
+      "href": "#explora"
     },
     {
-      "label": "Destacado",
-      "href": "#destacado-semana"
+      "label": "ADN Emprendedor",
+      "href": "#/adn-emprendedor"
+    },
+    {
+      "label": "Por el mundo",
+      "href": "#/egresados-por-el-mundo"
     },
     {
       "label": "Inspiran",
-      "href": "#destacados"
+      "href": "#/egresados-que-inspiran"
     },
     {
-      "label": "Participa",
-      "href": "#conecta"
+      "label": "Oportunidades",
+      "href": "#oportunidades"
+    },
+    {
+      "label": "Novedades",
+      "href": "#novedades"
     },
     {
       "label": "Juego",
@@ -97,55 +153,59 @@
     }
   ],
   "botonMenu": {
-    "label": "Explorar",
-    "href": "#explora"
+    "label": "Actualiza tus datos",
+    "href": "https://campus.usbco.edu.co/psp/USCS90PR/EMPLOYEE/SA/c/USB_FAE_MENU.USB_FAE_INGRESO.GBL?"
   },
   "pie": {
-    "titulo": "USB Conecta\ny emprende.",
-    "botonLabel": "Explorar directorio",
+    "titulo": "Una red, miles de historias,\nun mismo origen.",
+    "botonLabel": "Conoce nuestra Red",
     "botonHref": "#explora",
     "columnas": [
       {
-        "titulo": "ADN Emprendedor",
+        "titulo": "La Red",
         "enlaces": [
           {
-            "label": "Directorio",
-            "href": "#buscador"
+            "label": "ADN Emprendedor",
+            "href": "#/adn-emprendedor"
           },
           {
-            "label": "Categorías",
-            "href": "#categorias"
+            "label": "Egresados por el mundo",
+            "href": "#/egresados-por-el-mundo"
           },
           {
-            "label": "Emprendimientos",
-            "href": "#emprendimientos"
+            "label": "Egresados que inspiran",
+            "href": "#/egresados-que-inspiran"
           },
           {
-            "label": "Destacado de la semana",
-            "href": "#destacado-semana"
+            "label": "Juego Alumni USB",
+            "href": "#/juego"
           }
         ]
       },
       {
-        "titulo": "Descubrir",
+        "titulo": "Participa",
         "enlaces": [
           {
-            "label": "Egresados que Inspiran",
-            "href": "#destacados"
+            "label": "Actualiza tus datos",
+            "href": "https://campus.usbco.edu.co/psp/USCS90PR/EMPLOYEE/SA/c/USB_FAE_MENU.USB_FAE_INGRESO.GBL?"
           },
           {
-            "label": "Participa",
-            "href": "#conecta"
+            "label": "Registra tu emprendimiento",
+            "href": "https://forms.cloud.microsoft/pages/responsepage.aspx?id=lrCHvOZJ_0ON7XeBaIaGdmk-n3eKc99NmkCXOKAdmfRUQlE2RDdPMlpLOVc2V01CSTI3TkRJNDVUVi4u&origin=lprLink&route=shorturl"
           },
           {
-            "label": "Juego de egresados",
-            "href": "#/juego"
+            "label": "Oportunidades",
+            "href": "#oportunidades"
+          },
+          {
+            "label": "Novedades",
+            "href": "#novedades"
           }
         ]
       }
     ],
     "acercaTitulo": "Alumni USB Cali",
-    "acercaTexto": "Red de Graduados de la Universidad de San Buenaventura Cali — un espacio para descubrir y conectar con los emprendimientos de nuestros egresados.",
+    "acercaTexto": "Red de Graduados de la Universidad de San Buenaventura Cali: conectamos talentos, reconocemos trayectorias y construimos comunidad.",
     "contactos": [
       {
         "nombre": "Karol Yurani Valderrama Herrera",
@@ -221,5 +281,187 @@
         "reel": "https://www.instagram.com/reel/CyBmo8OgGP4/"
       }
     ]
+  },
+  "red": {
+    "concepto": {
+      "nombre": "Red de Graduados Alumni USB Cali",
+      "lema": "Una red, miles de historias, un mismo origen.",
+      "texto": "Conectamos talentos, reconocemos trayectorias y construimos comunidad.",
+      "bienvenida": "Bienvenido a tu comunidad de graduados de la Universidad de San Buenaventura Cali. Mantente conectado con tu Universidad, comparte tus logros y conoce las historias de quienes, como tú, llevan el sello bonaventuriano.",
+      "ctaLabel": "Conoce nuestra Red",
+      "ctaHref": "#explora",
+      "banner": null,
+      "bannerTexto": "Si subes una fotografía de graduados, reemplaza al mosaico de fotos."
+    },
+    "explora": {
+      "eyebrow": "Explora Alumni",
+      "titulo": "Las líneas de la Red",
+      "subtitulo": "La Red Alumni reúne varias formas de visibilizar, reconocer y conectar a nuestros graduados. Elige por dónde empezar."
+    },
+    "lineas": [
+      {
+        "titulo": "ADN Emprendedor",
+        "texto": "El directorio de emprendimientos y empresas creadas por graduados: conoce sus productos, servicios y contáctalos.",
+        "href": "#/adn-emprendedor",
+        "cta": "Ver el directorio",
+        "imagen": null,
+        "color": "#f57206"
+      },
+      {
+        "titulo": "Egresados por el mundo",
+        "texto": "Graduados que viven y desarrollan su trayectoria en otros países. Recorre el globo y conoce sus historias.",
+        "href": "#/egresados-por-el-mundo",
+        "cta": "Recorrer el mundo",
+        "imagen": "globo/dia-2k.jpg",
+        "color": "#8f96ff"
+      },
+      {
+        "titulo": "Egresados que inspiran",
+        "texto": "Videos y testimonios de graduados que se destacan por su trayectoria, sus emprendimientos y sus aportes a la sociedad.",
+        "href": "#/egresados-que-inspiran",
+        "cta": "Ver historias",
+        "imagen": null,
+        "color": "#ec455f"
+      },
+      {
+        "titulo": "Juego Alumni USB",
+        "texto": "¿Qué tan bueno eres adivinando? Pon a prueba tu percepción y descubre a qué se dedican nuestros graduados.",
+        "href": "#/juego",
+        "cta": "Jugar",
+        "imagen": null,
+        "color": "#4fd1c5"
+      },
+      {
+        "titulo": "Servicios y participación",
+        "texto": "Actualiza tus datos, inscribe tu emprendimiento, cuéntanos tu historia y accede a las oportunidades para graduados.",
+        "href": "#participa",
+        "cta": "Participar",
+        "imagen": null,
+        "color": "#6b3a72"
+      }
+    ],
+    "participa": {
+      "eyebrow": "Actualízate y participa",
+      "titulo": "Tu Red se construye contigo",
+      "subtitulo": "Mantén tus datos al día, haz visible tu emprendimiento y comparte tu historia con la comunidad."
+    },
+    "servicios": [
+      {
+        "titulo": "Actualiza tus datos",
+        "texto": "Mantén tu información de contacto y laboral al día en el sistema de graduados.",
+        "href": "https://campus.usbco.edu.co/psp/USCS90PR/EMPLOYEE/SA/c/USB_FAE_MENU.USB_FAE_INGRESO.GBL?",
+        "cta": "Actualizar mis datos",
+        "destacado": true
+      },
+      {
+        "titulo": "Registra tu emprendimiento",
+        "texto": "Haz parte de ADN Emprendedor y aparece en el directorio de emprendimientos Alumni USB.",
+        "href": "https://forms.cloud.microsoft/pages/responsepage.aspx?id=lrCHvOZJ_0ON7XeBaIaGdmk-n3eKc99NmkCXOKAdmfRUQlE2RDdPMlpLOVc2V01CSTI3TkRJNDVUVi4u&origin=lprLink&route=shorturl",
+        "cta": "Inscribir mi emprendimiento",
+        "destacado": true
+      },
+      {
+        "titulo": "¿Quieres ser parte de nuestras historias?",
+        "texto": "Propón tu historia, comparte tus logros o postúlate para aparecer en Egresados que inspiran o Egresados por el mundo.",
+        "href": "mailto:prof.egresados@usbcali.edu.co?subject=Quiero%20compartir%20mi%20historia%20-%20Red%20Alumni%20USB%20Cali",
+        "cta": "Contar mi historia",
+        "destacado": false
+      },
+      {
+        "titulo": "Conoce más sobre nuestros graduados",
+        "texto": "Visita el apartado oficial de Egresados en la página web de la Universidad de San Buenaventura Cali.",
+        "href": "https://usbcali.edu.co/en/alumni/",
+        "cta": "Ir al portal de egresados",
+        "destacado": false
+      }
+    ],
+    "historias": {
+      "eyebrow": "Historias que conectan",
+      "titulo": "Graduados que inspiran",
+      "subtitulo": "Una selección de los videos de Egresados que inspiran, los mismos que compartimos en el Instagram institucional.",
+      "cantidad": 3
+    },
+    "oportunidades": {
+      "eyebrow": "Oportunidades para ti",
+      "titulo": "La Red también es oportunidad",
+      "subtitulo": "Empleo, formación y encuentros pensados para los graduados bonaventurianos.",
+      "items": [
+        {
+          "titulo": "Bolsa de Empleo USB",
+          "texto": "Consulta vacantes, postúlate y recibe acompañamiento para tu búsqueda laboral.",
+          "href": "https://usbcali.edu.co/en/job-opportunities/",
+          "cta": "Ver vacantes",
+          "etiqueta": "Empleo"
+        },
+        {
+          "titulo": "Formación y educación continua",
+          "texto": "Diplomados, cursos y talleres para seguir creciendo profesionalmente.",
+          "href": "https://www.instagram.com/alumniusbcali/",
+          "cta": "Ver la oferta",
+          "etiqueta": "Formación"
+        },
+        {
+          "titulo": "Eventos y encuentros",
+          "texto": "Encuentros de graduados, ferias de emprendimiento y actividades de la Red.",
+          "href": "#novedades",
+          "cta": "Ver novedades",
+          "etiqueta": "Eventos"
+        },
+        {
+          "titulo": "Prácticas y talento",
+          "texto": "Si tu empresa busca practicantes, conoce Talento SanBue, la oficina de prácticas profesionales.",
+          "href": "https://usbcali.edu.co/practicas-profesionales/",
+          "cta": "Conocer Talento SanBue",
+          "etiqueta": "Empresas"
+        }
+      ]
+    },
+    "novedades": {
+      "eyebrow": "Novedades Alumni",
+      "titulo": "Lo que está pasando en la Red",
+      "subtitulo": "Noticias, eventos, encuentros y actividades de la comunidad de graduados.",
+      "items": [
+        {
+          "fecha": "2026-11",
+          "titulo": "Nuevo: Egresados por el mundo",
+          "texto": "Recorre el globo 3D y conoce a los graduados que hoy trabajan, investigan y emprenden fuera de Colombia.",
+          "etiqueta": "Red Alumni",
+          "href": "#/egresados-por-el-mundo",
+          "imagen": "globo/dia-2k.jpg"
+        },
+        {
+          "fecha": "2026-11",
+          "titulo": "¿Cómo estás de percepción?",
+          "texto": "Llegó el juego Alumni USB: adivina a qué se dedica cada graduado a partir de su foto.",
+          "etiqueta": "Juego",
+          "href": "#/juego",
+          "imagen": null
+        },
+        {
+          "fecha": "2026",
+          "titulo": "Feria de emprendimiento Alumni",
+          "texto": "Revive la última feria de emprendimiento de nuestros graduados.",
+          "etiqueta": "Evento",
+          "href": "https://www.instagram.com/reel/DZVR56WR86H/",
+          "imagen": null
+        }
+      ]
+    },
+    "conecta": {
+      "eyebrow": "Conéctate con la Universidad",
+      "titulo": "Conecta con Alumni",
+      "subtitulo": "Escríbenos para resolver tus consultas, proponer ideas o participar en las iniciativas institucionales para graduados.",
+      "portalLabel": "Portal institucional de Egresados",
+      "portalHref": "https://usbcali.edu.co/en/alumni/",
+      "correo": "prof.egresados@usbcali.edu.co",
+      "whatsapp": "573204713006",
+      "asuntos": [
+        "Consulta",
+        "Propuesta",
+        "Quiero participar en una iniciativa"
+      ]
+    },
+    "privacidadLabel": "Aviso de privacidad y tratamiento de datos",
+    "privacidadHref": "https://usbcali.edu.co/wp-content/uploads/2023/10/datos-habeas-data-usbcali.pdf"
   }
 }

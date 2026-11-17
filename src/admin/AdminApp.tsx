@@ -9,19 +9,21 @@ import SeccionesEditor from "./SeccionesEditor";
 import DestacadoEditor from "./DestacadoEditor";
 import MenuPieEditor from "./MenuPieEditor";
 import VideosEditor from "./VideosEditor";
+import RedEditor from "./RedEditor";
 import { isLoggedIn, logout, markLoggedIn } from "./auth";
 import { clearGithubConfig, loadGithubConfig, type GithubConfig } from "./github";
 import usbLogo from "../assets/brand/usb-logo.png";
 
-export type Seccion = "inicio" | "egresados" | "juego" | "secciones" | "destacado" | "textos" | "videos" | "menu";
+export type Seccion = "inicio" | "red" | "egresados" | "juego" | "secciones" | "destacado" | "textos" | "videos" | "menu";
 
 const MENU: { id: Seccion; icono: string; label: string; grupo?: string }[] = [
   { id: "inicio", icono: "🏠", label: "Escritorio" },
-  { id: "egresados", icono: "👥", label: "Egresados", grupo: "Contenido" },
-  { id: "juego", icono: "🃏", label: "Juego de cartas" },
+  { id: "red", icono: "🌐", label: "Red Alumni (inicio)", grupo: "Contenido" },
+  { id: "egresados", icono: "👥", label: "Egresados (ADN Emprendedor)" },
+  { id: "juego", icono: "🃏", label: "Juego Alumni USB" },
   { id: "destacado", icono: "⭐", label: "Emprendedor de la semana" },
   { id: "videos", icono: "🎬", label: "Historias en video" },
-  { id: "secciones", icono: "🧩", label: "Secciones de la página", grupo: "Apariencia" },
+  { id: "secciones", icono: "🧩", label: "Secciones de cada página", grupo: "Apariencia" },
   { id: "textos", icono: "✏️", label: "Textos de la página" },
   { id: "menu", icono: "🧭", label: "Menú, pie y redes" },
 ];
@@ -95,7 +97,7 @@ export default function AdminApp() {
           <span className="hidden h-8 items-center rounded bg-white px-2 sm:flex">
             <img src={usbLogo} alt="" className="h-6 w-auto" />
           </span>
-          <span className="font-semibold">ADN Emprendedor<span className="hidden sm:inline"> · Panel</span></span>
+          <span className="font-semibold">Red Alumni<span className="hidden sm:inline"> · Panel</span></span>
           <a href="#/" target="_blank" rel="noopener noreferrer" className="rounded px-2 py-1 text-[#c3c4c7] hover:bg-white/10 hover:text-white">
             ↗<span className="hidden sm:inline"> Ver sitio</span>
           </a>
@@ -168,6 +170,7 @@ export default function AdminApp() {
           {seccion === "destacado" && <DestacadoEditor config={config} />}
           {seccion === "videos" && <VideosEditor config={config} />}
           {seccion === "menu" && <MenuPieEditor config={config} />}
+          {seccion === "red" && <RedEditor config={config} />}
         </div>
       </main>
     </div>

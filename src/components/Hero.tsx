@@ -1,4 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RUTAS, sitio } from "../data/sitio";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { usePrefersReducedMotion } from "../hooks/useReducedMotion";
 import { stats } from "../data/derived";
@@ -42,12 +44,17 @@ export default function Hero() {
   // mapamundi de egresados en el exterior (se carga al abrirlo)
   const [mapaAbierto, setMapaAbierto] = useState(false);
   const [mapaMontado, setMapaMontado] = useState(false);
+  const navigate = useNavigate();
   const abrirMapa = () => {
     // Si la sección del globo 3D está en la página, baja hasta ella;
     // si la ocultaron desde el panel, abre el mapa plano.
     const mundo = document.getElementById("mundo");
     if (mundo) {
       mundo.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+      return;
+    }
+    if (sitio.secciones.some((s) => s.id === "mundo" && s.visible)) {
+      navigate(RUTAS.mundo);
       return;
     }
     setMapaMontado(true);
@@ -88,7 +95,7 @@ export default function Hero() {
   });
 
   return (
-    <section id="inicio" ref={ref} onMouseMove={handleMove} className="relative min-h-[100svh] overflow-hidden bg-ink">
+    <section id="adn-inicio" ref={ref} onMouseMove={handleMove} className="relative min-h-[100svh] overflow-hidden bg-ink">
       {/* fondo: resplandores azul marino / rosa / naranja de la marca Alumni */}
       <motion.div className="absolute inset-0" style={{ y: bgY }} aria-hidden>
         <div
@@ -179,7 +186,7 @@ export default function Hero() {
 
           <motion.div {...aparece(0.12)} className="mt-9 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
             <a
-              href="#explora"
+              href="#buscador"
               data-cursor-hover
               className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-alumni to-pink whitespace-nowrap px-6 py-3.5 text-xs font-medium uppercase tracking-[0.12em] text-white sm:px-7 sm:text-sm lg:px-6 lg:tracking-[0.08em] shadow-[0_10px_40px_-10px_rgba(236,69,95,0.7)] transition-transform hover:-translate-y-0.5"
             >
@@ -244,7 +251,7 @@ export default function Hero() {
       </motion.div>
 
       <motion.a
-        href="#explora"
+        href="#buscador"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.2, duration: 1 }}

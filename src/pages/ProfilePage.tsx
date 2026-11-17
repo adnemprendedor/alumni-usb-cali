@@ -62,7 +62,7 @@ export default function ProfilePage() {
 
           <motion.div style={{ opacity: overlayFade }} className="absolute inset-0 flex flex-col justify-end p-6 sm:p-14">
             <Link
-              to="/"
+              to="/adn-emprendedor"
               data-cursor-hover
               className="absolute left-6 top-28 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-paper/80 hover:text-gold sm:left-14 sm:top-32"
             >
@@ -290,7 +290,7 @@ export default function ProfilePage() {
               Ir a la sección Conecta
             </a>
             <Link
-              to="/"
+              to="/adn-emprendedor"
               data-cursor-hover
               className="rounded-full border border-gold/50 px-7 py-3 text-sm uppercase tracking-[0.15em] text-gold transition-colors hover:bg-gold hover:text-ink"
             >

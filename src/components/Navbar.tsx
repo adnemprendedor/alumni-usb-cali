@@ -37,9 +37,9 @@ export default function Navbar() {
       >
         <Link to="/" className="flex shrink-0 items-center gap-2" data-cursor-hover>
           <span className="flex h-16 items-center gap-3 rounded-lg bg-paper px-3.5 py-2 sm:h-20">
-            <img src={usbLogo} alt="Universidad de San Buenaventura Cali" className="h-full w-auto object-contain" />
+            <img src={alumniLogo} alt="Alumni USB Cali · Red de Graduados" className="h-full w-auto object-contain" />
             <span className="h-9 w-px shrink-0 bg-ink/15 sm:h-12" />
-            <img src={alumniLogo} alt="Alumni USB Cali" className="h-full w-auto object-contain" />
+            <img src={usbLogo} alt="Universidad de San Buenaventura Cali" className="h-[78%] w-auto object-contain" />
           </span>
           <span className="hidden text-[8px] uppercase leading-tight tracking-[0.1em] text-paper-dim xl:block">
             Vigilada
@@ -66,6 +66,7 @@ export default function Navbar() {
         {BOTON?.label && (
         <a
           href={BOTON.href}
+          {...(/^https?:/.test(BOTON.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           data-cursor-hover
           className="hidden shrink-0 rounded-full border border-gold/50 px-4 py-2 text-xs uppercase tracking-[0.1em] text-gold transition-colors hover:bg-gold hover:text-ink sm:inline-block sm:text-sm sm:normal-case sm:tracking-normal"
         >

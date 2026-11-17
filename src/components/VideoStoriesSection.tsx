@@ -11,7 +11,7 @@ declare global {
 /** Carga el script oficial de embeds de Instagram una sola vez y le pide
  * procesar los <blockquote class="instagram-media"> de la página cada vez
  * que cambian — es la forma soportada de incrustar reels públicos. */
-function useInstagramEmbed() {
+export function useInstagramEmbed() {
   useEffect(() => {
     const existing = document.getElementById("instagram-embed-script") as HTMLScriptElement | null;
     const process = () => window.instgrm?.Embeds.process();
@@ -39,7 +39,7 @@ function useInstagramEmbed() {
 const v = sitio.videos;
 const instagram = sitio.redes.find((r) => /instagram/i.test(r.nombre));
 
-function ReelEmbed({ url }: { url: string; title: string }) {
+export function ReelEmbed({ url }: { url: string; title: string }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-paper/10 bg-ink-2">
       <blockquote

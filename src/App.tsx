@@ -8,6 +8,9 @@ import PageTransition from "./components/PageTransition";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import JuegoPage from "./pages/JuegoPage";
+import LineaPage from "./pages/LineaPage";
+import { rutaDeSeccion } from "./pages/secciones";
+import { RUTAS } from "./data/sitio";
 import AdminApp from "./admin/AdminApp";
 
 /**
@@ -35,11 +38,26 @@ function useInPageAnchorScroll() {
       e.preventDefault();
       const scrollToTarget = () => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
-      if (location.pathname !== "/") {
-        navigate("/");
-        window.setTimeout(scrollToTarget, 120);
-      } else {
+      // Si la sección está en esta página, baja hasta ella; si está en otra
+      // página (p. ej. "#buscador" vive en ADN Emprendedor), va allá primero.
+      if (document.getElementById(id)) {
         scrollToTarget();
+        return;
+      }
+      const destino = rutaDeSeccion(id);
+      if (location.pathname !== destino) {
+        navigate(destino);
+        // espera a que la página nueva termine de entrar (transición) y baja
+        let intentos = 0;
+        const esperar = () => {
+          if (document.getElementById(id) || intentos++ > 30) {
+            window.setTimeout(scrollToTarget, 700);
+            // segunda pasada por si la página creció al cargar imágenes
+            window.setTimeout(scrollToTarget, 1600);
+          }
+          else window.setTimeout(esperar, 100);
+        };
+        window.setTimeout(esperar, 150);
       }
     };
 
@@ -67,6 +85,30 @@ function AnimatedRoutes() {
           element={
             <PageTransition>
               <ProfilePage />
+            </PageTransition>
+          }
+        />
+        <Route
+          path={RUTAS.adn}
+          element={
+            <PageTransition>
+              <LineaPage pagina="adn" />
+            </PageTransition>
+          }
+        />
+        <Route
+          path={RUTAS.mundo}
+          element={
+            <PageTransition>
+              <LineaPage pagina="mundo" />
+            </PageTransition>
+          }
+        />
+        <Route
+          path={RUTAS.inspiran}
+          element={
+            <PageTransition>
+              <LineaPage pagina="inspiran" />
             </PageTransition>
           }
         />

@@ -281,3 +281,12 @@ body {
 .mundo-franja:hover .mundo-franja-pista { animation-play-state: paused; }
 @keyframes mundo-franja { from { transform: translateX(0); } to { transform: translateX(-33.333%); } }
 @media (prefers-reduced-motion: reduce) { .mundo-franja-pista { animation: none; } }
+
+/* ── Red Alumni: mosaico de graduados del banner ───────────────────── */
+.red-col-sube, .red-col-baja { animation-timing-function: linear; animation-iteration-count: infinite; will-change: transform; }
+.red-col-sube { animation-name: red-sube; }
+.red-col-baja { animation-name: red-baja; }
+@keyframes red-sube { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@keyframes red-baja { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+.red-mosaico img { filter: saturate(0.85); }
+@media (prefers-reduced-motion: reduce) { .red-col-sube, .red-col-baja { animation: none; } }

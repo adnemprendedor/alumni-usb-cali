@@ -41,9 +41,10 @@ export default function Dashboard({ config, ir }: { config: GithubConfig; ir: (s
   }, [config]);
 
   const accesos: { s: Seccion; icono: string; titulo: string; texto: string; dato?: string }[] = [
+    { s: "red", icono: "🌐", titulo: "Red Alumni (inicio)", texto: "Banner, líneas de la Red, servicios, oportunidades, novedades y contacto." },
     { s: "egresados", icono: "👥", titulo: "Egresados del directorio", texto: "Agregar, editar o quitar egresados, con su foto y logo.", dato: r ? `${r.egresados} egresados · ${r.conLogo} con logo` : undefined },
-    { s: "juego", icono: "🃏", titulo: "Juego de cartas", texto: "Las cartas del juego “Conoce a nuestros egresados”.", dato: r ? `${r.cartas} cartas` : undefined },
-    { s: "secciones", icono: "🧩", titulo: "Secciones de la página", texto: "Ordenar, mostrar u ocultar las partes de la página de inicio.", dato: r ? `${r.seccionesVisibles} de ${r.seccionesTotal} visibles` : undefined },
+    { s: "juego", icono: "🃏", titulo: "Juego Alumni USB", texto: "Los egresados del juego de percepción y del modo libre.", dato: r ? `${r.cartas} cartas` : undefined },
+    { s: "secciones", icono: "🧩", titulo: "Secciones de cada página", texto: "Ordenar, mostrar u ocultar las partes del inicio y de cada línea.", dato: r ? `${r.seccionesVisibles} de ${r.seccionesTotal} visibles` : undefined },
     { s: "destacado", icono: "⭐", titulo: "Emprendedor de la semana", texto: "Elegirlo a mano o dejar que rote solo.", dato: r?.destacado },
     { s: "textos", icono: "✏️", titulo: "Textos de la página", texto: "Títulos, subtítulos, portada y la sección Participa." },
     { s: "videos", icono: "🎬", titulo: "Historias en video", texto: "Video principal y reels de Instagram." },

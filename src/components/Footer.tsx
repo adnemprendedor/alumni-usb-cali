@@ -65,7 +65,7 @@ export default function Footer() {
               <ul className="flex flex-col gap-2">
                 {col.links.map((l) => (
                   <li key={`${l.label}-${l.href}`}>
-                    <a href={l.href} className="text-sm text-paper/80 transition-colors hover:text-gold">
+                    <a href={l.href} {...(/^https?:/.test(l.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="text-sm text-paper/80 transition-colors hover:text-gold">
                       {l.label}
                     </a>
                   </li>
@@ -137,6 +137,11 @@ export default function Footer() {
             © {new Date().getFullYear()} {pie.copyright}
           </span>
           <div className="flex items-center gap-4">
+            {sitio.red?.privacidadHref && (
+              <a href={sitio.red.privacidadHref} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:text-gold hover:underline" data-cursor-hover>
+                {sitio.red.privacidadLabel}
+              </a>
+            )}
             <span>Alumni USB Cali · Red de Graduados</span>
             <a
               href="#/admin"
