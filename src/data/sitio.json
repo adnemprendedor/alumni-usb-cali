@@ -55,6 +55,12 @@
       "pagina": "adn"
     },
     {
+      "id": "buscador",
+      "nombre": "Directorio / buscador",
+      "visible": true,
+      "pagina": "adn"
+    },
+    {
       "id": "destacado-semana",
       "nombre": "Emprendedor de la semana",
       "visible": true,
@@ -67,21 +73,15 @@
       "pagina": "adn"
     },
     {
-      "id": "buscador",
-      "nombre": "Directorio / buscador",
-      "visible": true,
-      "pagina": "adn"
-    },
-    {
       "id": "emprendimientos",
       "nombre": "Lo que construyen los egresados",
-      "visible": true,
+      "visible": false,
       "pagina": "adn"
     },
     {
       "id": "estadisticas",
       "nombre": "Cifras",
-      "visible": true,
+      "visible": false,
       "pagina": "adn"
     },
     {
@@ -324,20 +324,20 @@
         "color": "#ec455f"
       },
       {
-        "titulo": "Juego Alumni USB",
-        "texto": "¿Qué tan bueno eres adivinando? Pon a prueba tu percepción y descubre a qué se dedican nuestros graduados.",
-        "href": "#/juego",
-        "cta": "Jugar",
-        "imagen": null,
-        "color": "#4fd1c5"
-      },
-      {
         "titulo": "Servicios y participación",
         "texto": "Actualiza tus datos, inscribe tu emprendimiento, cuéntanos tu historia y accede a las oportunidades para graduados.",
         "href": "#participa",
         "cta": "Participar",
         "imagen": null,
         "color": "#6b3a72"
+      },
+      {
+        "titulo": "Juego Alumni USB",
+        "texto": "¿Qué tan bueno eres adivinando? Pon a prueba tu percepción y descubre a qué se dedican nuestros graduados.",
+        "href": "#/juego",
+        "cta": "Jugar",
+        "imagen": null,
+        "color": "#4fd1c5"
       }
     ],
     "participa": {
@@ -370,7 +370,7 @@
       {
         "titulo": "Conoce más sobre nuestros graduados",
         "texto": "Visita el apartado oficial de Egresados en la página web de la Universidad de San Buenaventura Cali.",
-        "href": "https://usbcali.edu.co/en/alumni/",
+        "href": "https://usbcali.edu.co/egresados-destacados/",
         "cta": "Ir al portal de egresados",
         "destacado": false
       }
@@ -388,52 +388,52 @@
       "items": [
         {
           "titulo": "Bolsa de Empleo USB",
-          "texto": "Consulta vacantes, postúlate y recibe acompañamiento para tu búsqueda laboral.",
-          "href": "https://usbcali.edu.co/en/job-opportunities/",
+          "texto": "Consulta vacantes y postúlate en el portal de empleo de la Universidad para egresados.",
+          "href": "https://jobboard.universia.net/usbcali",
           "cta": "Ver vacantes",
           "etiqueta": "Empleo"
         },
         {
           "titulo": "Formación y educación continua",
-          "texto": "Diplomados, cursos y talleres para seguir creciendo profesionalmente.",
-          "href": "https://www.instagram.com/alumniusbcali/",
-          "cta": "Ver la oferta",
+          "texto": "Diplomados, cursos y talleres de la Universidad para seguir creciendo profesionalmente.",
+          "href": "https://usbcali.edu.co/",
+          "cta": "Ir a la Universidad",
           "etiqueta": "Formación"
         },
         {
           "titulo": "Eventos y encuentros",
-          "texto": "Encuentros de graduados, ferias de emprendimiento y actividades de la Red.",
-          "href": "#novedades",
-          "cta": "Ver novedades",
+          "texto": "Encuentros de graduados, ferias de emprendimiento y actividades de la Red: síguelos en nuestras redes.",
+          "href": "https://www.instagram.com/alumniusbcali/",
+          "cta": "Ver en Instagram",
           "etiqueta": "Eventos"
         },
         {
           "titulo": "Prácticas y talento",
-          "texto": "Si tu empresa busca practicantes, conoce Talento SanBue, la oficina de prácticas profesionales.",
-          "href": "https://usbcali.edu.co/practicas-profesionales/",
+          "texto": "Conoce Talento SanBue, la oficina de prácticas profesionales, y la ruta de prácticas de la Universidad.",
+          "href": "https://adnemprendedor.github.io/proyeccion-social-usbcali/practicas-profesionales.html",
           "cta": "Conocer Talento SanBue",
           "etiqueta": "Empresas"
         }
       ]
     },
     "novedades": {
-      "eyebrow": "Novedades Alumni",
-      "titulo": "Lo que está pasando en la Red",
-      "subtitulo": "Noticias, eventos, encuentros y actividades de la comunidad de graduados.",
+      "eyebrow": "Entérate",
+      "titulo": "Lo más reciente de nuestra Red",
+      "subtitulo": "Lo nuevo en el sitio, los eventos y las actividades más recientes de la Red Alumni.",
       "items": [
         {
           "fecha": "2026-11",
-          "titulo": "Nuevo: Egresados por el mundo",
-          "texto": "Recorre el globo 3D y conoce a los graduados que hoy trabajan, investigan y emprenden fuera de Colombia.",
-          "etiqueta": "Red Alumni",
+          "titulo": "Nueva sección: Egresados por el mundo",
+          "texto": "Ya puedes recorrer en un globo 3D a los graduados que hoy trabajan, investigan y emprenden fuera de Colombia.",
+          "etiqueta": "Nuevo en el sitio",
           "href": "#/egresados-por-el-mundo",
           "imagen": "globo/dia-2k.jpg"
         },
         {
           "fecha": "2026-11",
-          "titulo": "¿Cómo estás de percepción?",
-          "texto": "Llegó el juego Alumni USB: adivina a qué se dedica cada graduado a partir de su foto.",
-          "etiqueta": "Juego",
+          "titulo": "Nuevo juego: ¿Cómo estás de percepción?",
+          "texto": "Pon a prueba tu intuición: mira la foto de un graduado y adivina a qué se dedica.",
+          "etiqueta": "Nuevo en el sitio",
           "href": "#/juego",
           "imagen": null
         },

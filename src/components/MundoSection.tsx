@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {
   CATEGORIAS,
   categoriaDe,
-  ciudadesExterior,
+  programasExterior,
   exterior,
   paisesExterior,
   puntosExterior,
@@ -35,6 +35,9 @@ const ISO2: Record<string, string> = {
   Portugal: "PT",
   "Países Bajos": "NL",
   Suiza: "CH",
+  Andorra: "AD",
+  Líbano: "LB",
+  Israel: "IL",
   Australia: "AU",
   Japón: "JP",
 };
@@ -151,6 +154,52 @@ function Panel({ punto, onCerrar }: { punto: PuntoMapa | null; onCerrar: () => v
   );
 }
 
+/** Llamado: egresados en el exterior que quieren aparecer o actualizar sus datos. */
+function CtaExterior() {
+  const cta = exterior.cta;
+  const [pais, setPais] = useState("");
+  if (!cta) return null;
+  const wa = cta.whatsapp?.replace(/\D/g, "");
+  const texto = `Hola, soy egresado(a) de la Universidad de San Buenaventura Cali y vivo en ${pais || "(país)"}. Quiero actualizar mis datos para la Red Alumni.\n\nNombre:\nPrograma y año de grado:\nCiudad:\nA qué me dedico:`;
+  return (
+    <div className="mt-6 rounded-3xl border border-alumni/40 bg-gradient-to-br from-alumni/15 via-pink/10 to-transparent p-5 sm:p-6">
+      <p className="font-display text-xl leading-tight text-paper sm:text-2xl">{cta.titulo}</p>
+      <p className="mt-2 text-sm text-paper-dim">{cta.texto}</p>
+      <label className="mt-4 block">
+        <span className="mb-1.5 block text-[11px] uppercase tracking-[0.16em] text-paper-dim">¿En qué país estás?</span>
+        <input
+          value={pais}
+          onChange={(e) => setPais(e.target.value)}
+          placeholder="Ej.: Canadá"
+          className="w-full rounded-xl border border-white/15 bg-ink/50 px-4 py-2.5 text-paper placeholder:text-paper-dim/60 focus:border-gold focus:outline-none"
+        />
+      </label>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {wa && (
+          <a
+            href={`https://wa.me/${wa}?text=${encodeURIComponent(texto)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor-hover
+            className="inline-flex items-center gap-2 rounded-full bg-[#25d366] px-5 py-2.5 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5"
+          >
+            Escribir por WhatsApp
+          </a>
+        )}
+        {cta.correo && (
+          <a
+            href={`mailto:${cta.correo}?subject=${encodeURIComponent(`Egresado en el exterior${pais ? ` · ${pais}` : ""}`)}&body=${encodeURIComponent(texto)}`}
+            data-cursor-hover
+            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm text-paper transition-colors hover:border-gold/60 hover:text-gold"
+          >
+            Enviar por correo
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
+
 /**
  * Sección "Egresados por el mundo": globo terráqueo 3D con los egresados que
  * viven fuera de Colombia (datos en src/data/exterior.json).
@@ -181,7 +230,7 @@ export default function MundoSection() {
 
   const punto = useMemo(() => puntosExterior.find((p) => p.clave === seleccion) ?? null, [seleccion]);
   const conteo = useMemo(() => {
-    const c: Record<Categoria, number> = { empresa: 0, investigacion: 0, emprendimiento: 0 };
+    const c: Record<Categoria, number> = { empresa: 0, investigacion: 0, emprendimiento: 0, red: 0 };
     exterior.egresados.forEach((e) => (c[categoriaDe(e)] += 1));
     return c;
   }, []);
@@ -214,7 +263,7 @@ export default function MundoSection() {
             {[
               { n: exterior.egresados.length, l: "Egresados" },
               { n: paisesExterior.length, l: "Países" },
-              { n: ciudadesExterior, l: "Ciudades" },
+              { n: programasExterior, l: "Programas" },
             ].map((s) => (
               <div key={s.l} className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
                 <dd className="font-display alumni-text text-3xl font-semibold">{s.n}</dd>
@@ -248,6 +297,8 @@ export default function MundoSection() {
               );
             })}
           </div>
+
+          <CtaExterior />
 
           <div className="mt-6 hidden lg:block">
             <Panel punto={punto} onCerrar={() => setSeleccion(null)} />

@@ -24,13 +24,14 @@ export interface EgresadoExterior {
   categoria?: Categoria | null;
 }
 
-export type Categoria = "empresa" | "investigacion" | "emprendimiento";
+export type Categoria = "empresa" | "investigacion" | "emprendimiento" | "red";
 
 /** Colores y nombres de cada categoría (globo 3D y leyenda). */
 export const CATEGORIAS: Record<Categoria, { nombre: string; color: string }> = {
   empresa: { nombre: "Empresa", color: "#8f96ff" },
   investigacion: { nombre: "Investigación", color: "#4fd1c5" },
   emprendimiento: { nombre: "Emprendimiento", color: "#ff6b8a" },
+  red: { nombre: "Red Alumni", color: "#ffd2a6" },
 };
 
 export const categoriaDe = (e: EgresadoExterior): Categoria => e.categoria ?? "empresa";
@@ -38,6 +39,8 @@ export const categoriaDe = (e: EgresadoExterior): Categoria => e.categoria ?? "e
 export const exterior = data as {
   titulo: string;
   texto: string;
+  /** Llamado para que los egresados en el exterior escriban y actualicen sus datos */
+  cta?: { titulo: string; texto: string; whatsapp?: string | null; correo?: string | null };
   origen: { nombre: string; lat: number; lng: number };
   egresados: EgresadoExterior[];
 };
@@ -62,6 +65,9 @@ export const ISO_PAIS: Record<string, string> = {
   Portugal: "620",
   "Países Bajos": "528",
   Suiza: "756",
+  Andorra: "020",
+  Líbano: "422",
+  Israel: "376",
   Australia: "036",
   Japón: "392",
 };
@@ -101,6 +107,11 @@ export function categoriaPunto(p: PuntoMapa): Categoria {
   for (const e of p.personas) c.set(categoriaDe(e), (c.get(categoriaDe(e)) ?? 0) + 1);
   return [...c.entries()].sort((a, b) => b[1] - a[1])[0][0];
 }
+
+/** Programas académicos distintos de los egresados en el exterior. */
+export const programasExterior = new Set(
+  exterior.egresados.map((e) => (e.programa ?? "").replace(/\s*\(\d{4}\)$/, "").trim()).filter(Boolean)
+).size;
 
 export const ciudadesExterior = new Set(exterior.egresados.map((e) => `${e.ciudad ?? ""}|${e.pais}`)).size;
 

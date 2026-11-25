@@ -195,7 +195,8 @@ export function LineasSection() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
           {red.lineas.map((l, i) => {
             const img = rutaPublica(l.imagen);
-            const grande = i < 2;
+            // de a dos por fila; si sobra una (el juego, al final), va sola a lo ancho
+            const sola = i === red.lineas.length - 1 && red.lineas.length % 2 === 1;
             const color = l.color || "#f57206";
             return (
               <motion.a
@@ -207,7 +208,7 @@ export function LineasSection() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.7, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
                 className={`group relative flex min-h-[19rem] flex-col justify-between overflow-hidden rounded-3xl border border-white/10 p-7 transition-colors hover:border-white/30 ${
-                  grande ? "lg:col-span-3 lg:min-h-[22rem]" : "lg:col-span-2"
+                  sola ? "sm:col-span-2 lg:col-span-6 lg:min-h-[16rem]" : "lg:col-span-3 lg:min-h-[20rem]"
                 }`}
                 style={{
                   background: `radial-gradient(90% 80% at 100% 0%, ${color}38, transparent 60%), linear-gradient(160deg, #1b1b26, #141420)`,
