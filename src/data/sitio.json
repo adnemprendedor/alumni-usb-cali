@@ -97,14 +97,14 @@
       "pagina": "mundo"
     },
     {
-      "id": "destacados",
-      "nombre": "Egresados que inspiran (historias)",
+      "id": "videos",
+      "nombre": "Historias en video",
       "visible": true,
       "pagina": "inspiran"
     },
     {
-      "id": "videos",
-      "nombre": "Historias en video",
+      "id": "destacados",
+      "nombre": "Egresados que inspiran (historias)",
       "visible": true,
       "pagina": "inspiran"
     }
@@ -318,8 +318,8 @@
       {
         "titulo": "Egresados que inspiran",
         "texto": "Videos y testimonios de graduados que se destacan por su trayectoria, sus emprendimientos y sus aportes a la sociedad.",
-        "href": "#/egresados-que-inspiran",
-        "cta": "Ver historias",
+        "href": "#videos",
+        "cta": "Ver los videos",
         "imagen": null,
         "color": "#ec455f"
       },
